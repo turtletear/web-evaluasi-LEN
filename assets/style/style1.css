@@ -1,0 +1,19 @@
+.main_bgr {
+    background-color: #CFDDFF;
+    padding: 5px 5px 5px 5px;
+    height: auto;
+}
+
+.div_center {
+    margin: auto;
+    display: block;
+}
+
+.login_area {
+    background-color: #FCFCFC;
+    overflow: auto;   /*experimental, biar konten gak offside */
+    border-radius: 10px;
+    padding: 3px 3px 3px 3px;
+    width: 50%;
+    margin: auto;
+}
