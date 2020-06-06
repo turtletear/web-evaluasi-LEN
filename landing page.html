@@ -30,16 +30,16 @@
                         <div class="row div_center" style="margin-top: 150px;">
                             <h3><font color="#888888"> Login sebagai : </font> </h3>
                         </div>
-                        <button class="btn btn-secondary btn-lg"> atasan</button>
+                        <button class="btn btn-secondary btn-lg" onclick="hide_atasan()"> atasan</button>
                         <button class="btn btn-info btn-lg"> admin</button>
                         
-                        <div id="inp_atasan" class="row div_center" style="width: 50%; margin-top: 15px;">
+                        <div id="inp_atasan" class="row div_center" style="width: 50%; margin-top: 15px; display: none;">
                             <div class="input-group mb-3">
                                 <input placeholder="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             </div>
                         </div>
 
-                        <button class="btn btn-info btn-lg"> next</button>
+                        <button class="btn btn-info btn-lg" id="btn_nxt" style="display: none;"> login</button>
                         
                         
                     </div>
@@ -51,7 +51,19 @@
         <!-- end main content -->
 
 
-    
+    <script>
+        function hide_atasan() {
+            var x = document.getElementById("inp_atasan");
+            var y = document.getElementById("btn_nxt");
+            if (x.style.display === "none" && y.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "inline";
+            } else {
+                x.style.display = "none";
+                y.style.display = "none";
+            }
+        }
+    </script>
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>

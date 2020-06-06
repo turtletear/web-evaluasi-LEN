@@ -1,7 +1,7 @@
 .main_bgr {
     background-color: #CFDDFF;
     padding: 5px 5px 5px 5px;
-    height: auto;
+    height: 663px;
 }
 
 .div_center {
@@ -17,4 +17,5 @@
     padding: 40px 3px 50px 3px;
     width: 50%;
     margin: auto;
+    height: 540px;
 }
