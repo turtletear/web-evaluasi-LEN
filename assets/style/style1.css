@@ -5,7 +5,7 @@
 }
 .main_bgr_dash {
     background-color: #CFDDFF;
-    padding: 5px 10px 15px 10px;
+    padding: 8px 10px 15px 10px;
     height: auto;
 }
 
@@ -23,4 +23,13 @@
     width: 50%;
     margin: auto;
     height: 540px;
+}
+
+.detail_area{
+    background-color: white;
+    overflow: auto;   /*experimental, biar konten gak offside */
+    border-radius: 10px;
+    margin-left: 17%;
+    margin-top: 13px;
+    width: 65%;
 }
