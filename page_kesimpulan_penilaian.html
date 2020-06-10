@@ -273,7 +273,7 @@
                 </div>
 
                 <form action="" method="post">
-                    <div class="row">
+                    <div class="row"">
                         <div class="col-md-12">
                             <div class="detail_area" style="height: 350px;">
                                         <table class="table table-striped">
@@ -286,17 +286,49 @@
                                         </table>
                                     
                                     <!-- start dropdown -->
-                                    <label for="cars" class="combo_lbl">Status Kontrak PKWT</label>
+                                    <div>
+                                        <label for="cars" class="combo_lbl">Status Kontrak PKWT</label>
+                                    </div>
 
-                                    <select name="cars" id="cars">
-                                        <option value="volvo" id="o1">Diperpanjang 3 Bulan</option>
-                                        <option value="volvo" id="o2">Diperpanjang 1 Tahun</option>
-                                        <option value="volvo" id="o3">Diperpanjang 6 Bulan</option>
-                                        <option value="volvo" id="o4">Lainnya </option>
-                                        <option value="saab" id="o5"> Diputus </option>
-                                    </select>
+                                    <div style="margin: 5px 5px 5px 5px;">
+                                        <select id="combo1" onchange="func1()">
+                                            <option disabled selected value>-- status --</option>
+                                            <option value="Diperpanjang 3 Bulan">Diperpanjang 3 Bulan</option>
+                                            <option value="Diperpanjang 1 Tahun">Diperpanjang 1 Tahun</option>
+                                            <option value="Diperpanjang 6 Bulan">Diperpanjang 6 Bulan</option>
+                                            <option value="Lainnya" >Lainnya</option>
+                                            <option value="Diputus">Diputus</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div style="margin: 5px 5px 5px 5px; display: none;" id="pagu">
+                                        <select id="combo_pagu">
+                                            <option disabled selected value>-- Jenis Pagu --</option>
+                                            <option value="Lainnya">Rutin</option>
+                                            <option value="Diputus">Proyek / Program</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div style="margin: 5px 5px 5px 5px; display: none;" id="putus">
+                                        <select id="combo_putus">
+                                            <option disabled selected value>-- Alasan diputus --</option>
+                                            <option value="Lainnya">Hasil Evaluasi Penilaian</option>
+                                            <option value="Diputus">Kegiatan Proyek / Program Selesai</option>
+                                        </select>
+                                    </div>
 
-                                    <div id="myCombo" style="width:100px;height:20px;"></div>
+                                    <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="kode_pagu">
+                                        <input id="inp_kpagu" placeholder="kode pagu" type="text" class="form-control">
+                                    </div>
+
+                                    <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="Lainnya">
+                                        <input id="inp_lainnya" placeholder="Lainnya" type="text" class="form-control">
+                                    </div>
+
+                                    <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="alasan">
+                                        <input id="inp_alasan" placeholder="alasan" type="text" class="form-control">
+                                    </div>
+                                    
                                     
                             </div>
                         </div>
@@ -307,7 +339,37 @@
         </div>
 
         <!-- end main content -->
-
+    <script>
+        function func1() {
+            var a = document.getElementById("combo1");
+            var x = a.value;
+            // y = a.options[a.selectedIndex].text;
+            // document.getElementById("ab").innerHTML = "ini value " + x;
+            var lain = document.getElementById("Lainnya");
+            var put = document.getElementById("putus");
+            var pag = document.getElementById("pagu");
+            var kpag = document.getElementById("kode_pagu")
+            if (x === "Lainnya"){
+                lain.style.display = "block";
+                put.style.display = "none";
+                pag.style.display = "none";
+                kpag.style.display = "none";
+            }
+            else if(x === "Diputus") {
+                lain.style.display = "none";
+                put.style.display = "block";
+                pag.style.display = "none";
+                kpag.style.display = "none";
+            }
+            else{
+                lain.style.display = "none";
+                put.style.display = "none";
+                pag.style.display = "block";
+                kpag.style.display = "block";
+            }
+        }
+    </script>
+    
     <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
