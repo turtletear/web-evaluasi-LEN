@@ -1,0 +1,47 @@
+.main_bgr {
+	background-color: #CFDDFF;
+	padding: 5px 5px 5px 5px;
+	height: auto;
+}
+
+.div_center {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+.id_atas {
+	width:50%;
+	margin-top : 25px;
+}
+
+.login_area {
+	background-color: #FCFCFC;
+	overflow: auto;   /*experimental, biar konten gak offside */
+	border-radius: 10px;
+	padding: 40px 3px 50px 3px;
+	width: 40%;
+	margin: auto;
+	height: 300px;
+}
+
+.main_bgr_input {
+	background-color: #CFDDFF;
+	padding: 5px 5px 5px 5px;
+	margin: auto;
+	height: auto;
+	border: 1px solid #CFDDFF;
+	border-radius: 8px;
+}
+
+.form_eval {
+	margin-left: 5px;
+}
+
+.idkar_area{
+	background-color: white;
+	overflow: auto;   /*experimental, biar konten gak offside */
+	border-radius: 10px;
+	margin: auto;
+	width: 98%;
+}
