@@ -276,61 +276,72 @@
                     <div class="row"">
                         <div class="col-md-12">
                             <div class="detail_area" style="height: 350px;">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col"><h5>Kesimpulan</h5></th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                        </table>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"><h5>Kesimpulan</h5></th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                     
                                     <!-- start dropdown -->
-                                    <div>
-                                        <label for="cars" class="combo_lbl">Status Kontrak PKWT</label>
-                                    </div>
+                                    <div style="margin-left: 27%;">
+                                        <div>
+                                            <label for="cars" class="combo_lbl">Status Kontrak PKWT</label>
+                                        </div>
+    
+                                        <div style="margin: 5px 5px 5px 5px;">
+                                            <select id="combo1" onchange="func1()" class="combo-style">
+                                                <option disabled selected value>-- status --</option>
+                                                <option value="Diperpanjang 3 Bulan">Diperpanjang 3 Bulan</option>
+                                                <option value="Diperpanjang 1 Tahun">Diperpanjang 1 Tahun</option>
+                                                <option value="Diperpanjang 6 Bulan">Diperpanjang 6 Bulan</option>
+                                                <option value="Lainnya" >Lainnya</option>
+                                                <option value="Diputus">Diputus</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div style="margin: 5px 5px 5px 5px; display: none;" id="pagu">
+                                            <select id="combo_pagu" class="combo-style">
+                                                <option disabled selected value>-- Jenis Pagu --</option>
+                                                <option value="Lainnya">Rutin</option>
+                                                <option value="Diputus">Proyek / Program</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div style="margin: 5px 5px 5px 5px; display: none;" id="putus">
+                                            <select id="combo_putus" class="combo-style">
+                                                <option disabled selected value>-- Alasan diputus --</option>
+                                                <option value="Lainnya">Hasil Evaluasi Penilaian</option>
+                                                <option value="Diputus">Kegiatan Proyek / Program Selesai</option>
+                                            </select>
+                                        </div>
+    
+                                        <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="kode_pagu">
+                                            <input id="inp_kpagu" placeholder="kode pagu" type="text" class="form-control input-style">
+                                        </div>
+    
+                                        <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="Lainnya">
+                                            <input id="inp_lainnya" placeholder="Lainnya" type="text" class="form-control input-style">
+                                        </div>
+    
+                                        <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="alasan">
+                                            <input id="inp_alasan" placeholder="alasan" type="text" class="form-control input-style">
+                                        </div>
 
-                                    <div style="margin: 5px 5px 5px 5px;">
-                                        <select id="combo1" onchange="func1()">
-                                            <option disabled selected value>-- status --</option>
-                                            <option value="Diperpanjang 3 Bulan">Diperpanjang 3 Bulan</option>
-                                            <option value="Diperpanjang 1 Tahun">Diperpanjang 1 Tahun</option>
-                                            <option value="Diperpanjang 6 Bulan">Diperpanjang 6 Bulan</option>
-                                            <option value="Lainnya" >Lainnya</option>
-                                            <option value="Diputus">Diputus</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div style="margin: 5px 5px 5px 5px; display: none;" id="pagu">
-                                        <select id="combo_pagu">
-                                            <option disabled selected value>-- Jenis Pagu --</option>
-                                            <option value="Lainnya">Rutin</option>
-                                            <option value="Diputus">Proyek / Program</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div style="margin: 5px 5px 5px 5px; display: none;" id="putus">
-                                        <select id="combo_putus">
-                                            <option disabled selected value>-- Alasan diputus --</option>
-                                            <option value="Lainnya">Hasil Evaluasi Penilaian</option>
-                                            <option value="Diputus">Kegiatan Proyek / Program Selesai</option>
-                                        </select>
-                                    </div>
 
-                                    <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="kode_pagu">
-                                        <input id="inp_kpagu" placeholder="kode pagu" type="text" class="form-control">
-                                    </div>
 
-                                    <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="Lainnya">
-                                        <input id="inp_lainnya" placeholder="Lainnya" type="text" class="form-control">
-                                    </div>
 
-                                    <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="alasan">
-                                        <input id="inp_alasan" placeholder="alasan" type="text" class="form-control">
                                     </div>
                                     
                                     
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="margin-left: 600px; margin-top: 10px;">
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </div>
                 </form>
