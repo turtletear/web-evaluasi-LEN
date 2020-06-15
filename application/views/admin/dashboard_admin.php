@@ -24,12 +24,12 @@
         <form action="" method="">
             <div class="row" style=" margin-bottom: 10px;">
                 <div class="col-md-3">
-                    <input class="form-control" type="text" placeholder="Default input">
+                <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
                 </div>
-                <div>
+                <!-- <div>
                     <button class="btn btn-info" type="submit">search</button>
-                </div>
-                <div class="col-md-7" style="text-align: right; margin-left: 60px;">
+                </div> -->
+                <div class="col-md-7" style="text-align: right; margin-left: 130px;">
                     <button class="btn btn-success">+ New</button>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     
                     <div class="table-responsive" style="background-color: white;">
                         
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="myTable">
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Nama</th>
@@ -110,7 +110,27 @@
         </div>
         <!-- end main content -->
 
-
+    <script>
+        function myFunction() {
+		    var input, filter, table, tr, td, i, txtValue;
+		    input = document.getElementById("myInput");
+		    filter = input.value.toUpperCase();
+		    table = document.getElementById("myTable");
+		    tr = table.getElementsByTagName("tr");
+		    for (i = 0; i < tr.length; i++) {
+		        td = tr[i].getElementsByTagName("td")[0];
+	            if (td) {
+	                txtValue = td.textContent || td.innerText;
+		            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		                tr[i].style.display = "";
+		            } else {
+		                tr[i].style.display = "none";
+		            }
+		        }       
+		    }
+		}
+        // end function
+    </script>
     
     <script src="<?= base_url()?>assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="<?= base_url()?>assets/js/popper.min.js"></script>
