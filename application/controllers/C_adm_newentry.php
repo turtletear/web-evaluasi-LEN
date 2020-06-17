@@ -45,9 +45,24 @@ class C_adm_newentry extends CI_Controller {
 			$this->load->view('admin/tambah_admin');
 		}
 		else {
-			$data_kar = [
+			// $data_abs = [
+			// 	'nik' => $this->input->post('nik'),
+			// 	'sakit' => $this->input->post('sakit'),
+			// 	'izin' => $this->input->post('izin'),
+			// 	'alpa' => $this->input->post('alpa'),
+			// 	'terlambat' => $this->input->post('atelat')
+			// ];
 
-			];
-		}
+			$ePeriod = $this->input->post('end_periode');
+			$sPeriod = $this->input->post('start_periode');
+
+			$date1 = date_create($ePeriod);
+			$date2 = date_create($sPeriod);
+
+			$dif = date_diff($date1,$date2);
+			$interv = $dif->format('%a');
+			echo $interv;
+			
+		}//end else
 	}
 }
