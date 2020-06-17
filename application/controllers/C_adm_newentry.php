@@ -8,12 +8,22 @@ class C_adm_newentry extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library("form_validation");
+		$this->load->model('M_weblen');
 	}
 	
 	public function index(){
 
 		$this->load->view('navbar');
 		$this->load->view('admin/tambah_admin');
+	}
+
+	public function ttl_per($end, $start){
+		$date1 = date_create($end);
+		$date2 = date_create($start);
+
+		$dif = date_diff($date1,$date2);
+		$interv = $dif->format('%a');
+		return $interv;
 	}
 
 	public function newEntry(){
@@ -45,23 +55,32 @@ class C_adm_newentry extends CI_Controller {
 			$this->load->view('admin/tambah_admin');
 		}
 		else {
-			// $data_abs = [
-			// 	'nik' => $this->input->post('nik'),
-			// 	'sakit' => $this->input->post('sakit'),
-			// 	'izin' => $this->input->post('izin'),
-			// 	'alpa' => $this->input->post('alpa'),
-			// 	'terlambat' => $this->input->post('atelat')
-			// ];
 
+			//hitung periode total
 			$ePeriod = $this->input->post('end_periode');
 			$sPeriod = $this->input->post('start_periode');
+			$ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
 
-			$date1 = date_create($ePeriod);
-			$date2 = date_create($sPeriod);
 
-			$dif = date_diff($date1,$date2);
-			$interv = $dif->format('%a');
-			echo $interv;
+			$data_abs = [
+				'nik' => $this->input->post('nik'),
+				'sakit' => $this->input->post('sakit'),
+				'izin' => $this->input->post('izin'),
+				'alpa' => $this->input->post('alpa'),
+				'terlambat' => $this->input->post('atelat'),
+				'periode' => $ttl_hari,
+				'nilai_absen' => 0,
+				'nilai_produktivitas' => 0
+			];
+
+			$this->M_weblen->addAbesen($data_abs);
+			echo "tambah absen sukses";
+			// var_dump($data_abs);
+
+
+
+
+
 			
 		}//end else
 	}
