@@ -62,6 +62,7 @@ class C_adm_newentry extends CI_Controller {
 			$ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
 
 
+			//save data absen
 			$data_abs = [
 				'nik' => $this->input->post('nik'),
 				'sakit' => $this->input->post('sakit'),
@@ -72,10 +73,31 @@ class C_adm_newentry extends CI_Controller {
 				'nilai_absen' => 0,
 				'nilai_produktivitas' => 0
 			];
+			$this->M_weblen->addAbesen($data_abs); 
 
-			$this->M_weblen->addAbesen($data_abs);
-			echo "tambah absen sukses";
-			// var_dump($data_abs);
+			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
+			$idAbsen = $Absen['id_absensi']; //get id absensi
+			
+			//save data karyawan
+			$data_kar = [
+				'id_evaluasi' => null,
+				'id_absensi' => $idAbsen,
+				'nama' => $this->input->post('nama'),
+				'nik' => $this->input->post('nik'),
+				'divisi' => $this->input->post('divisi'),
+				'bagian' => $this->input->post('bagian'),
+				'jabatan' => $this->input->post('jabatan'),
+				'start_periode' => $this->input->post('start_periode'),
+				'end_periode' => $this->input->post('end_periode'),
+				'kontrak_panjang' => "-",
+				'kontrak_putus' => "-",
+				'anggaran' => "-",
+				'kode_pagu' => "-"
+			];
+			$this->M_weblen->addKaryawan($data_kar);
+
+
+			var_dump($data_kar);
 
 
 
