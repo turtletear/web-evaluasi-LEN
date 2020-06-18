@@ -74,6 +74,7 @@ class C_adm_newentry extends CI_Controller {
 			$alpa = $this->convert_poin_absen($this->input->post('alpa')*2,$ttl_hari);
 			$telat = $this->convert_poin_absen($this->input->post('atelat'),$ttl_hari);
 
+			//ttl_hari bukan dari selisih tanggal:)
 			echo $ttl_hari," - ",$sakit," - ",$izin," - ",$alpa," - ",$telat;
 
 			
