@@ -26,6 +26,13 @@ class C_adm_newentry extends CI_Controller {
 		return $interv;
 	}
 
+	public function convert_poin_absen($point, $durasi)
+	{
+		$x = ($point / $durasi)*100;
+
+		return round($x, 1);
+	}
+
 	public function newEntry(){
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim'); 
@@ -59,9 +66,17 @@ class C_adm_newentry extends CI_Controller {
 			//hitung periode total
 			$ePeriod = $this->input->post('end_periode');
 			$sPeriod = $this->input->post('start_periode');
-			$ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
+			$ttl_hari = 248;//$this->ttl_per($ePeriod,$sPeriod);
+			//konversi point absensi ke dalam bentuk persen%
 
+			$sakit = $this->convert_poin_absen($this->input->post('sakit'),$ttl_hari);
+			$izin = $this->convert_poin_absen($this->input->post('izin'),$ttl_hari);
+			$alpa = $this->convert_poin_absen($this->input->post('alpa')*2,$ttl_hari);
+			$telat = $this->convert_poin_absen($this->input->post('atelat'),$ttl_hari);
 
+			echo $ttl_hari," - ",$sakit," - ",$izin," - ",$alpa," - ",$telat;
+
+			
 			//save data absen
 			$data_abs = [
 				'nik' => $this->input->post('nik'),
@@ -73,10 +88,10 @@ class C_adm_newentry extends CI_Controller {
 				'nilai_absen' => 0,
 				'nilai_produktivitas' => 0
 			];
-			$this->M_weblen->addAbesen($data_abs); 
+			// $this->M_weblen->addAbesen($data_abs); 
 
-			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
-			$idAbsen = $Absen['id_absensi']; //get id absensi
+			// $Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
+			// $idAbsen = $Absen['id_absensi']; //get id absensi
 			
 			//save data karyawan
 			$data_kar = [
@@ -94,10 +109,7 @@ class C_adm_newentry extends CI_Controller {
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];
-			$this->M_weblen->addKaryawan($data_kar);
-
-
-			var_dump($data_kar);
+			// $this->M_weblen->addKaryawan($data_kar);
 
 
 
