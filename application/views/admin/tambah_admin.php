@@ -20,7 +20,8 @@
 	<div class="container">
 		<div class="container" style="background-color: #E7E7E7">
 			<div class="container main_bgr_input" style="width: 75%">
-				<div class="row" style="margin: 5px 10px">        
+			<?= $this->session->flashdata('saveEmp');?>	
+			<div class="row" style="margin: 5px 10px">        
 					<h3>Identitas Karyawan</h3>
 				</div>
 				<div class="row" style="margin: 0px 10px">
@@ -85,6 +86,14 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-md-8">
+									<div class="form-group row">
+										<label for="ttl_hari" class="col-md-6 col-form-label">Total Hari Kerja</label>
+										<div class="col-md-3">
+											<input type="number" class="form-control" id="ttl_hari" name="ttl_hari" value="<?= set_value('ttl_hari')?>">
+											<?= form_error('ttl_hari','<small class="text-danger pl-2">','</small>') ?>
+										</div>
+										<label for="ttl_hari" class="col-md-1 col-form-label" style="margin-left:-25px">Hari</label>
+									</div>
 
 									<div class="form-group row">
 										<label for="sakit" class="col-md-6 col-form-label">Sakit</label>

@@ -17,7 +17,7 @@ class C_adm_newentry extends CI_Controller {
 		$this->load->view('admin/tambah_admin');
 	}
 
-	public function ttl_per($end, $start){
+	public function ttl_per($end, $start){ //fungsi mencari selisih dari range tanggal tertentu
 		$date1 = date_create($end);
 		$date2 = date_create($start);
 
@@ -26,11 +26,23 @@ class C_adm_newentry extends CI_Controller {
 		return $interv;
 	}
 
-	public function convert_poin_absen($point, $durasi)
+	public function convert_poin_absen($point, $durasi) // mengubah point2 absensi kedalam bentuk persen %
 	{
 		$x = ($point / $durasi)*100;
 
 		return round($x, 1);
+	}
+
+	public function ttlProductvt($s, $i, $a, $t) //fungsi menghitung produktivitas kehadiran
+	{
+		$x = 100 - ($s+$i+$a+$t);
+		return round($x, 0, PHP_ROUND_HALF_DOWN);
+	}
+	
+	public function ttlAbsensi($prod) //total nilai absensi = 30% x nilai produktivitas
+	{
+		$x = (30 * $prod)/100;
+		return round($x, 0, PHP_ROUND_HALF_DOWN);
 	}
 
 	public function newEntry(){
@@ -60,40 +72,46 @@ class C_adm_newentry extends CI_Controller {
 		if($this->form_validation->run() == false){
 			$this->load->view('navbar');
 			$this->load->view('admin/tambah_admin');
-		}
+		
+		} //end if
+
 		else {
 
 			//hitung periode total
-			$ePeriod = $this->input->post('end_periode');
-			$sPeriod = $this->input->post('start_periode');
-			$ttl_hari = 248;//$this->ttl_per($ePeriod,$sPeriod);
+			// $ePeriod = $this->input->post('end_periode');
+			// $sPeriod = $this->input->post('start_periode');
+			//$this->ttl_per($ePeriod,$sPeriod);
+			$ttl_hari = $this->input->post('ttl_hari');
+			
 			//konversi point absensi ke dalam bentuk persen%
-
 			$sakit = $this->convert_poin_absen($this->input->post('sakit'),$ttl_hari);
 			$izin = $this->convert_poin_absen($this->input->post('izin'),$ttl_hari);
 			$alpa = $this->convert_poin_absen($this->input->post('alpa')*2,$ttl_hari);
 			$telat = $this->convert_poin_absen($this->input->post('atelat'),$ttl_hari);
 
 			//ttl_hari bukan dari selisih tanggal:)
-			echo $ttl_hari," - ",$sakit," - ",$izin," - ",$alpa," - ",$telat;
+			$prod = $this->ttlProductvt($sakit,$izin,$alpa,$telat); //total nilai produktivitas
+			$abs = $this->ttlAbsensi($prod);//total nilai absensi, 30% x nilai produktivitas
+
 
 			
 			//save data absen
 			$data_abs = [
 				'nik' => $this->input->post('nik'),
-				'sakit' => $this->input->post('sakit'),
-				'izin' => $this->input->post('izin'),
-				'alpa' => $this->input->post('alpa'),
-				'terlambat' => $this->input->post('atelat'),
+				'sakit' => $sakit,
+				'izin' => $izin,
+				'alpa' => $alpa,
+				'terlambat' => $telat,
 				'periode' => $ttl_hari,
-				'nilai_absen' => 0,
-				'nilai_produktivitas' => 0
+				'nilai_absen' => $abs,
+				'nilai_produktivitas' => $prod
 			];
-			// $this->M_weblen->addAbesen($data_abs); 
+			$this->M_weblen->addAbesen($data_abs); 
 
-			// $Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
-			// $idAbsen = $Absen['id_absensi']; //get id absensi
+			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
 			
+			
+			$idAbsen = $Absen['id_absensi']; //get id absensi
 			//save data karyawan
 			$data_kar = [
 				'id_evaluasi' => null,
@@ -110,8 +128,10 @@ class C_adm_newentry extends CI_Controller {
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];
-			// $this->M_weblen->addKaryawan($data_kar);
-
+			$this->M_weblen->addKaryawan($data_kar);
+			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
+			Data saved!</div>');
+			redirect('C_adm_newentry');
 
 
 
