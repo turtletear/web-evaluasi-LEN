@@ -20,4 +20,13 @@ class M_weblen extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
+
+    public function getDataKar($id) //get single data Karyawan by Id karyawan
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->where('id_karyawan',$id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }
