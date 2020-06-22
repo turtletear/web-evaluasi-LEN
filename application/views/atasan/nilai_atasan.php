@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="container" style="background-color: #E7E7E7">
 			<div class="container main_bgr_input" style="width: 75%;">
-				<div class="row" style="margin: 5px 10px">        
+				<div class="row" style="margin: 5px 10px">
 					<h3 style="margin-bottom: 15px">Identitas Karyawan</h3>
 				</div>
 		        <div class="row">
@@ -276,7 +276,7 @@
 								<?= form_error('hkerja','<small class="text-danger pl-2">','</small>') ?>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-success" style="margin-left: 540px">Save</button>
+						<button type="submit" onclick="return alert('data saved!, redirecting to dashboard');" class="btn btn-success" style="margin-left: 540px">Save</button>
 					</form>
 				</div>
 			</div>

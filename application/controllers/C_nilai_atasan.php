@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_nilai_atasan extends CI_Controller {
     
-    public function __construct()
-	{
+    public function __construct(){
 		parent::__construct();
 		$this->load->library("form_validation");
 		$this->load->model('M_weblen');
@@ -12,14 +11,13 @@ class C_nilai_atasan extends CI_Controller {
     
     public function index(){
 
-        $id_emp = 11;  //id karyawan dapat dari flashdata
+        $id_emp = 16;  //id karyawan dapat dari flashdata
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
 		$this->load->view('navbar');
 		$this->load->view('atasan/nilai_atasan',$dataEmp);
     }
 
-    public function convPoint($point)
-    {
+    public function convPoint($point){
         if ($point == 5) {
             $x = 6.7;
         }
@@ -35,20 +33,29 @@ class C_nilai_atasan extends CI_Controller {
         elseif ($point == 1){
             $x = 1.3;
         }
-
-        
-
         return round($x, 2);
     }//end func
 
-    public function ttlEval($kin)
+    public function ttlEval($kin)  //nilai 30 %
     {
         $x = ($kin*70)/100;
         return round($x, 0, PHP_ROUND_HALF_DOWN);
+    }//end func
+
+    public function finalResult($abs, $eval){
+        return $abs + $eval;
     }
     
+
+
     public function addPenilaian()
     {
+        $id_emp = 16;  //id karyawan dapat dari flashdata
+        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
+        $name = "Muten Roshi";  //dari flashdata / session
+        $nikA = 1201164155;
+
+
         $this->form_validation->set_rules('inisiatif', 'Inisiatif', 'required|trim');
         $this->form_validation->set_rules('kreatif', 'Kreatif', 'required|trim');
         $this->form_validation->set_rules('probsolv', 'Problem Solving', 'required|trim');
@@ -66,19 +73,16 @@ class C_nilai_atasan extends CI_Controller {
         $this->form_validation->set_rules('hkerja', 'Hasil Pekerjaan', 'required|trim');
 
         if($this->form_validation->run() == false){
-            $id_emp = 11;  //id karyawan dapat dari flashdata
-            $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
-
-
-
+            
             $this->load->view('navbar');
 			$this->load->view('atasan/nilai_atasan', $dataEmp);
 		
         } //end if
-        else{
-            $name = "Muten Roshi";  //dari flashdata / session
-            $nikA = 1201164155;
 
+        else{
+
+            $dataAbs = $this->M_weblen->getDataAbs($dataEmp['id_absensi']); //get data absensi
+            
             $aa = $this->input->post('inisiatif');
             $bb = $this->input->post('kreatif');
             $cc = $this->input->post('probsolv');
@@ -103,6 +107,7 @@ class C_nilai_atasan extends CI_Controller {
             $evl = $this->ttlEval($kinerja);
             $now = date("Y-m-d");
             $dataEvl = [
+                'nik' => $dataEmp['nik'],
                 'date_fill' => $now,
                 'inisiatif' => $aa,
                 'daya_kreatif' => $bb,
@@ -125,8 +130,19 @@ class C_nilai_atasan extends CI_Controller {
                 'nik_atasan' => $nikA
             ];
 
-            var_dump($dataEvl);
-        }
+            $res = $this->finalResult($dataAbs['nilai_absen'], $dataEvl['nilai_eval']); //total nilai penilaian keseluruhan
+            $this->M_weblen->addEval($dataEvl); //save to table evaluasi
+            $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
+            $this->M_weblen->updateKar($dataEvl['nik'],$idEvl,$res);
+            
+            //sempurnakan tampilan pesan sukses sebelum redirect
+            redirect('C_adm_newentry'); 
+
+
+
+            //echo $dataAbs['nilai_absen']," + ",$dataEvl['nilai_eval']," nilai eval = ",$res;
+            
+        }// end else
     }
 	
 
