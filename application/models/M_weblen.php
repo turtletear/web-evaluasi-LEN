@@ -61,4 +61,15 @@ class M_weblen extends CI_Model {
         $this->db->set('nilai_hasil',$res);
         $this->db->update('karyawan');
     }
+
+    public function getDatKar2() //for dashboard atasan
+    {
+        $this->db->select('karyawan.nama,karyawan.nik,absensi.nilai_absen');
+        $this->db->from('karyawan');  //karyawan join absensi  
+        $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
+        $this->db->where('id_evaluasi',null);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
