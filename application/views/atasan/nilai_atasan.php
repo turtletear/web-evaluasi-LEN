@@ -61,7 +61,7 @@
 					<h3 style="margin-top: 15px">Hasil Evaluasi</h3>
 				</div>
 				<div class="row" style="margin: 0px 10px">
-					<form method="POST" action="<?= base_url('C_nilai_atasan/addPenilaian')?>" style="margin: 0px 10px; width: 100%">
+					<form method="POST" action="<?= site_url('C_nilai_atasan');?>/addPenilaian/<?= $id_karyawan?>" style="margin: 0px 10px; width: 100%"> 
 						<h4>Innovation</h4>
 						<div class="form-group row form_eval">
 							<label for="nama" class="col-md-4 col-form-label">Inisiatif</label>
@@ -277,7 +277,7 @@
 								<?= form_error('hkerja','<small class="text-danger pl-2">','</small>') ?>
 							</div>
 						</div>
-						<button type="submit" onclick="return alert('data saved!, redirecting to dashboard');" class="btn btn-success" style="margin-left: 540px">Save</button>
+						<button type="submit"  class="btn btn-success" style="margin-left: 540px">Save</button>
 					</form>
 				</div>
 			</div>

@@ -9,9 +9,8 @@ class C_nilai_atasan extends CI_Controller {
 		$this->load->model('M_weblen');
     }
     
-    public function index(){
+    public function index($id_emp){
 
-        $id_emp = 16;  //id karyawan dapat dari flashdata
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
 		$this->load->view('navbar');
 		$this->load->view('atasan/nilai_atasan',$dataEmp);
@@ -48,9 +47,10 @@ class C_nilai_atasan extends CI_Controller {
     
 
 
-    public function addPenilaian()
+    public function addPenilaian($id_emp) //kasih parameter
     {
-        $id_emp = 16;  //id karyawan dapat dari flashdata
+        //id karyawan dapat dari flashdata
+        var_dump($id_emp);
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
         $name = "Muten Roshi";  //dari flashdata / session
         $nikA = 1201164155;
@@ -109,21 +109,21 @@ class C_nilai_atasan extends CI_Controller {
             $dataEvl = [
                 'nik' => $dataEmp['nik'],
                 'date_fill' => $now,
-                'inisiatif' => $aa,
-                'daya_kreatif' => $bb,
-                'prob_solve' => $cc,
-                'tang_jawab' => $dd,
-                'kom_per' => $ee,
-                'etika_kerja' => $ff,
-                'adap_kerja' => $gg,
-                'pelayanan' => $hh,
-                'kem_tugas' => $ii,
-                'pen_diri' => $jj,
-                'kem_komunikasi' => $kk,
-                'ker_sama' => $ll,
-                'disiplin' => $mm,
-                'sis_kerja' => $nn,
-                'has_kerja' => $oo,
+                'inisiatif' => $this->convPoint($aa),
+                'daya_kreatif' => $this->convPoint($bb),
+                'prob_solve' => $this->convPoint($cc),
+                'tang_jawab' => $this->convPoint($dd),
+                'kom_per' => $this->convPoint($ee),
+                'etika_kerja' => $this->convPoint($ff),
+                'adap_kerja' => $this->convPoint($gg),
+                'pelayanan' => $this->convPoint($hh),
+                'kem_tugas' => $this->convPoint($ii),
+                'pen_diri' => $this->convPoint($jj),
+                'kem_komunikasi' => $this->convPoint($kk),
+                'ker_sama' => $this->convPoint($ll),
+                'disiplin' => $this->convPoint($mm),
+                'sis_kerja' => $this->convPoint($nn),
+                'has_kerja' => $this->convPoint($oo),
                 'nilai_eval' => $evl,
                 'nilai_kinerja' => round($kinerja, 0, PHP_ROUND_HALF_DOWN),
                 'nama_atasan' => $name,
@@ -135,8 +135,9 @@ class C_nilai_atasan extends CI_Controller {
             $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
             $this->M_weblen->updateKar($dataEvl['nik'],$idEvl,$res);
             
-            //sempurnakan tampilan pesan sukses sebelum redirect
-            redirect('C_adm_newentry'); 
+            $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
+			Data saved!</div>');
+            redirect('C_dashbrd_atasan'); 
 
 
 

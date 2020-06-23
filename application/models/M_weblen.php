@@ -64,7 +64,7 @@ class M_weblen extends CI_Model {
 
     public function getDatKar2() //for dashboard atasan
     {
-        $this->db->select('karyawan.nama,karyawan.nik,absensi.nilai_absen');
+        $this->db->select('karyawan.id_karyawan,karyawan.nama,karyawan.nik,absensi.nilai_absen');
         $this->db->from('karyawan');  //karyawan join absensi  
         $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
         $this->db->where('id_evaluasi',null);

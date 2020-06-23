@@ -22,8 +22,10 @@
 	<div class="container">
 		<div class="container main_bgr2" style="height: 100%">
 			<form action="" method="">
-				<div class="row" style=" margin-bottom: 10px;">
-					<div class="col-md-6">    
+			<?= $this->session->flashdata('evalAt');?>	
+			<div class="row" style=" margin-bottom: 10px;">
+					
+					<div class="col-md-6">
 						<input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 					</div>
 				</div>
@@ -47,7 +49,7 @@
 		                        <td><?= $emp['nama']?></td>
 		                        <td><?= $emp['nik']?></td>
 		                        <td><?= $emp['nilai_absen']?>%</td>
-		                        <td> <button class="btn btn-primary"> + Nilai </button> </td>
+		                        <td><a href="<?= base_url(); ?>C_nilai_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> + Nilai </button> </td>
 							</tr>
 							<?php endforeach ?>
 		                    <!-- end php loop here.. -->
