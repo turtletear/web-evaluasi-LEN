@@ -73,8 +73,9 @@
         }
 
         function check_pass() {
-            var pass = document.getElementById("password")
-            var 
+            var pass = document.getElementById("password");
+            var next = document.getElementById("btn_nxt");
+            if (pass.)
         }
     </script>
     <script src="<?= base_url() ?>assets/js/jquery-3.5.1.slim.min.js"></script>

@@ -32,7 +32,7 @@
                 <!-- <div>
                     <button class="btn btn-info" type="submit">search</button>
                 </div> -->
-                <div class="col-md-7" style="text-align: right; margin-left: 130px;">
+                <div class="col-md-7" style="text-align: right; margin-left: 180px;">
                     <a href="<?= site_url('C_tambah_admin'); ?>" class="btn btn-success">+ New</a>
                 </div>
             </div>

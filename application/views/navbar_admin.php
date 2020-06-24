@@ -3,19 +3,22 @@
         <!-- start navbar -->
         <div class="row">
             <div class="col-md-12">
-                <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #004D8D;">
-                    <a class="navbar-brand" href="<?php echo site_url('C_dasboard_admin'); ?>"> <font color="white">PT LEN</font> </a>               
+                <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #004D8D;">
+                    <a class="navbar-brand" href="<?php echo site_url('C_dasboard_admin'); ?>">
+                        <!-- <img src="<?= base_url()?>assets/img/logo.png" alt="Logo" style="width:40px;"> -->
+                        <font color="white">PT LEN</font>
+                    </a>               
                     
-                        <ul class="navbar-nav">                  
+                        <ul class="navbar-nav ml-auto">                  
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('C_dasboard_admin'); ?>">Home</a>
+                                <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_dasboard_admin'); ?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Report</a>
+                                <a class="nav-link" style="padding-right: 30px;" href="#">Report</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link btn btn-danger my-2 my-sm-0" href="<?php echo site_url('C_landing_page'); ?>">Log Out</a>
-                            </li>                  
+                            </li> -->                  
                         </ul>
                     
                     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('C_landing_page'); ?>">

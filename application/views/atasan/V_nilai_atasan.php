@@ -17,6 +17,8 @@
 
 <body>
 	<div class="container">
+		<!-- NAVBAR  -->
+        <?php $this->load->view('navbar.php') ?>
 		<div class="container" style="background-color: #E7E7E7">
 			<div class="container main_bgr_input" style="width: 75%;">
 				<div class="row" style="margin: 5px 10px">        

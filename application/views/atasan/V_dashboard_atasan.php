@@ -19,6 +19,8 @@
 
 <body>
 	<div class="container">
+		<!-- NAVBAR  -->
+        <?php $this->load->view('navbar.php') ?>
 	    <div class="container main_bgr2" style="height: 100%">
 		    <form action="" method="">
 		        <div class="row" style=" margin-bottom: 10px;">
