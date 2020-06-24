@@ -13,7 +13,7 @@ class C_detail_admin extends CI_Controller {
 		$this->load->view('admin/V_detail_admin');
 	}
 
-	public function convertEval ($point)
+	public function convertEval ($point) // mengubah persen% evaluasi kedalam bentuk point2
 	{
 		if ($point == 6.7) {
             $x = '5 (Sangat Baik)' ;
@@ -64,7 +64,7 @@ class C_detail_admin extends CI_Controller {
         return $dataEval;
 	}
 
-	public function convertAbs($point, $durasi) // mengubah point2 absensi kedalam bentuk persen %
+	public function convertAbs($point, $durasi) // mengubah persen% absensi kedalam bentuk point2
 	{
 		$x = ($point * $durasi) / 100 ;
 

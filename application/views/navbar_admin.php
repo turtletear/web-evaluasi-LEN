@@ -5,22 +5,16 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #004D8D;">
                     <a class="navbar-brand" href="<?php echo site_url('C_dasboard_admin'); ?>">
-                        <!-- <img src="<?= base_url()?>assets/img/logo.png" alt="Logo" style="width:40px;"> -->
-                        <font color="white">PT LEN</font>
-                    </a>               
-                    
-                        <ul class="navbar-nav ml-auto">                  
-                            <li class="nav-item">
-                                <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_dasboard_admin'); ?>">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="padding-right: 30px;" href="#">Report</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link btn btn-danger my-2 my-sm-0" href="<?php echo site_url('C_landing_page'); ?>">Log Out</a>
-                            </li> -->                  
-                        </ul>
-                    
+                        <img src="<?= base_url()?>assets/img/logoo.png" alt="Logo" style="width:250px;">
+                    </a>                     
+                    <ul class="navbar-nav ml-auto">                  
+                        <li class="nav-item">
+                            <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_dasboard_admin'); ?>">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="padding-right: 30px;" href="#">Report</a>
+                        </li>                 
+                    </ul>                    
                     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('C_landing_page'); ?>">
                         <button class="btn btn-danger my-2 my-sm-0" type="submit">Log Out</button>
                     </form>
@@ -29,5 +23,3 @@
         </div>
    
         <!-- end navbar -->
-
-        <!-- -----------------------BATAS SUCI----------------------- -->
