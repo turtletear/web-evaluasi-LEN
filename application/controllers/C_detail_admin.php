@@ -3,14 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_detail_admin extends CI_Controller {
 
-	public function index()
+	public function index($id)
 	{
 		$data = array();
 		$data['karyawan'] = $this->M_weblen2->getDataKar($id);
-		$data['evaluasi'] = $this->newDataEval($id);
-		$data['absensi'] = $this->newDataAbs($id);
+		$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
+		$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
 
-		$this->load->view('admin/V_detail_admin');
+		$this->load->view('admin/V_detail_admin', $data);
 	}
 
 	public function convertEval ($point) // mengubah persen% evaluasi kedalam bentuk point2
@@ -38,7 +38,7 @@ class C_detail_admin extends CI_Controller {
 		$eval = array();
 		$eval = $this->M_weblen2->getDataEval($id);
 		$dataEval = [
-			'id_evaluasi' => $eval['id_evaluasi']
+			'id_evaluasi' => $eval['id_evaluasi'],
 			'nik' => $eval['nik'],
             'date_fill' => $eval['date_fill'],
             'inisiatif' => $this->convertEval($eval['inisiatif']),

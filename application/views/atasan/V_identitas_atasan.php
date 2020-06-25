@@ -28,10 +28,12 @@
                         <div class="row div_center id_atas" style="margin:auto; margin-top: 25px;">
                             <form action="<?php echo site_url('C_identitas_atasan/add'); ?>" method="post" class="form-signin">
                                 <div class="input-group mb-3">
-                                    <input name="nama_atasan" placeholder="Nama Lengkap" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                                    <input name="nama_atasan" placeholder="Nama Lengkap" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?= set_value('nama_atasan')?>">
+                                    <?= form_error('nama_atasan','<small class="text-danger pl-2">','</small>') ?>
                                 </div>
                                 <div class="input-group mb-3">
-                                	<input name="nik_atasan" placeholder="NIK" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                                	<input name="nik_atasan" placeholder="NIK" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?= set_value('nik_atasan')?>">
+                                    <?= form_error('nik_atasan','<small class="text-danger pl-2">','</small>') ?>
                                 </div>
                             	<button type="submit" class="btn btn-info btn-lg" style="display: block; text-align: center; margin: auto;">Next</button> 
                             </form>
