@@ -66,10 +66,10 @@
                                     <td><?= $value['nilai_produktivitas']; ?></td>
                                     <td><?= $value['nilai_hasil']; ?></td>
                                     <td>
-                                        <a href="<?php echo site_url('C_detail_admin' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail">Detail</a>
+                                        <a href="<?php echo site_url('C_detail_admin/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail">Detail</a>
                                     </td>
                                     <td>
-                                        <a href="<?php echo site_url('C_kesimpulan_penilaian' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
+                                        <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
                                     </td>
                                 </tr>
                             <?php } ?>

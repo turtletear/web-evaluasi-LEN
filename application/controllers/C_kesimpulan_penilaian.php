@@ -3,14 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_kesimpulan_penilaian extends CI_Controller {
 
-	public function index()
+	public function __construct()
 	{
+		parent::__construct();
+		$this->load->model('M_weblen2');
+	}
+
+	public function index($id)
+	{
+
 		$data = array();
 		$data['karyawan'] = $this->M_weblen2->getDataKar($id);
-		$data['evaluasi'] = $this->newDataEval($id);
-		$data['absensi'] = $this->newDataAbs($id);
+		$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
+		$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
 
-		$this->load->view('admin/V_detail_admin')
+
+		$this->load->view('admin/V_kesimpulan_penilaian',$data);
 
 	}
 
@@ -34,12 +42,14 @@ class C_kesimpulan_penilaian extends CI_Controller {
         return $x;
 	}
 
-	public function newDataEval ($id)
-	{
-		$eval = array();
+	public function newDataEval ($id) //taroh $id di parameter
+	{	
+		//$eval = array();
 		$eval = $this->M_weblen2->getDataEval($id);
+		// echo "ini fungsi newDataEval ";
+		// var_dump($eval);
 		$dataEval = [
-			'id_evaluasi' => $eval['id_evaluasi']
+			'id_evaluasi' => $eval['id_evaluasi'],
 			'nik' => $eval['nik'],
             'date_fill' => $eval['date_fill'],
             'inisiatif' => $this->convertEval($eval['inisiatif']),
@@ -65,16 +75,15 @@ class C_kesimpulan_penilaian extends CI_Controller {
         return $dataEval;
 	}
 
-	public function convertAbs($point, $durasi) // mengubah point2 absensi kedalam bentuk persen %
+	public function convertAbs($point, $durasi) // mengubah % absensi kedalam bentuk point2
 	{
 		$x = ($point * $durasi) / 100 ;
 
 		return round($x);
 	}
 
-	public function newDataAbs($id)
+	public function newDataAbs($id) //taroh id di parameter
 	{
-		$abs = array();
 		$abs = $this->M_weblen2->getDataAbs($id);
 		$dataAbs = [
 			'id_absensi' => $abs['id_absensi'],
@@ -87,6 +96,12 @@ class C_kesimpulan_penilaian extends CI_Controller {
 			'nilai_produktivitas' => $abs['nilai_produktivitas']
 		];
 		return $dataAbs;
+	}
+
+	public function saveKesimpulan()
+	{
+		$x = $this->input->post('combo1');
+		echo $x;
 	}
 
 }

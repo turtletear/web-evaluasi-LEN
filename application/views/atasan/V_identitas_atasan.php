@@ -25,7 +25,7 @@
                             <h4>Identitas Atasan</h4> 
                         </div>
                          
-                        <div class="row div_center id_atas" style="margin:auto; margin-top: 25px;">
+                        <div class="row div_center id_atas" style="margin:auto; margin-top: 5px;">
                             <form action="<?php echo site_url('C_identitas_atasan/add'); ?>" method="post" class="form-signin">
                                 <div class="input-group mb-3">
                                     <input name="nama_atasan" placeholder="Nama Lengkap" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>

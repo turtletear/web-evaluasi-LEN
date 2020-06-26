@@ -33,27 +33,27 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">Nama</th>
-                                    <td><?= $karyawan->nama; ?></td>
+                                    <td><?= $karyawan['nama']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">NIK PKWT</th>
-                                    <td><?= $karyawan->nik; ?></td>
+                                    <td><?= $karyawan['nik']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Divisi / Unit Bisnis</th>
-                                    <td><?= $karyawan->divisi; ?></td>
+                                    <td><?= $karyawan['divisi']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Unit Kerja / Bagian</th>
-                                    <td><?= $karyawan->bagian; ?></td>
+                                    <td><?= $karyawan['bagian']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Jabatan</th>
-                                    <td><?= $karyawan->jabatan; ?></td>
+                                    <td><?= $karyawan['jabatan']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Periode Kontrak</th>
-                                    <td><?= $karyawan->start_periode; ?> - <?= $karyawan->end_periode; ?></td>
+                                    <td><?= $karyawan['start_periode']; ?> - <?= $karyawan['end_periode']; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -86,15 +86,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Inisiatif</th>
-                                                        <td><?= $evaluasi->inisiatif; ?></td>
+                                                        <td><?= $evaluasi['inisiatif']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Daya Kreatifitas</th>
-                                                        <td><?= $evaluasi->daya_kreatif; ?></td>
+                                                        <td><?= $evaluasi['daya_kreatif']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Problem Solving</th>
-                                                        <td><?= $evaluasi->prob_solve; ?></td>
+                                                        <td><?= $evaluasi['prob_solve']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -117,15 +117,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Tanggung Jawab</th>
-                                                        <td><?= $evaluasi->tang_jawab; ?></td>
+                                                        <td><?= $evaluasi['tang_jawab']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Komitmen Kepada Perusahaan</th>
-                                                        <td><?= $evaluasi->kom_per; ?></td>
+                                                        <td><?= $evaluasi['kom_per']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Etika Kerja</th>
-                                                        <td><?= $evaluasi->etika_kerja; ?></td>
+                                                        <td><?= $evaluasi['etika_kerja']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -148,15 +148,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Adaptasi Kerja</th>
-                                                        <td><?= $evaluasi->adap_kerja; ?></td>
+                                                        <td><?= $evaluasi['adap_kerja']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Pelayanan Terhadap Unit Kerja / Pihak Eksternal</th>
-                                                        <td><?= $evaluasi->pelayanan; ?></td>
+                                                        <td><?= $evaluasi['pelayanan']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kemampuan Melaksanaan Tugas</th>
-                                                        <td><?= $evaluasi->kem_tugas; ?></td>
+                                                        <td><?= $evaluasi['kem_tugas']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -179,15 +179,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Penyesuaian Diri</th>
-                                                        <td><?= $evaluasi->pen_diri; ?></td>
+                                                        <td><?= $evaluasi['pen_diri']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kemampuan Berkomunikasi</th>
-                                                        <td><?= $evaluasi->kem_komunikasi; ?></td>
+                                                        <td><?= $evaluasi['kem_komunikasi']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kerja Sama</th>
-                                                        <td><?= $evaluasi->ker_sama; ?></td>
+                                                        <td><?= $evaluasi['ker_sama']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -210,15 +210,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Disiplin</th>
-                                                        <td><?= $evaluasi->disiplin; ?></td>
+                                                        <td><?= $evaluasi['disiplin']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Sistematika Kerja</th>
-                                                        <td><?= $evaluasi->sis_kerja; ?></td>
+                                                        <td><?= $evaluasi['sis_kerja']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Hasil Pekerjaan</th>
-                                                        <td><?= $evaluasi->has_kerja; ?></td>
+                                                        <td><?= $evaluasi['has_kerja']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -246,23 +246,23 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">Hari Kerja</th>
-                                    <td><?= $absensi->periode; ?></td>
+                                    <td><?= $absensi['periode']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Sakit</th>
-                                    <td><?= $absensi->sakit; ?></td>
+                                    <td><?= $absensi['sakit']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Izin</th>
-                                    <td><?= $absensi->izin; ?></td>
+                                    <td><?= $absensi['izin']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Alpa</th>
-                                    <td><?= $absensi->alpa; ?></td>
+                                    <td><?= $absensi['alpa']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Absen Terlambat</th>
-                                    <td><?= $absensi->terlambat; ?></td>
+                                    <td><?= $absensi['terlambat']; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -270,7 +270,7 @@
                     </div>
                 </div>
 
-                <form action="#" method="post">
+                <form action="<?= base_url("C_kesimpulan_penilaian/saveKesimpulan");?>" method="post">
                     <div class="row"">
                         <div class="col-md-12">
                             <div class="detail_area" style="height: 350px;">
@@ -290,18 +290,18 @@
                                         </div>
     
                                         <div style="margin: 5px 5px 5px 5px;">
-                                            <select id="combo1" onchange="func1()" class="combo-style">
-                                                <option disabled selected value>-- status --</option>
+                                            <select id="combo1" name="combo1" onchange="func1()" class="combo-style">
+                                                <option disabled selected value="NULL">-- status --</option>
                                                 <option value="Diperpanjang 3 Bulan">Diperpanjang 3 Bulan</option>
                                                 <option value="Diperpanjang 1 Tahun">Diperpanjang 1 Tahun</option>
                                                 <option value="Diperpanjang 6 Bulan">Diperpanjang 6 Bulan</option>
-                                                <option value="Lainnya" >Lainnya</option>
                                                 <option value="Diputus">Diputus</option>
+                                                <option value="Lainnya" >Lainnya</option>
                                             </select>
                                         </div>
                                         
                                         <div style="margin: 5px 5px 5px 5px; display: none;" id="pagu">
-                                            <select id="combo_pagu" class="combo-style">
+                                            <select id="combo_pagu" name="combo_pagu" class="combo-style">
                                                 <option disabled selected value>-- Jenis Pagu --</option>
                                                 <option value="Lainnya">Rutin</option>
                                                 <option value="Diputus">Proyek / Program</option>
@@ -309,7 +309,7 @@
                                         </div>
                                         
                                         <div style="margin: 5px 5px 5px 5px; display: none;" id="putus">
-                                            <select id="combo_putus" class="combo-style">
+                                            <select id="combo_putus" name="combo_putus" class="combo-style">
                                                 <option disabled selected value>-- Alasan diputus --</option>
                                                 <option value="Lainnya">Hasil Evaluasi Penilaian</option>
                                                 <option value="Diputus">Kegiatan Proyek / Program Selesai</option>
@@ -317,15 +317,15 @@
                                         </div>
     
                                         <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="kode_pagu">
-                                            <input id="inp_kpagu" placeholder="kode pagu" type="text" class="form-control input-style">
+                                        <input id="inp_kpagu" name="inp_kpagu" placeholder="kode pagu" type="text" class="form-control input-style">
                                         </div>
     
                                         <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="Lainnya">
-                                            <input id="inp_lainnya" placeholder="Lainnya" type="text" class="form-control input-style">
+                                            <input id="inp_lainnya" name="inp_lainnya" placeholder="Lainnya" type="text" class="form-control input-style">
                                         </div>
     
                                         <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="alasan">
-                                            <input id="inp_alasan" placeholder="alasan" type="text" class="form-control input-style">
+                                            <input id="inp_alasan" name="inp_alasan" placeholder="alasan" type="text" class="form-control input-style">
                                         </div>
 
                                     </div>
