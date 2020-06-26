@@ -20,7 +20,7 @@
             
             <div class="row">
                 <div class="col-md-12"> 
-                    <h4>Hasil Evaluasi</h4>
+                    <h4>Hasil Evaluasi Penilaian Karyawan</h4>
                 </div>
             </div>
 
@@ -43,15 +43,14 @@
                     
                     <div class="table-responsive" style="background-color: white;">
                         
-                        <table class="table table-striped" id="myTable">
-                            <thead class="thead-dark">
+                        <table class="table table-striped" id="myTable" style="margin-bottom: 0px;">
+                            <thead class="thead-dark"  style="text-align: center;">
                             <tr>
                                 <th scope="col">Nama</th>
                                 <th scope="col">NIK</th>
                                 <th scope="col">Hasil Evaluasi</th>
                                 <th scope="col">Absensi</th>
                                 <th scope="col">Hasil Evaluasi Penilaian</th>
-                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -61,16 +60,20 @@
                             foreach ($hasilevaluasi as $value) { ?>
                                 <tr>
                                     <td><?= $value['nama']; ?></td>
-                                    <td><?= $value['nik']; ?></td>
-                                    <td><?= $value['nilai_kinerja']; ?></td>
-                                    <td><?= $value['nilai_produktivitas']; ?></td>
-                                    <td><?= $value['nilai_hasil']; ?></td>
-                                    <td>
-                                        <a href="<?php echo site_url('C_detail_admin/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail">Detail</a>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
-                                    </td>
+                                    <td style="text-align: center;"><?= $value['nik']; ?></td>
+                                    <td style="text-align: center;"><?= $value['nilai_kinerja']; ?>%</td>
+                                    <td style="text-align: center;"><?= $value['nilai_produktivitas']; ?>%</td>
+                                    <td style="text-align: center;"><?= $value['nilai_hasil']; ?>%</td>
+                                    <?php if ($value['status'] == '-') { ?>
+                                        <td>
+                                            <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail" style="margin-right: 20px;">Detail</a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
+                                        </td>
+                                    <?php } else {?>
+                                        <td>
+                                            <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail">Detail</a>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                             <?php } ?>
                             <!-- end php loop here.. -->

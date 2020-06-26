@@ -12,7 +12,7 @@ class C_landing_page extends CI_Controller {
 
 	public function check()
 	{
-		$pass = "123456";
+		$pass = "adminhehe";
 		$passw = $this->input->post('password');
 
 		if ($passw === $pass)

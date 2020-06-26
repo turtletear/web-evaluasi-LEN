@@ -33,27 +33,27 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">Nama</th>
-                                    <td><?= $karyawan->nama; ?></td>
+                                    <td><?= $karyawan['nama']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">NIK PKWT</th>
-                                    <td><?= $karyawan->nik; ?></td>
+                                    <td><?= $karyawan['nik']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Divisi / Unit Bisnis</th>
-                                    <td><?= $karyawan->divisi; ?></td>
+                                    <td><?= $karyawan['divisi']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Unit Kerja / Bagian</th>
-                                    <td><?= $karyawan->bagian; ?></td>
+                                    <td><?= $karyawan['bagian']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Jabatan</th>
-                                    <td><?= $karyawan->jabatan; ?></td>
+                                    <td><?= $karyawan['jabatan']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Periode Kontrak</th>
-                                    <td><?= $karyawan->start_periode; ?> - <?= $karyawan->end_periode; ?></td>
+                                    <td><?= $karyawan['start_periode']; ?> - <?= $karyawan['end_periode']; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -87,15 +87,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Inisiatif</th>
-                                                        <td><?= $evaluasi->inisiatif; ?></td>
+                                                        <td><?= $evaluasi['inisiatif']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Daya Kreatifitas</th>
-                                                        <td><?= $evaluasi->daya_kreatif; ?></td>
+                                                        <td><?= $evaluasi['daya_kreatif']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Problem Solving</th>
-                                                        <td><?= $evaluasi->prob_solve; ?></td>
+                                                        <td><?= $evaluasi['prob_solve']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -118,15 +118,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Tanggung Jawab</th>
-                                                        <td><?= $evaluasi->tang_jawab; ?></td>
+                                                        <td><?= $evaluasi['tang_jawab']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Komitmen Kepada Perusahaan</th>
-                                                        <td><?= $evaluasi->kom_per; ?></td>
+                                                        <td><?= $evaluasi['kom_per']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Etika Kerja</th>
-                                                        <td><?= $evaluasi->etika_kerja; ?></td>
+                                                        <td><?= $evaluasi['etika_kerja']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -149,15 +149,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Adaptasi Kerja</th>
-                                                        <td><?= $evaluasi->adap_kerja; ?></td>
+                                                        <td><?= $evaluasi['adap_kerja']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Pelayanan Terhadap Unit Kerja / Pihak Eksternal</th>
-                                                        <td><?= $evaluasi->pelayanan; ?></td>
+                                                        <td><?= $evaluasi['pelayanan']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kemampuan Melaksanaan Tugas</th>
-                                                        <td><?= $evaluasi->kem_tugas; ?></td>
+                                                        <td><?= $evaluasi['kem_tugas']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -180,15 +180,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Penyesuaian Diri</th>
-                                                        <td><?= $evaluasi->pen_diri; ?></td>
+                                                        <td><?= $evaluasi['pen_diri']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kemampuan Berkomunikasi</th>
-                                                        <td><?= $evaluasi->kem_komunikasi; ?></td>
+                                                        <td><?= $evaluasi['kem_komunikasi']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kerja Sama</th>
-                                                        <td><?= $evaluasi->ker_sama; ?></td>
+                                                        <td><?= $evaluasi['ker_sama']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -211,15 +211,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">Disiplin</th>
-                                                        <td><?= $evaluasi->disiplin; ?></td>
+                                                        <td><?= $evaluasi['disiplin']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Sistematika Kerja</th>
-                                                        <td><?= $evaluasi->sis_kerja; ?></td>
+                                                        <td><?= $evaluasi['sis_kerja']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Hasil Pekerjaan</th>
-                                                        <td><?= $evaluasi->has_kerja; ?></td>
+                                                        <td><?= $evaluasi['has_kerja']; ?></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -247,23 +247,23 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">Hari Kerja</th>
-                                    <td><?= $absensi->periode; ?></td>
+                                    <td><?= $absensi['periode']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Sakit</th>
-                                    <td><?= $absensi->sakit; ?></td>
+                                    <td><?= $absensi['sakit']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Izin</th>
-                                    <td><?= $absensi->izin; ?></td>
+                                    <td><?= $absensi['izin']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Alpa</th>
-                                    <td><?= $absensi->alpa; ?></td>
+                                    <td><?= $absensi['alpa']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Absen Terlambat</th>
-                                    <td><?= $absensi->terlambat; ?></td>
+                                    <td><?= $absensi['terlambat']; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -284,11 +284,11 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">Status</th>
-                                    <td><?= $karyawan->kontrak_panjang; ?><?= $karyawan->kontrak_putus; ?></td>
+                                    <td><?= $karyawan['kontrak_panjang']; ?><?= $karyawan['kontrak_putus']; ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Pagu Anggaran</th>
-                                    <td><?= $karyawan->anggaran; ?> : <?= $karyawan->kode_pagu; ?> Kode Pagu / Anggaran</td>
+                                    <td><?= $karyawan['anggaran']; ?> : <?= $karyawan['kode_pagu']; ?> Kode Pagu / Anggaran</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -309,15 +309,15 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">Hasil Evaluasi</th>
-                                    <td><?= $evaluasi->nilai_eval; ?></td>
+                                    <td><?= $evaluasi['nilai_eval']; ?>%</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Absensi</th>
-                                    <td><?= $absensi->nilai_absen; ?></td>
+                                    <td><?= $absensi['nilai_absen']; ?>%</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Penilaian Kerja</th>
-                                    <td><?= $karyawan->nilai_hasil; ?></td>
+                                    <td><?= $karyawan['nilai_hasil']; ?>%</td>
                                 </tr>
                                 </tbody>
                             </table>
