@@ -47,7 +47,7 @@
                         <form action="<?php echo site_url('C_landing_page/check'); ?>" method="post">
                             <div id="inp_admin" class="row div_center" style="width: 50%; margin-top: 15px; display: none;">
                                 <div class="input-group mb-3">
-                                    <input id="password" placeholder="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input name="password" id="password" placeholder="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
 

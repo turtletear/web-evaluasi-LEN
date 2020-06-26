@@ -120,8 +120,8 @@ class C_tambah_admin extends CI_Controller {
 				'jabatan' => $this->input->post('jabatan'),
 				'start_periode' => $this->input->post('start_periode'),
 				'end_periode' => $this->input->post('end_periode'),
-				'kontrak_panjang' => "-",
-				'kontrak_putus' => "-",
+				'status' => "-",
+				'alasan' => "-",
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];

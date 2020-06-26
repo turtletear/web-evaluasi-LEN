@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 23, 2020 at 12:18 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Host: 127.0.0.1
+-- Generation Time: Jun 26, 2020 at 07:03 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -112,8 +113,8 @@ CREATE TABLE `karyawan` (
   `nilai_hasil` float NOT NULL,
   `end_periode` date NOT NULL,
   `start_periode` date NOT NULL,
-  `kontrak_panjang` varchar(255) DEFAULT NULL,
-  `kontrak_putus` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL,
+  `alasan` varchar(255) DEFAULT NULL,
   `anggaran` varchar(255) DEFAULT NULL,
   `kode_pagu` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -122,8 +123,8 @@ CREATE TABLE `karyawan` (
 -- Dumping data for table `karyawan`
 --
 
-INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik`, `divisi`, `jabatan`, `bagian`, `nilai_hasil`, `end_periode`, `start_periode`, `kontrak_panjang`, `kontrak_putus`, `anggaran`, `kode_pagu`) VALUES
-(20, 23, 30, 'Dedi', 19090373, 'Sekretaris Perusahaan', 'Pelaksana', 'Bag. PKBL', 86, '2019-12-31', '2019-09-01', '-', '-', '-', '-'),
+INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik`, `divisi`, `jabatan`, `bagian`, `nilai_hasil`, `end_periode`, `start_periode`, `status`, `alasan`, `anggaran`, `kode_pagu`) VALUES
+(20, 23, 30, 'Dedi', 19090373, 'Sekretaris Perusahaan', 'Pelaksana', 'Bag. PKBL', 86, '2019-12-31', '2019-09-01', 'Diperpanjang 6 Bulan', '-', '-', '-'),
 (21, 27, 31, 'Rangga Anggara Putra', 19030122, 'Div. SDM & Umum', 'Pelaksana', 'Bag. SDM', 69, '2020-02-29', '2019-03-01', '-', '-', '-', '-'),
 (22, 29, 32, 'Nadia Audria Muller', 19020097, 'Div. SDM & Umum', 'Pelaksana', 'Bag. SDM', 100, '2020-01-31', '2019-02-01', '-', '-', '-', '-'),
 (23, 30, 33, 'Rizal Rahardi, S.E.', 19040153, 'Div. SDM & Umum', 'Fungsional', 'Bag. SDM', 99, '2020-06-23', '2020-06-23', '-', '-', '-', '-'),
