@@ -19,18 +19,20 @@ class C_identitas_atasan extends CI_Controller {
 
 	public function add() 
 	{
-		$this->form_validation->set_rules('nama_atasan', 'Nama Lengkap', 'required|trim');
+		$this->form_validation->set_rules('nama_atasan', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nik_atasan', 'NIK', 'required|trim'); 
 
 		if($this->form_validation->run() == false) {            
 			$this->load->view('atasan/V_identitas_atasan');
         }
 
-		$sess_data = array(
-            'nama_atasan' => $this->input->post('nama_atasan'),
-            'nik_atasan' => $this->input->post('nik_atasan')                      
-        );
-        $this->session->set_userdata('sessAtasan',$sess_data);
-        redirect(site_url('C_dashboard_atasan'));
+		else {
+			$sess_data = array(
+				'nama_atasan' => $this->input->post('nama_atasan'),
+				'nik_atasan' => $this->input->post('nik_atasan')                      
+			);
+			$this->session->set_userdata('sessAtasan',$sess_data);
+			redirect(site_url('C_dashboard_atasan'));
+		}
 	}
 }

@@ -19,23 +19,22 @@
 	<div class="container">
 		<div class="container main_bgr2" style="height: 100%">
             <div class="row div_center" style="margin: auto; display: block;">        
-                <div class="login_area2" style="margin-top: 75px; margin-bottom: 53px;">
+                <div class="login_area2" style="margin-top: 75px; margin-bottom: 53px; height: auto;">
                     <div class="container-fluid">
                         <div class="row div_center" style="display: block;">
                             <h4>Identitas Atasan</h4> 
                         </div>
-                         
                         <div class="row div_center id_atas" style="margin:auto; margin-top: 5px;">
                             <form action="<?php echo site_url('C_identitas_atasan/add'); ?>" method="post" class="form-signin">
-                                <div class="input-group mb-3">
-                                    <input name="nama_atasan" placeholder="Nama Lengkap" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                    <?= form_error('nama_atasan','<small class="text-danger pl-2">','</small>') ?>
+                                <div class="form-group mb-3">
+                                    <input name="nama_atasan" placeholder="Nama Lengkap" type="text" class="form-control">
+                                    <?= form_error('nama_atasan','<small class="text-danger">','</small>') ?>
                                 </div>
-                                <div class="input-group mb-3">
-                                	<input name="nik_atasan" placeholder="NIK" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                    <?= form_error('nik_atasan','<small class="text-danger pl-2">','</small>') ?>
+                                <div class="form-group mb-3">
+                                    <input name="nik_atasan" placeholder="NIK" type="text" class="form-control">
+                                    <?= form_error('nik_atasan','<small class="text-danger">','</small>') ?>
                                 </div>
-                            	<button type="submit" class="btn btn-info btn-lg" style="display: block; text-align: center; margin: auto;">Next</button> 
+                                <button type="submit" class="btn btn-info btn-lg" style="display: block; text-align: center; margin: auto;">Next</button> 
                             </form>
                         </div>
                     </div>                
