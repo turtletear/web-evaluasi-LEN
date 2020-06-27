@@ -86,4 +86,17 @@ class M_weblen2 extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function updateKesimpulan($id,$data)
+    {
+        $this->db->where('id_karyawan',$id);
+        $this->db->set('status',$data['status']);
+        $this->db->set('alasan',$data['alasan']);
+        $this->db->set('anggaran',$data['anggaran']);
+        $this->db->set('kode_pagu',$data['kode_pagu']);
+
+        $this->db->update('karyawan');
+    }
+
+
 }

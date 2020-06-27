@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_kesimpulan_penilaian extends CI_Controller {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,15 +10,11 @@ class C_kesimpulan_penilaian extends CI_Controller {
 
 	public function index($id)
 	{
-
 		$data = array();
 		$data['karyawan'] = $this->M_weblen2->getDataKar($id);
 		$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
 		$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
-
-
 		$this->load->view('admin/V_kesimpulan_penilaian',$data);
-
 	}
 
 	public function convertEval ($point)
@@ -46,8 +41,6 @@ class C_kesimpulan_penilaian extends CI_Controller {
 	{	
 		//$eval = array();
 		$eval = $this->M_weblen2->getDataEval($id);
-		// echo "ini fungsi newDataEval ";
-		// var_dump($eval);
 		$dataEval = [
 			'id_evaluasi' => $eval['id_evaluasi'],
 			'nik' => $eval['nik'],
@@ -82,7 +75,7 @@ class C_kesimpulan_penilaian extends CI_Controller {
 		return round($x);
 	}
 
-	public function newDataAbs($id) //taroh id di parameter
+	public function newDataAbs($id)
 	{
 		$abs = $this->M_weblen2->getDataAbs($id);
 		$dataAbs = [
@@ -98,10 +91,64 @@ class C_kesimpulan_penilaian extends CI_Controller {
 		return $dataAbs;
 	}
 
-	public function saveKesimpulan()
+	public function saveKesimpulan($id)
 	{
+		$this->form_validation->set_rules('combo1','Status','required');
 		$x = $this->input->post('combo1');
-		echo $x;
+		if ($x === "Diputus") {
+			$this->form_validation->set_rules('combo_putus', 'Alasan putus', 'required|trim');
+
+		}
+		elseif ($x === "Lainnya") {
+			$this->form_validation->set_rules('inp_lainnya', 'Lainnya', 'required|trim');
+		} //end if
+		elseif ($x === "Diperpanjang 3 Bulan" || $x === "Diperpanjang 1 Tahun" || $x === "Diperpanjang 6 Bulan") {
+			$this->form_validation->set_rules('inp_kpagu', 'Kode pagu', 'required|trim');
+			$this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');
+		} //end if
+		
+		// else {
+		// 	echo "pilihan kosong";
+		// }//end else
+
+		if ($this->form_validation->run() == false) {
+			$data = array();
+			$data['karyawan'] = $this->M_weblen2->getDataKar($id);
+			$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
+			$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
+			$this->load->view('admin/V_kesimpulan_penilaian',$data);
+			
+
+		}
+		else {
+			$data['status']= $this->input->post('combo1');
+			if ($data['status'] === "Diputus") {
+				$data['alasan'] = $this->input->post('combo_putus');
+				$data['anggaran'] = '-';
+				$data['kode_pagu'] = '-';
+			}
+
+			elseif ($data['status'] === "Lainnya") {
+				$data['status'] = $this->input->post('inp_lainnya');
+				$data['alasan'] = '-';
+				$data['anggaran'] = '-';
+				$data['kode_pagu'] = '-';
+			}
+
+			elseif ($data['status'] === "Diperpanjang 3 Bulan" || $data['status'] === "Diperpanjang 1 Tahun" || $data['status'] === "Diperpanjang 6 Bulan") {
+				$data['alasan'] = '-';
+				$data['anggaran'] = $this->input->post('combo_pagu');
+				$data['kode_pagu'] = $this->input->post('inp_kpagu');
+			} //end if
+			
+			// var_dump($data);
+
+			$this->M_weblen2->updateKesimpulan($id,$data);
+			
+			$this->session->set_flashdata('kesimpSuccess', '<div class="alert alert-success" role="alert">
+			Data saved!</div>');
+			redirect('C_dashboard_admin');
+		}//end else
 	}
 
 }

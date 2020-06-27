@@ -6,6 +6,36 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?= base_url()?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>assets/style/style1.css">
+    <script>
+        function func1() {
+            //SET LOCAL STORAGE HERE
+            
+            var a = document.getElementById("combo1");
+            var x = a.value;
+            var lain = document.getElementById("Lainnya");
+            var put = document.getElementById("putus");
+            var pag = document.getElementById("pagu");
+            var kpag = document.getElementById("kode_pagu")
+            if (x === "Lainnya"){
+                lain.style.display = "block";
+                put.style.display = "none";
+                pag.style.display = "none";
+                kpag.style.display = "none";
+            }
+            else if(x === "Diputus") {
+                lain.style.display = "none";
+                put.style.display = "block";
+                pag.style.display = "none";
+                kpag.style.display = "none";
+            }
+            else{
+                lain.style.display = "none";
+                put.style.display = "none";
+                pag.style.display = "block";
+                kpag.style.display = "block";
+            }
+        }
+    </script>
 </head>
 <body>
     
@@ -270,7 +300,7 @@
                     </div>
                 </div>
 
-                <form action="<?= base_url("C_kesimpulan_penilaian/saveKesimpulan");?>" method="post">
+                <form action="<?= base_url();?>C_kesimpulan_penilaian/saveKesimpulan/<?= $karyawan['id_karyawan']?>" method="post">
                     <div class="row"">
                         <div class="col-md-12">
                             <div class="detail_area" style="height: 350px;">
@@ -292,41 +322,43 @@
                                         <div style="margin: 5px 5px 5px 5px;">
                                             <select id="combo1" name="combo1" onchange="func1()" class="combo-style">
                                                 <option disabled selected value="NULL">-- status --</option>
-                                                <option value="Diperpanjang 3 Bulan">Diperpanjang 3 Bulan</option>
-                                                <option value="Diperpanjang 1 Tahun">Diperpanjang 1 Tahun</option>
-                                                <option value="Diperpanjang 6 Bulan">Diperpanjang 6 Bulan</option>
-                                                <option value="Diputus">Diputus</option>
-                                                <option value="Lainnya" >Lainnya</option>
+                                                <option value="Diperpanjang 3 Bulan" <?= set_select('combo1', 'Diperpanjang 3 Bulan'); ?> >Diperpanjang 3 Bulan</option>
+                                                <option value="Diperpanjang 1 Tahun" <?= set_select('combo1', 'Diperpanjang 1 Tahun'); ?> >Diperpanjang 1 Tahun</option>
+                                                <option value="Diperpanjang 6 Bulan" <?= set_select('combo1', 'Diperpanjang 6 Bulan'); ?> >Diperpanjang 6 Bulan</option>
+                                                <option value="Diputus" <?= set_select('combo1', 'Diputus'); ?> >Diputus</option>
+                                                <option value="Lainnya" <?= set_select('combo1', 'Lainnya'); ?> >Lainnya</option>
                                             </select>
                                         </div>
+                                        <?= form_error('combo1','<small class="text-danger pl-2">','</small>') ?>
                                         
                                         <div style="margin: 5px 5px 5px 5px; display: none;" id="pagu">
                                             <select id="combo_pagu" name="combo_pagu" class="combo-style">
                                                 <option disabled selected value>-- Jenis Pagu --</option>
-                                                <option value="Lainnya">Rutin</option>
-                                                <option value="Diputus">Proyek / Program</option>
+                                                <option value="Rutin" <?= set_select('combo_pagu', 'Rutin'); ?> >Rutin</option>
+                                                <option value="Proyek/program"<?= set_select('combo_pagu', 'Proyek/program'); ?> >Proyek / Program</option>
                                             </select>
                                         </div>
+                                        <?= form_error('combo_pagu','<small class="text-danger pl-2">','</small>') ?>
                                         
                                         <div style="margin: 5px 5px 5px 5px; display: none;" id="putus">
                                             <select id="combo_putus" name="combo_putus" class="combo-style">
                                                 <option disabled selected value>-- Alasan diputus --</option>
-                                                <option value="Lainnya">Hasil Evaluasi Penilaian</option>
-                                                <option value="Diputus">Kegiatan Proyek / Program Selesai</option>
+                                                <option value="Hasil Evaluasi Penilaian" <?= set_select('combo_putus', 'Hasil Evaluasi Penilaian'); ?> >Hasil Evaluasi Penilaian</option>
+                                                <option value="Kegiatan Proyek/Program Selesai" <?= set_select('combo_putus', 'Kegiatan Proyek/Program Selesai'); ?> >Kegiatan Proyek / Program Selesai</option>
                                             </select>
                                         </div>
+                                        <?= form_error('combo_putus','<small class="text-danger pl-2">','</small>') ?>
     
                                         <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="kode_pagu">
                                         <input id="inp_kpagu" name="inp_kpagu" placeholder="kode pagu" type="text" class="form-control input-style">
                                         </div>
+                                        <?= form_error('inp_kpagu','<small class="text-danger pl-2">','</small>') ?>
     
                                         <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="Lainnya">
                                             <input id="inp_lainnya" name="inp_lainnya" placeholder="Lainnya" type="text" class="form-control input-style">
                                         </div>
+                                        <?= form_error('inp_lainnya','<small class="text-danger pl-2">','</small>') ?>
     
-                                        <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="alasan">
-                                            <input id="inp_alasan" name="inp_alasan" placeholder="alasan" type="text" class="form-control input-style">
-                                        </div>
 
                                     </div>
                                     
@@ -345,36 +377,7 @@
         </div>
 
         <!-- end main content -->
-    <script>
-        function func1() {
-            var a = document.getElementById("combo1");
-            var x = a.value;
-            // y = a.options[a.selectedIndex].text;
-            // document.getElementById("ab").innerHTML = "ini value " + x;
-            var lain = document.getElementById("Lainnya");
-            var put = document.getElementById("putus");
-            var pag = document.getElementById("pagu");
-            var kpag = document.getElementById("kode_pagu")
-            if (x === "Lainnya"){
-                lain.style.display = "block";
-                put.style.display = "none";
-                pag.style.display = "none";
-                kpag.style.display = "none";
-            }
-            else if(x === "Diputus") {
-                lain.style.display = "none";
-                put.style.display = "block";
-                pag.style.display = "none";
-                kpag.style.display = "none";
-            }
-            else{
-                lain.style.display = "none";
-                put.style.display = "none";
-                pag.style.display = "block";
-                kpag.style.display = "block";
-            }
-        }
-    </script>
+
     
     <script src="<?= base_url()?>assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="<?= base_url()?>assets/js/popper.min.js"></script>
