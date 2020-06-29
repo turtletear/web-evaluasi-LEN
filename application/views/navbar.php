@@ -5,7 +5,7 @@
             <div class="col-md-12">              
                 <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #004D8D;">
                     <a href="<?php echo site_url('C_dashboard_atasan'); ?>" class="navbar-brand">
-                        <img src="<?= base_url()?>assets/img/logoo.png" alt="Logo" style="width:250px;">
+                        <img src="<?= base_url()?>/assets/img/logoo.png" alt="Logo" style="width:250px;">
                     </a>                    
                     <ul class="navbar-nav ml-auto">                  
                         <li class="nav-item">

@@ -11,7 +11,7 @@ class C_nilai_atasan extends CI_Controller {
     
     public function index($id_emp){
 
-        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
+        $dataEmp = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
 		$this->load->view('atasan/V_nilai_atasan',$dataEmp);
     }
 

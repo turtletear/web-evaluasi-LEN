@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT LEN</title>
-    <link rel="stylesheet" href="<?= base_url()?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>assets/style/style1.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
 <body>
     
@@ -67,7 +67,7 @@
                                     <?php if ($value['status'] == '-') { ?>
                                         <td>
                                             <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail" style="margin-right: 20px;">Detail</a>
-                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
                                         </td>
                                     <?php } else {?>
                                         <td>
@@ -109,8 +109,8 @@
         // end function
     </script>
     
-    <script src="<?= base_url()?>assets/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="<?= base_url()?>assets/js/popper.min.js"></script>
-    <script src="<?= base_url()?>assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url()?>/assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="<?= base_url()?>/assets/js/popper.min.js"></script>
+    <script src="<?= base_url()?>/assets/js/bootstrap.min.js"></script>
 </body>
 </html>

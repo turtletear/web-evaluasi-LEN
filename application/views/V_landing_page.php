@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT LEN</title>
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/style/style1.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/style/style1.css">
 </head>
 <body>
     
@@ -47,7 +47,7 @@
                         <form action="<?php echo site_url('C_landing_page/check'); ?>" method="post">
                             <div id="inp_admin" class="row div_center" style="width: 50%; margin-top: 15px; display: none;">
                                 <div class="input-group mb-3">
-                                    <input name="password" id="password" placeholder="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input name="password" id="password" placeholder="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
 
@@ -86,8 +86,8 @@
             y.style.display = "none";
         }
     </script>
-    <script src="<?= base_url() ?>assets/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/popper.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/popper.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/bootstrap.min.js"></script>
 </body>
 </html>

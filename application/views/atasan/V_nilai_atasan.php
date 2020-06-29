@@ -7,13 +7,13 @@
 	<title>Nilai Atasan</title>
 
 	<!-- CSS only -->
-	<link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/style/style1.css">
+	<link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/style/style1.css">
 
 	<!-- JS, Popper.js, and jQuery -->
-	<script src="<?= base_url() ?>assets/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/popper.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
+	<script src="<?= base_url() ?>/assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/popper.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/bootstrap.min.js"></script>
 </head>
 
 <body>
