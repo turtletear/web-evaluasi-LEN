@@ -47,8 +47,9 @@ class C_adm_newentry extends CI_Controller {
 
 	public function newEntry(){
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-		$this->form_validation->set_rules('nik', 'NIK', 'required|trim'); 
-		//is_unique[karyawan.nik]
+		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|is_unique[karyawan.nik]', [
+			'is_unique' => 'nik is already registered'
+		]);
 		
 		$this->form_validation->set_rules('divisi', 'Divisi', 'required|trim');
 		$this->form_validation->set_rules('bagian', 'Bagian', 'required|trim');
@@ -123,8 +124,8 @@ class C_adm_newentry extends CI_Controller {
 				'jabatan' => $this->input->post('jabatan'),
 				'start_periode' => $this->input->post('start_periode'),
 				'end_periode' => $this->input->post('end_periode'),
-				'kontrak_panjang' => "-",
-				'kontrak_putus' => "-",
+				'status' => "-",
+				'alasan' => "-",
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];

@@ -62,7 +62,7 @@ class M_weblen extends CI_Model {
         $this->db->update('karyawan');
     }
 
-    public function getDatKar2() //for dashboard atasan
+    public function getDatKar2() //get data for dashboard atasan
     {
         $this->db->select('karyawan.id_karyawan,karyawan.nama,karyawan.nik,absensi.nilai_absen');
         $this->db->from('karyawan');  //karyawan join absensi  
