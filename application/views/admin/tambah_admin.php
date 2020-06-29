@@ -124,7 +124,7 @@
 									</div>
 
 									<div class="form-group row">
-										<label for="atelat" class="col-md-6 col-form-label">Absen Terlamabat</label>
+										<label for="atelat" class="col-md-6 col-form-label">Absen Terlambat</label>
 										<div class="col-md-3">
 											<input type="number" class="form-control" id="atelat" name="atelat" placeholder="" value="<?= set_value('atelat')?>">
 											<?= form_error('atelat','<small class="text-danger pl-2">','</small>') ?>
