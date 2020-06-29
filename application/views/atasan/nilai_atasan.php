@@ -68,11 +68,11 @@
 							<div class="col-md-4">
 								<select name="inisiatif" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('inisiatif', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('inisiatif', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('inisiatif', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('inisiatif', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('inisiatif', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('inisiatif','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -82,11 +82,11 @@
 							<div class="col-md-4">
 								<select name="kreatif" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('kreatif', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('kreatif', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('kreatif', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('kreatif', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('kreatif', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('kreatif','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -96,11 +96,11 @@
 							<div class="col-md-4">
 								<select  name="probsolv" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('probsolv', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('probsolv', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('probsolv', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('probsolv', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('probsolv', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('probsolv','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -111,11 +111,11 @@
 							<div class="col-md-4">
 								<select  name="tjawab" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('tjawab', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('tjawab', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('tjawab', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('tjawab', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('tjawab', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('tjawab','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -125,11 +125,11 @@
 							<div class="col-md-4">
 								<select  name="komitmen" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('komitmen', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('komitmen', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('komitmen', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('komitmen', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('komitmen', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('komitmen','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -139,11 +139,11 @@
 							<div class="col-md-4">
 								<select name="etika" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('etika', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('etika', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('etika', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('etika', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('etika', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('etika','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -154,11 +154,11 @@
 							<div class="col-md-4">
 								<select name="adaptasi" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('adaptasi', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('adaptasi', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('adaptasi', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('adaptasi', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('adaptasi', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('adaptasi','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -168,11 +168,11 @@
 							<div class="col-md-4">
 								<select name="pelayanan" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('pelayanan', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('pelayanan', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('pelayanan', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('pelayanan', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('pelayanan', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('pelayanan','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -182,11 +182,11 @@
 							<div class="col-md-4">
 								<select  name="ktugas" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('ktugas', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('ktugas', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('ktugas', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('ktugas', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('ktugas', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('ktugas','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -197,11 +197,11 @@
 							<div class="col-md-4">
 								<select name="penyesuaian" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('penyesuaian', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('penyesuaian', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('penyesuaian', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('penyesuaian', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('penyesuaian', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('penyesuaian','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -211,11 +211,11 @@
 							<div class="col-md-4">
 								<select name="komunikasi" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('komunikasi', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('komunikasi', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('komunikasi', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('komunikasi', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('komunikasi', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('komunikasi','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -225,11 +225,11 @@
 							<div class="col-md-4">
 								<select name="kerjasama" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('kerjasama', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('kerjasama', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('kerjasama', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('kerjasama', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('kerjasama', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('kerjasama','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -240,11 +240,11 @@
 							<div class="col-md-4">
 								<select name="disiplin" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('disiplin', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('disiplin', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('disiplin', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('disiplin', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('disiplin', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('disiplin','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -254,11 +254,11 @@
 							<div class="col-md-4">
 								<select name="skerja" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('skerja', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('skerja', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('skerja', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('skerja', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('skerja', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('skerja','<small class="text-danger pl-2">','</small>') ?>
 							</div>
@@ -268,11 +268,11 @@
 							<div class="col-md-4">
 								<select name="hkerja" class="form-control">
 									<option disabled selected value>Choose...</option>
-									<option value="1">1 (Sangat Kurang)</option>
-									<option value="2">2 (Kurang)</option>
-									<option value="3">3 (Cukup)</option>
-									<option value="4">4 (Baik)</option>
-									<option value="5">5 (Sangat Baik)</option>
+									<option value="1" <?= set_select('hkerja', '1'); ?> >1 (Sangat Kurang)</option>
+									<option value="2" <?= set_select('hkerja', '2'); ?> >2 (Kurang)</option>
+									<option value="3" <?= set_select('hkerja', '3'); ?> >3 (Cukup)</option>
+									<option value="4" <?= set_select('hkerja', '4'); ?> >4 (Baik)</option>
+									<option value="5" <?= set_select('hkerja', '5'); ?> >5 (Sangat Baik)</option>
 								</select>
 								<?= form_error('hkerja','<small class="text-danger pl-2">','</small>') ?>
 							</div>

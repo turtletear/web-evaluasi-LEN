@@ -50,7 +50,6 @@ class C_nilai_atasan extends CI_Controller {
     public function addPenilaian($id_emp) //kasih parameter
     {
         //id karyawan dapat dari flashdata
-        var_dump($id_emp);
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
         $name = "Muten Roshi";  //dari flashdata / session
         $nikA = 1201164155;
