@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard Atasan</title>
 
+<<<<<<< HEAD
 	<link rel="stylesheet" href="<?= base_url()?>assets/style/style1.css">
 
 	<!-- CSS only -->
@@ -15,17 +16,37 @@
 	<script src="<?= base_url()?>assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="<?= base_url()?>assets/js/popper.min.js"></script>
     <script src="<?= base_url()?>assets/js/bootstrap.min.js"></script>
+=======
+	<link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
+
+	<!-- CSS only -->
+	<link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
+
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="<?= base_url()?>/assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="<?= base_url()?>/assets/js/popper.min.js"></script>
+    <script src="<?= base_url()?>/assets/js/bootstrap.min.js"></script>
+>>>>>>> acha
 
 </head>
 
 <body>
 	<div class="container">
+<<<<<<< HEAD
+=======
+		<!-- NAVBAR  -->
+        <?php $this->load->view('navbar.php') ?>
+>>>>>>> acha
 		<div class="container main_bgr2" style="height: 100%">
 			<form action="" method="">
 			<?= $this->session->flashdata('evalAt');?>	
 			<div class="row" style=" margin-bottom: 10px;">
 					
+<<<<<<< HEAD
 					<div class="col-md-6">
+=======
+					<div class="col-md-3">
+>>>>>>> acha
 						<input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 					</div>
 				</div>
@@ -33,8 +54,13 @@
 		    <div class="row">
 		        <div class="col-md-12">		            
 		            <div class="table-responsive" style="background-color: white;">		                
+<<<<<<< HEAD
 		                <table class="table table-striped" id="myTable" style="margin-bottom: 0px; text-align: center;">
 		                    <thead class="thead-dark">
+=======
+		                <table class="table table-striped" id="myTable" style="margin-bottom: 0px;">
+		                    <thead class="thead-dark" style=" text-align: center;">
+>>>>>>> acha
 		                    <tr>
 		                        <th scope="col">Nama</th>
 		                        <th scope="col">NIK</th>
@@ -47,9 +73,15 @@
 							<?php foreach($listEmp as $emp): ?>
 		                    <tr>
 		                        <td><?= $emp['nama']?></td>
+<<<<<<< HEAD
 		                        <td><?= $emp['nik']?></td>
 		                        <td><?= $emp['nilai_absen']?>%</td>
 		                        <td><a href="<?= base_url(); ?>C_nilai_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> + Nilai </button> </td>
+=======
+		                        <td style=" text-align: center;"><?= $emp['nik']?></td>
+		                        <td style=" text-align: center;"><?= $emp['nilai_absen']?>%</td>
+		                        <td style=" text-align: center;"><a href="<?= base_url(); ?>C_nilai_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> + Nilai </button> </td>
+>>>>>>> acha
 							</tr>
 							<?php endforeach ?>
 		                    <!-- end php loop here.. -->

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/style/style1.css">
+    <title>PT LEN</title>
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/style/style1.css">
 </head>
 <body>
     
@@ -30,18 +30,32 @@
                         <div class="row div_center" style="margin-top: 150px;">
                             <h3><font color="#888888"> Login sebagai : </font> </h3>
                         </div>
-                        <button class="btn btn-secondary btn-lg" onclick="hide_admin()"> atasan</button>
-                        <button class="btn btn-info btn-lg" onclick="hideshow_admin()"> admin</button>
-                        
-                        <div id="inp_admin" class="row div_center" style="width: 50%; margin-top: 15px; display: none;">
-                            <div class="input-group mb-3">
-                                <input placeholder="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                        </div>
 
-                        <div>
-                            <button class="btn btn-info btn-lg" id="btn_nxt" style="display: none;"> login</button>
+                        <div class="row div_center">
+                            
+                            <a href="<?php echo site_url('C_identitas_atasan'); ?>" class="btn btn-secondary btn-lg" onclick="hide_admin()">atasan</a>
+                            
+                            <button class="btn btn-info btn-lg" onclick="hideshow_admin()">admin</button>                                
                         </div>
+                       <br>
+                       <?php if($this->session->flashdata('Failed')) { ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo $_SESSION['Failed'];  ?>
+                            </div>
+                        <?php } ?>
+                        
+                        <form action="<?php echo site_url('C_landing_page/check'); ?>" method="post">
+                            <div id="inp_admin" class="row div_center" style="width: 50%; margin-top: 15px; display: none;">
+                                <div class="input-group mb-3">
+                                    <input name="password" id="password" placeholder="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-info btn-lg" id="btn_nxt" style="display: none;">login</button>
+                            </div>
+                        </form>
+                       
                         
                         
                     </div>
@@ -72,8 +86,8 @@
             y.style.display = "none";
         }
     </script>
-    <script src="<?= base_url() ?>assets/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/popper.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/popper.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/bootstrap.min.js"></script>
 </body>
 </html>

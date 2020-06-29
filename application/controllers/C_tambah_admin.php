@@ -13,7 +13,6 @@ class C_tambah_admin extends CI_Controller {
 	
 	public function index(){
 
-		$this->load->view('navbar');
 		$this->load->view('admin/V_tambah_admin');
 	}
 
@@ -71,7 +70,6 @@ class C_tambah_admin extends CI_Controller {
 		]);
 
 		if($this->form_validation->run() == false){
-			$this->load->view('navbar');
 			$this->load->view('admin/V_tambah_admin');
 		
 		} //end if

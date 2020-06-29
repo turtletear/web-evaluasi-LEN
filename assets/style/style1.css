@@ -60,18 +60,18 @@
 }
 
 .id_atas {
-	width:50%;
-	margin-top : 25px;
+	width:70%;
+	margin-top : 10px;
 }
 
 .login_area2{
 	background-color: #FCFCFC;
-	overflow: auto;   /*experimental, biar konten gak offside */
+	/*overflow: auto;*/   /*experimental, biar konten gak offside */
 	border-radius: 10px;
 	padding: 40px 3px 50px 3px;
 	width: 40%;
 	margin: auto;
-	height: 300px;
+	/*height: 350px;*/
 }
 
 .main_bgr_input {

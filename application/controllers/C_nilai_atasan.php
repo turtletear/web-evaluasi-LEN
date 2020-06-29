@@ -12,7 +12,6 @@ class C_nilai_atasan extends CI_Controller {
     public function index($id_emp){
 
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
-		$this->load->view('navbar');
 		$this->load->view('atasan/V_nilai_atasan',$dataEmp);
     }
 
@@ -72,8 +71,6 @@ class C_nilai_atasan extends CI_Controller {
         $this->form_validation->set_rules('hkerja', 'Hasil Pekerjaan', 'required|trim');
 
         if($this->form_validation->run() == false){
-            
-            $this->load->view('navbar');
 			$this->load->view('atasan/V_nilai_atasan', $dataEmp);
 		
         } //end if
