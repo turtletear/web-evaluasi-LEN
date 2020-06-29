@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_adm_newentry extends CI_Controller {
+class C_tambah_admin extends CI_Controller {
 
 	
 	public function __construct()
@@ -14,7 +14,7 @@ class C_adm_newentry extends CI_Controller {
 	public function index(){
 
 		$this->load->view('navbar');
-		$this->load->view('admin/tambah_admin');
+		$this->load->view('admin/V_tambah_admin');
 	}
 
 	public function ttl_per($end, $start){ //fungsi mencari selisih dari range tanggal tertentu
@@ -72,7 +72,7 @@ class C_adm_newentry extends CI_Controller {
 
 		if($this->form_validation->run() == false){
 			$this->load->view('navbar');
-			$this->load->view('admin/tambah_admin');
+			$this->load->view('admin/V_tambah_admin');
 		
 		} //end if
 
@@ -132,7 +132,7 @@ class C_adm_newentry extends CI_Controller {
 			$this->M_weblen->addKaryawan($data_kar);
 			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
-			redirect('C_adm_newentry');
+			redirect('C_tambah_admin');
 
 
 

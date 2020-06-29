@@ -13,7 +13,7 @@ class C_nilai_atasan extends CI_Controller {
 
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
 		$this->load->view('navbar');
-		$this->load->view('atasan/nilai_atasan',$dataEmp);
+		$this->load->view('atasan/V_nilai_atasan',$dataEmp);
     }
 
     public function convPoint($point){
@@ -74,7 +74,7 @@ class C_nilai_atasan extends CI_Controller {
         if($this->form_validation->run() == false){
             
             $this->load->view('navbar');
-			$this->load->view('atasan/nilai_atasan', $dataEmp);
+			$this->load->view('atasan/V_nilai_atasan', $dataEmp);
 		
         } //end if
 
@@ -136,7 +136,7 @@ class C_nilai_atasan extends CI_Controller {
             
             $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
-            redirect('C_dashbrd_atasan'); 
+            redirect('C_dashboard_atasan'); 
 
 
 

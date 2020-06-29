@@ -26,7 +26,7 @@
 					<h3>Identitas Karyawan</h3>
 				</div>
 				<div class="row" style="margin: 0px 10px">
-				<form method="POST" action="<?= base_url("C_adm_newentry/newEntry")?>" style="margin: 10px 10px; width: 100%">
+				<form method="POST" action="<?= base_url("C_tambah_admin/newEntry")?>" style="margin: 10px 10px; width: 100%">
 						<div class="form-group row">
 							<label for="nama" class="col-md-4 col-form-label">Nama Lengkap</label>
 							<div class="col-md-8">
