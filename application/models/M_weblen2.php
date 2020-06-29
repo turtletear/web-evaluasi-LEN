@@ -97,6 +97,4 @@ class M_weblen2 extends CI_Model {
 
         $this->db->update('karyawan');
     }
-
-
 }

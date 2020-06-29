@@ -17,7 +17,7 @@
 
         <!-- start main content here..-->
         <div class="container main_bgr_dash">
-            <?= $this->session->flashdata('kesimpSuccess');?>
+            
             <div class="row">
                 <div class="col-md-12"> 
                     <h4>Hasil Evaluasi Penilaian Karyawan</h4>
@@ -67,7 +67,7 @@
                                     <?php if ($value['status'] == '-') { ?>
                                         <td>
                                             <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail" style="margin-right: 20px;">Detail</a>
-                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
                                         </td>
                                     <?php } else {?>
                                         <td>

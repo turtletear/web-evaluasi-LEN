@@ -27,7 +27,7 @@
                             <h1><font color="#888888"> PKWT </font> </h1>
                         </div>
                         
-                        <div class="row div_center" style="margin-top: 120px;">
+                        <div class="row div_center" style="margin-top: 150px;">
                             <h3><font color="#888888"> Login sebagai : </font> </h3>
                         </div>
 
@@ -45,9 +45,9 @@
                         <?php } ?>
                         
                         <form action="<?php echo site_url('C_landing_page/check'); ?>" method="post">
-                            <div id="inp_admin" class="row div_center" style="width: 50%; margin-top: 10px; display: none;">
+                            <div id="inp_admin" class="row div_center" style="width: 50%; margin-top: 15px; display: none;">
                                 <div class="input-group mb-3">
-                                    <input name="password" id="password" placeholder="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input name="password" id="password" placeholder="password" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
 
