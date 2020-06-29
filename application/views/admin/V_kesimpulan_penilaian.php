@@ -6,38 +6,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?= base_url()?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>assets/style/style1.css">
-    <script>
-        function func1() {
-            //SET LOCAL STORAGE HERE
-            
-            var a = document.getElementById("combo1");
-            var x = a.value;
-            var lain = document.getElementById("Lainnya");
-            var put = document.getElementById("putus");
-            var pag = document.getElementById("pagu");
-            var kpag = document.getElementById("kode_pagu")
-            if (x === "Lainnya"){
-                lain.style.display = "block";
-                put.style.display = "none";
-                pag.style.display = "none";
-                kpag.style.display = "none";
-            }
-            else if(x === "Diputus") {
-                lain.style.display = "none";
-                put.style.display = "block";
-                pag.style.display = "none";
-                kpag.style.display = "none";
-            }
-            else{
-                lain.style.display = "none";
-                put.style.display = "none";
-                pag.style.display = "block";
-                kpag.style.display = "block";
-            }
-        }
-    </script>
 </head>
 <body>
+    <script type="text/javascript">
+        window.onload = function() {
+            console.log('masukk');
+            var x = localStorage.getItem('stat');
+            if (x === 'lain') {
+                f_lain();
+            }
+            else if (x === 'putus'){
+                f_put();
+            }
+            else{
+                f_other();
+            }
+    }
+    </script>
     
     <div class="container">
         <!-- -----------------------BATAS SUCI----------------------- -->
@@ -382,5 +367,6 @@
     <script src="<?= base_url()?>assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="<?= base_url()?>assets/js/popper.min.js"></script>
     <script src="<?= base_url()?>assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url()?>assets/style/jscript.js"></script>
 </body>
 </html>
