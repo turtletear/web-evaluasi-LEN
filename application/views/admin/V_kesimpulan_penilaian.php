@@ -10,7 +10,6 @@
 <body>
     <script type="text/javascript">
         window.onload = function() {
-            console.log('masukk');
             var x = localStorage.getItem('stat');
             if (x === 'lain') {
                 f_lain();
@@ -18,7 +17,7 @@
             else if (x === 'putus'){
                 f_put();
             }
-            else{
+            else if (x === 'other'){
                 f_other();
             }
     }
