@@ -41,7 +41,10 @@ class M_weblen2 extends CI_Model {
 
 	public function read_hasil_evaluasi () //dashboard admin
 	{
-		$this->db->select('karyawan.id_karyawan as id_karyawan, karyawan.id_absensi as id_absensi, karyawan.id_evaluasi as id_evaluasi, karyawan.nama as nama, karyawan.nik as nik, evaluasi.nilai_kinerja as nilai_kinerja, absensi.nilai_produktivitas as nilai_produktivitas, karyawan.nilai_hasil as nilai_hasil, karyawan.status as status');
+        $this->db->select('karyawan.id_karyawan as id_karyawan, karyawan.id_absensi as id_absensi, 
+        karyawan.id_evaluasi as id_evaluasi, karyawan.nama as nama, karyawan.nik as nik, 
+        evaluasi.nilai_eval as nilai_eval, absensi.nilai_absen as nilai_absen, 
+        karyawan.nilai_hasil as nilai_hasil, karyawan.status as status');
 		$this->db->from('karyawan');
 		$this->db->join('evaluasi', 'karyawan.id_evaluasi = evaluasi.id_evaluasi');
 		$this->db->join('absensi', 'karyawan.id_absensi = absensi.id_absensi');

@@ -50,8 +50,10 @@ class C_nilai_atasan extends CI_Controller {
     {
         //id karyawan dapat dari flashdata
         $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
-        $name = "Muten Roshi";  //dari flashdata / session
-        $nikA = 1201164155;
+        $atasan = $this->session->userdata('sessAtasan');
+        
+        $name = $atasan['nama_atasan'];  //dari flashdata / session
+        $nikA = $atasan['nik_atasan'];
 
 
         $this->form_validation->set_rules('inisiatif', 'Inisiatif', 'required|trim');

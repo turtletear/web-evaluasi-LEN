@@ -86,7 +86,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row">Inisiatif</th>
+                                                        <th scope="row" class="kolom_nilai">Inisiatif</th>
                                                         <td><?= $evaluasi['inisiatif']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -117,7 +117,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row">Tanggung Jawab</th>
+                                                        <th scope="row" class="kolom_nilai">Tanggung Jawab</th>
                                                         <td><?= $evaluasi['tang_jawab']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -148,7 +148,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row">Adaptasi Kerja</th>
+                                                        <th scope="row" class="kolom_nilai">Adaptasi Kerja</th>
                                                         <td><?= $evaluasi['adap_kerja']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -179,7 +179,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row">Penyesuaian Diri</th>
+                                                        <th scope="row" class="kolom_nilai">Penyesuaian Diri</th>
                                                         <td><?= $evaluasi['pen_diri']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -210,7 +210,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row">Disiplin</th>
+                                                        <th scope="row" class="kolom_nilai">Disiplin</th>
                                                         <td><?= $evaluasi['disiplin']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -276,20 +276,44 @@
                         <div class="detail_area">
                             <table class="table table-striped">
                                 <thead>
-                                <tr>
-                                    <th scope="col"><h5>Kesimpulan</h5></th>
-                                    <th scope="col"></th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col"><h5>Kesimpulan</h5></th>
+                                        <th scope="col"></th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">Status</th>
-                                    <td><?= $karyawan['kontrak_panjang']; ?><?= $karyawan['kontrak_putus']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Pagu Anggaran</th>
-                                    <td><?= $karyawan['anggaran']; ?> : <?= $karyawan['kode_pagu']; ?> Kode Pagu / Anggaran</td>
-                                </tr>
+                                <?php if ($karyawan['status']==='Diputus') { ?>
+                                    
+                                
+                                    <tr>
+                                        <th scope="row">Status</th>
+                                        <td><?= $karyawan['status']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Alasan</th>
+                                        <td> <?= $karyawan['alasan']; ?> </td>
+                                    </tr>
+                                <?php }
+                                else if ($karyawan['status']==='Diperpanjang 1 Tahun' || $karyawan['status']==='Diperpanjang 6 Bulan' || $karyawan['status']==='Diperpanjang 3 Bulan') { ?>
+                                    
+                                    <tr>
+                                        <th scope="row">Status</th>
+                                        <td><?= $karyawan['status']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Pagu Anggaran</th>
+                                        <td> <?= $karyawan['anggaran']; ?> </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Kode Pagu</th>
+                                        <td> <?= $karyawan['kode_pagu']; ?> </td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <th scope="row">Status</th>
+                                        <td><?= $karyawan['status']; ?></td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>

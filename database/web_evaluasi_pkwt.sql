@@ -2,17 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
 -- Host: localhost
 -- Generation Time: Jun 23, 2020 at 12:18 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
-=======
--- Host: 127.0.0.1
--- Generation Time: Jun 26, 2020 at 07:03 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
->>>>>>> acha
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
