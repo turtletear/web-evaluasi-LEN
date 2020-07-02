@@ -53,7 +53,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Periode Kontrak</th>
-                                    <td><?= $karyawan['start_periode']; ?> - <?= $karyawan['end_periode']; ?></td>
+                                    <td><?= $karyawan['start_periode']; ?> s.d. <?= $karyawan['end_periode']; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -68,10 +68,21 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col"><h5>Hasil Evaluasi</h5></th>
+                                    <th scope="col"><h5>Hasil Evaluasi</h5>
+                                    <h6 class="text-secondary">
+                                        <small>
+                                            Graded by : <?=  $evaluasi['nama_atasan'] ?> - <?=  $evaluasi['nik_atasan'] ?> <br> at <?=  $evaluasi['date_fill'] ?>
+
+                                        </small>
+                                    </h6>
+                                    </th>
                                     
                                 </tr>
                                 </thead>
+                                
+                                <!-- tag php IF here.. -->
+                                <?php if ($evaluasi['nilai_eval'] != -1) { ?>
+                                
                                 <tbody>
                                 <tr>
                                     <td style="padding: 0px 0px 0px 0px;">
@@ -229,6 +240,16 @@
                                     </td>
                                 </tr>                                
                                 </tbody>
+                            <!-- php end IF here.. -->
+                                <?php } else { ?>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <h5 class="text-danger">evaluation not graded yet</h5>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                <?php } ?>
                             </table>
                         </div>
                     </div>
@@ -308,7 +329,14 @@
                                         <th scope="row">Kode Pagu</th>
                                         <td> <?= $karyawan['kode_pagu']; ?> </td>
                                     </tr>
-                                <?php } else { ?>
+                                <?php } else if($karyawan['status']=='-') { ?>
+                                    <tr>
+                                        
+                                        <td colspan="2" align="center">
+                                        <h5 class="text-danger"> contract status not graded yet </h5>
+                                        </td>
+                                    </tr>
+                                <?php } else{?>
                                     <tr>
                                         <th scope="row">Status</th>
                                         <td><?= $karyawan['status']; ?></td>
@@ -330,20 +358,42 @@
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
+                                <!-- IF php here -->
+                                <?php if ($evaluasi['nilai_eval'] != -1) { ?>
+                                
                                 <tbody>
-                                <tr>
-                                    <th scope="row">Hasil Evaluasi</th>
-                                    <td><?= $evaluasi['nilai_eval']; ?>%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Absensi</th>
-                                    <td><?= $absensi['nilai_absen']; ?>%</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Penilaian Kerja</th>
-                                    <td><?= $karyawan['nilai_hasil']; ?>%</td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row">Absensi</th>
+                                        <td><?= $absensi['nilai_absen']; ?>%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Hasil Evaluasi</th>
+                                        <td><?= $evaluasi['nilai_eval']; ?>%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Penilaian Kerja</th>
+                                        <td><?= $karyawan['nilai_hasil']; ?>%</td>
+                                    </tr>
                                 </tbody>
+                                <!-- end IF php here -->
+                                <? } else { ?>
+                                    
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Absensi</th>
+                                        <td><?= $absensi['nilai_absen']; ?>%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Hasil Evaluasi</th>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Penilaian Kerja</th>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                                
+                                <?php } ?>
                             </table>
                         </div>
                     </div>

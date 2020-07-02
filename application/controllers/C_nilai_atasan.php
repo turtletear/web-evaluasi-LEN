@@ -129,7 +129,8 @@ class C_nilai_atasan extends CI_Controller {
             ];
 
             $res = $this->finalResult($dataAbs['nilai_absen'], $dataEvl['nilai_eval']); //total nilai penilaian keseluruhan
-            $this->M_weblen->addEval($dataEvl); //save to table evaluasi
+            
+            $this->M_weblen->updateEvl($dataEvl); //save to table evaluasi
             $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
             $this->M_weblen->updateKar($dataEvl['nik'],$idEvl,$res);
             

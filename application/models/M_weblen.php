@@ -67,9 +67,42 @@ class M_weblen extends CI_Model {
         $this->db->select('karyawan.id_karyawan,karyawan.nama,karyawan.nik,absensi.nilai_absen');
         $this->db->from('karyawan');  //karyawan join absensi  
         $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
-        $this->db->where('id_evaluasi',null);
+        $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
+        $this->db->where('evaluasi.nilai_eval',-1);
 
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function updateEvl($data)
+    {
+        $this->db->where('nik',$data['nik']);
+        $this->db->set('date_fill',$data['date_fill']);
+        $this->db->set('inisiatif',$data['inisiatif']);
+        $this->db->set('daya_kreatif',$data['daya_kreatif']);
+        $this->db->set('prob_solve',$data['prob_solve']);
+
+        $this->db->set('tang_jawab',$data['tang_jawab']);
+        $this->db->set('kom_per',$data['kom_per']);
+        $this->db->set('etika_kerja',$data['etika_kerja']);
+        
+        $this->db->set('adap_kerja',$data['adap_kerja']);
+        $this->db->set('pelayanan',$data['pelayanan']);
+        $this->db->set('kem_tugas',$data['kem_tugas']);
+        
+        $this->db->set('pen_diri',$data['pen_diri']);
+        $this->db->set('kem_komunikasi',$data['kem_komunikasi']);
+        $this->db->set('ker_sama',$data['ker_sama']);
+        
+        $this->db->set('disiplin',$data['disiplin']);
+        $this->db->set('sis_kerja',$data['sis_kerja']);
+        $this->db->set('has_kerja',$data['has_kerja']);
+        
+        $this->db->set('nilai_eval',$data['nilai_eval']);
+        $this->db->set('nilai_kinerja',$data['nilai_kinerja']);
+        $this->db->set('nama_atasan',$data['nama_atasan']);
+        $this->db->set('nik_atasan',$data['nik_atasan']);
+
+        $this->db->update('evaluasi');
     }
 }

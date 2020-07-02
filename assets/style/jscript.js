@@ -43,7 +43,7 @@ function func1() {
     else if(x === "Diputus") {
         f_put();
     }
-    else{
+    else if(x === "Diperpanjang 3 Bulan" || x === "Diperpanjang 6 Bulan" || x === "Diperpanjang 1 Tahun" ) {
         f_other();
     }
 }

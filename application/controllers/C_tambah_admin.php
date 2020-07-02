@@ -56,6 +56,9 @@ class C_tambah_admin extends CI_Controller {
 		$this->form_validation->set_rules('start_periode', 'Periode mulai', 'required|trim');
 		$this->form_validation->set_rules('end_periode', 'Periode akhir', 'required|trim');
 
+		$this->form_validation->set_rules('ttl_hari', 'total hari', 'required|trim',[
+			'required' => 'Field required'
+		]);
 		$this->form_validation->set_rules('sakit', 'Sakit', 'required|trim',[
 			'required' => 'Field required'
 		]);
@@ -106,14 +109,40 @@ class C_tambah_admin extends CI_Controller {
 				'nilai_produktivitas' => $prod
 			];
 			$this->M_weblen->addAbesen($data_abs); 
-
 			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
+
+			//create data evaluasi
+			$dataEvl = [
+                'nik' => $this->input->post('nik'),
+                'date_fill' => '0000-00-00',
+                'inisiatif' => '0',
+                'daya_kreatif' => '0',
+                'prob_solve' => '0',
+                'tang_jawab' => '0',
+                'kom_per' => '0',
+                'etika_kerja' => '0',
+                'adap_kerja' => '0',
+                'pelayanan' => '0',
+                'kem_tugas' => '0',
+                'pen_diri' => '0',
+                'kem_komunikasi' => '0',
+                'ker_sama' => '0',
+                'disiplin' => '0',
+                'sis_kerja' => '0',
+                'has_kerja' => '0',
+                'nilai_eval' => '-1',
+                'nilai_kinerja' => '0',
+                'nama_atasan' => '-',
+                'nik_atasan' => '-'
+			];
+			$this->M_weblen->addEval($dataEvl);
+			$idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi'];
 			
 			
 			$idAbsen = $Absen['id_absensi']; //get id absensi
 			//save data karyawan
 			$data_kar = [
-				'id_evaluasi' => null,
+				'id_evaluasi' => $idEvl,
 				'id_absensi' => $idAbsen,
 				'nama' => $this->input->post('nama'),
 				'nik' => $this->input->post('nik'),

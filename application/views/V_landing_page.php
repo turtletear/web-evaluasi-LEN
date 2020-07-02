@@ -27,7 +27,7 @@
                             <h1><font color="#888888"> PKWT </font> </h1>
                         </div>
                         
-                        <div class="row div_center" style="margin-top: 150px;">
+                        <div class="row div_center" style="margin-top: 120px;">
                             <h3><font color="#888888"> Login sebagai : </font> </h3>
                         </div>
 

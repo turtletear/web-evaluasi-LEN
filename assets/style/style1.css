@@ -1,7 +1,7 @@
 .main_bgr {
     background-color: #CFDDFF;
     padding: 5px 5px 5px 5px;
-    height: 663px;
+    height: 100%;
 }
 .main_bgr_dash {
     background-color: #CFDDFF;
@@ -56,7 +56,7 @@
 .main_bgr2{
 	background-color: #CFDDFF;
 	padding: 5px 5px 5px 5px;
-	height: auto;
+	height: 100%;
 }
 
 .id_atas {
