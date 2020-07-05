@@ -105,4 +105,15 @@ class M_weblen extends CI_Model {
 
         $this->db->update('evaluasi');
     }
+
+    public function getAlldata() //for report
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
+        $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
