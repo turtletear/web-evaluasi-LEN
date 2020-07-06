@@ -8,11 +8,10 @@ class C_tambah_admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library("form_validation");
-		$this->load->model('M_weblen');
+		$this->load->model('M_weblen2');
 	}
 	
 	public function index(){
-
 		$this->load->view('admin/V_tambah_admin');
 	}
 
@@ -46,9 +45,8 @@ class C_tambah_admin extends CI_Controller {
 
 	public function newEntry(){
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|is_unique[karyawan.nik]', [
-			'is_unique' => 'nik is already registered'
-		]);
+		$this->form_validation->set_rules('nik', 'NIK', 'required|trim'); 
+		//is_unique[karyawan.nik]
 		
 		$this->form_validation->set_rules('divisi', 'Divisi', 'required|trim');
 		$this->form_validation->set_rules('bagian', 'Bagian', 'required|trim');
@@ -105,9 +103,9 @@ class C_tambah_admin extends CI_Controller {
 				'nilai_absen' => $abs,
 				'nilai_produktivitas' => $prod
 			];
-			$this->M_weblen->addAbesen($data_abs); 
+			$this->M_weblen2->addAbsen($data_abs); 
 
-			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
+			$Absen = $this->M_weblen2->getIdAbsen($data_abs['nik']);
 			
 			
 			$idAbsen = $Absen['id_absensi']; //get id absensi
@@ -127,7 +125,7 @@ class C_tambah_admin extends CI_Controller {
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];
-			$this->M_weblen->addKaryawan($data_kar);
+			$this->M_weblen2->addKaryawan($data_kar);
 			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
 			redirect('C_tambah_admin');

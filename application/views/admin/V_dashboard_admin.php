@@ -61,8 +61,8 @@
                                 <tr>
                                     <td><?= $value['nama']; ?></td>
                                     <td style="text-align: center;"><?= $value['nik']; ?></td>
-                                    <td style="text-align: center;"><?= $value['nilai_eval']; ?>%</td>
-                                    <td style="text-align: center;"><?= $value['nilai_absen']; ?>%</td>
+                                    <td style="text-align: center;"><?= $value['nilai_kinerja']; ?>%</td>
+                                    <td style="text-align: center;"><?= $value['nilai_produktivitas']; ?>%</td>
                                     <td style="text-align: center;"><?= $value['nilai_hasil']; ?>%</td>
                                     <?php if ($value['status'] == '-') { ?>
                                         <td>

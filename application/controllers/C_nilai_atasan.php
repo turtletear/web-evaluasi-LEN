@@ -6,12 +6,12 @@ class C_nilai_atasan extends CI_Controller {
     public function __construct(){
 		parent::__construct();
 		$this->load->library("form_validation");
-		$this->load->model('M_weblen');
+		$this->load->model('M_weblen2');
     }
     
     public function index($id_emp){
 
-        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
+        $dataEmp = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
 		$this->load->view('atasan/V_nilai_atasan',$dataEmp);
     }
 
@@ -49,11 +49,10 @@ class C_nilai_atasan extends CI_Controller {
     public function addPenilaian($id_emp) //kasih parameter
     {
         //id karyawan dapat dari flashdata
-        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
-        $atasan = $this->session->userdata('sessAtasan');
-        
-        $name = $atasan['nama_atasan'];  //dari flashdata / session
-        $nikA = $atasan['nik_atasan'];
+        var_dump($id_emp);
+        $dataEmp = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
+        $name = "Muten Roshi";  //dari flashdata / session
+        $nikA = 1201164155;
 
 
         $this->form_validation->set_rules('inisiatif', 'Inisiatif', 'required|trim');
@@ -73,13 +72,14 @@ class C_nilai_atasan extends CI_Controller {
         $this->form_validation->set_rules('hkerja', 'Hasil Pekerjaan', 'required|trim');
 
         if($this->form_validation->run() == false){
+
 			$this->load->view('atasan/V_nilai_atasan', $dataEmp);
 		
         } //end if
 
         else{
 
-            $dataAbs = $this->M_weblen->getDataAbs($dataEmp['id_absensi']); //get data absensi
+            $dataAbs = $this->M_weblen2->getDataAbs($dataEmp['id_absensi']); //get data absensi
             
             $aa = $this->input->post('inisiatif');
             $bb = $this->input->post('kreatif');
@@ -129,9 +129,9 @@ class C_nilai_atasan extends CI_Controller {
             ];
 
             $res = $this->finalResult($dataAbs['nilai_absen'], $dataEvl['nilai_eval']); //total nilai penilaian keseluruhan
-            $this->M_weblen->addEval($dataEvl); //save to table evaluasi
-            $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
-            $this->M_weblen->updateKar($dataEvl['nik'],$idEvl,$res);
+            $this->M_weblen2->addEval($dataEvl); //save to table evaluasi
+            $idEvl = $this->M_weblen2->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
+            $this->M_weblen2->updateKar($dataEvl['nik'],$idEvl,$res);
             
             $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
