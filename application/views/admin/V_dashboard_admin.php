@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
 <body>
+    <script type="text/javascript">
+        localStorage.removeItem('stat');
+    </script>
     
     <div class="container">
         <!-- -----------------------BATAS SUCI----------------------- -->

@@ -20,7 +20,7 @@ class C_report extends CI_Controller {
     public function convertAllData($data) //convert semua data
     {
       $i = 0;
-      $conv;
+      
       foreach ($data as $x){
         $conv[$i] =  $this->convertData($x);
         $i++;
@@ -96,9 +96,12 @@ class C_report extends CI_Controller {
 
     public function printFunc()
     { 
+      //spreadsheet instance
       $spreadsheet = new Spreadsheet();
-			$sheet = $spreadsheet->getActiveSheet();
+			$sheet = $spreadsheet->getActiveSheet(); 
       
+
+      //array of style
       $styleArray = [
           'borders' => [
               'allBorders' => [
@@ -106,9 +109,13 @@ class C_report extends CI_Controller {
               ],
           ],
       ];
+
+      //set cell color 
       $sheet->getStyle('A2:AH2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
       $sheet->getStyle('A2:AH2')->getFill()->getStartColor()->setARGB('d0cece');
       
+
+      //set cell width
       $cell_width = 17;
       foreach(range('B','Z') as $columnID) {
         $sheet->getColumnDimension($columnID)->setWidth($cell_width);
@@ -123,6 +130,8 @@ class C_report extends CI_Controller {
       $sheet->getColumnDimension('AG')->setWidth($cell_width);
       $sheet->getColumnDimension('AH')->setWidth($cell_width);
       
+      
+      //kategori nilai evaluasi
       $sheet->getStyle('J1:X1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
       $sheet->getStyle('J1:X1')->getFill()->getStartColor()->setARGB('729fcf');
       $sheet->getStyle('J1:X1')->applyFromArray($styleArray);
@@ -143,6 +152,7 @@ class C_report extends CI_Controller {
       $sheet->setCellValue('V1', 'Professionalism');
       $sheet->mergeCells('V1:X1');
       
+      //column name
       $sheet->setCellValue('A2', 'No');
 			$sheet->setCellValue('B2', 'Tanggal Terima Form');
       $sheet->setCellValue('C2', 'NIK PKWT');
@@ -184,9 +194,10 @@ class C_report extends CI_Controller {
       $sheet->setCellValue('AG2', 'Absensi');
       $sheet->setCellValue('AH2', 'Hasil Evaluasi Penilaian');
       
+
+      //fill cell with data from database
       $data = $this->M_weblen->getAlldata();
       $datConv = $this->convertAllData($data);
-			
 			$no = 1;
 			$x = 3;
 			foreach($datConv as $row)
@@ -234,7 +245,7 @@ class C_report extends CI_Controller {
 
 				$x++;
       }
-      
+      //set array style for table
       $sheet->getStyle('A2:AH'.($x-1))->applyFromArray($styleArray);
 
 
@@ -244,9 +255,6 @@ class C_report extends CI_Controller {
 			header('Content-Type: application/vnd.ms-excel');
 			header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
 			header('Cache-Control: max-age=0');
-	
 			$writer->save('php://output');
-
-
     }
 }// end
