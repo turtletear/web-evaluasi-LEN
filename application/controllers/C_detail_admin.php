@@ -29,7 +29,10 @@ class C_detail_admin extends CI_Controller {
         }
         elseif ($point == 1.3){
             $x = '1 (Sangat Kurang';
-        }
+		}
+		else{
+			$x = 'none';
+		}
         return $x;
 	}
 

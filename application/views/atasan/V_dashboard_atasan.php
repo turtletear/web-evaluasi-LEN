@@ -22,7 +22,7 @@
 	<div class="container">
 		<!-- NAVBAR  -->
         <?php $this->load->view('navbar.php') ?>
-		<div class="container main_bgr2" style="height: 100%">
+		<div class="container main_bgr2">
 			<form action="" method="">
 			<?= $this->session->flashdata('evalAt');?>	
 			<div class="row" style=" margin-bottom: 10px;">

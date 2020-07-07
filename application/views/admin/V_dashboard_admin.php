@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
 <body>
+    <script type="text/javascript">
+        localStorage.removeItem('stat');
+    </script>
     
     <div class="container">
         <!-- -----------------------BATAS SUCI----------------------- -->
@@ -20,6 +23,7 @@
             
             <div class="row">
                 <div class="col-md-12"> 
+                    <?= $this->session->flashdata('kesimpSuccess');?>
                     <h4>Hasil Evaluasi Penilaian Karyawan</h4>
                 </div>
             </div>
@@ -48,9 +52,7 @@
                             <tr>
                                 <th scope="col">Nama</th>
                                 <th scope="col">NIK</th>
-                                <th scope="col">Hasil Evaluasi</th>
-                                <th scope="col">Absensi</th>
-                                <th scope="col">Hasil Evaluasi Penilaian</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -61,17 +63,35 @@
                                 <tr>
                                     <td><?= $value['nama']; ?></td>
                                     <td style="text-align: center;"><?= $value['nik']; ?></td>
-                                    <td style="text-align: center;"><?= $value['nilai_kinerja']; ?>%</td>
-                                    <td style="text-align: center;"><?= $value['nilai_produktivitas']; ?>%</td>
-                                    <td style="text-align: center;"><?= $value['nilai_hasil']; ?>%</td>
-                                    <?php if ($value['status'] == '-') { ?>
+                                    
+                                    <?php if ($value['status'] == '-' && $value['nilai_eval'] != '-1') { ?>
+                                        <td style="text-align: center;" > 
+                                            <h6 class="text-warning" >
+                                            Contract status not graded yet
+                                            </h6>
+                                        </td>
                                         <td>
-                                            <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail" style="margin-right: 20px;">Detail</a>
-                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>" class="btn btn-primary" id="nilai">+ Nilai</a>
+                                            <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>"id="nilai"><button type="button" class="btn btn-md btn-primary">+Nilai</button></a>
+                                        </td>
+                                    <?php } else if($value['nilai_eval'] == '-1' && $value['status'] == '-') { ?>
+                                        <td style="text-align: center;" > 
+                                            <h6 class="text-danger">
+                                                Evaluation not graded yet
+                                            </h6>
+                                        </td>
+                                        <td>
+                                        <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>"id="nilai"><button type="button" class="btn btn-md btn-primary" disabled>+Nilai</button></a>
                                         </td>
                                     <?php } else {?>
+                                        <td style="text-align: center;">
+                                            <h6 class="text-success">
+                                                Grading complete
+                                            </h6>
+                                        </td>
                                         <td>
-                                            <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" class="btn btn-info" id="detail">Detail</a>
+                                        <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
                                         </td>
                                     <?php } ?>
                                 </tr>

@@ -12,7 +12,7 @@
                             <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_dashboard_admin'); ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="padding-right: 30px;" href="#">Report</a>
+                            <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_report'); ?>">Report</a>
                         </li>                 
                     </ul>                    
                     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('C_landing_page'); ?>">
