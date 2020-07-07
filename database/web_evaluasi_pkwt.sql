@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2020 at 04:27 PM
+-- Generation Time: Jul 07, 2020 at 06:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -58,7 +58,8 @@ INSERT INTO `absensi` (`id_absensi`, `nik`, `sakit`, `izin`, `alpa`, `periode`, 
 (59, 1201164357, 0, 9, 0, 100, 0, 27, 91),
 (60, 1101192573, 0, 0, 4, 100, 3, 28, 93),
 (61, 1301174113, 2, 2, 4, 100, 2, 27, 90),
-(62, 130117201, 0, 0, 0, 100, 0, 30, 100);
+(62, 130117201, 0, 0, 0, 100, 0, 30, 100),
+(63, 1301171222, 0, 0, 0, 100, 0, 30, 100);
 
 -- --------------------------------------------------------
 
@@ -118,7 +119,7 @@ INSERT INTO `evaluasi` (`id_evaluasi`, `nik`, `date_fill`, `inisiatif`, `daya_kr
 (35, 1301174354, '2020-06-30', 4, 4, 5.3, 4, 4, 4, 5.3, 5.3, 5.3, 5.3, 4, 4, 4, 6.7, 6.7, 50, 72, 'ariq ganteng', 1312313),
 (37, 130117222, '2020-06-30', 4, 5.3, 6.7, 5.3, 5.3, 6.7, 5.3, 6.7, 5.3, 6.7, 6.7, 6.7, 5.3, 4, 6.7, 61, 87, 'ariq ganteng', 1312313),
 (38, 1301174359, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
-(39, 1201164352, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
+(39, 1201164352, '2020-07-07', 4, 5.3, 5.3, 5.3, 4, 4, 4, 4, 4, 4, 4, 4, 5.3, 5.3, 5.3, 47, 68, 'Muten Roshi', 1201164155),
 (40, 1301174002, '2020-07-01', 4, 4, 5.3, 2.7, 5.3, 5.3, 6.7, 4, 6.7, 5.3, 5.3, 6.7, 5.3, 6.7, 5.3, 55, 79, 'ariq', 1312313),
 (41, 1301174111, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
 (42, 1301174355, '2020-07-06', 4, 5.3, 6.7, 4, 2.7, 2.7, 4, 2.7, 1.3, 1.3, 5.3, 2.7, 1.3, 5.3, 5.3, 38, 55, 'ariq ganteng', 1312313),
@@ -128,7 +129,8 @@ INSERT INTO `evaluasi` (`id_evaluasi`, `nik`, `date_fill`, `inisiatif`, `daya_kr
 (48, 1401111534, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
 (49, 1201164357, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
 (50, 1101192573, '2020-07-02', 6.7, 5.3, 4, 5.3, 4, 4, 4, 2.7, 1.3, 4, 2.7, 1.3, 1.3, 2.7, 5.3, 38, 55, 'monkey d. garp', 11111111),
-(51, 1301174113, '2020-07-07', 5.3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5.3, 5.3, 6.7, 47, 67, 'monkey d. garp', 10099);
+(51, 1301174113, '2020-07-07', 5.3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5.3, 5.3, 6.7, 47, 67, 'monkey d. garp', 10099),
+(52, 1301171222, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0);
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,7 @@ INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik
 (34, 35, 45, 'Ariq Musyaffa Ramadhani', 1301174354, 'Div. SDM & Umum', 'Pelaksana', 'Marketing', 79, '2020-06-30', '2020-06-30', 'Diperpanjang 3 Bulan', '-', 'Rutin', '6339 mantap'),
 (36, 37, 47, 'acha', 130117222, 'Ginyu Force', 'Pentolan', 'Marketing', 91, '2020-08-30', '2020-06-30', 'diperpanjang 2 minggu', '-', '-', '-'),
 (37, 38, 48, 'Peter', 1301174359, 'Ginyu Force', 'Pelaksana', 'Nyapu halaman', 0, '2020-06-30', '2020-06-30', '-', '-', '-', '-'),
-(38, 39, 49, 'Tarjo', 1201164352, 'MBP', 'Pelaksana', 'PHP', 0, '2020-08-30', '2020-06-30', '-', '-', '-', '-'),
+(38, 39, 49, 'Tarjo', 1201164352, 'MBP', 'Pelaksana', 'PHP', 75, '2020-08-30', '2020-06-30', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
 (39, 40, 50, 'spopovich', 1301174002, 'Strike Force', 'Asisten', 'Sniper', 84, '2021-03-28', '2020-06-30', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
 (40, 41, 51, 'Rama', 1301174111, 'Ginyu Force', 'Fungsional', 'Marketing', 0, '2020-10-01', '2020-07-01', '-', '-', '-', '-'),
 (41, 42, 52, 'Bittersweet by najla', 1301174355, 'Div. SDM & Umum', 'Ketua', 'Bag. PKBL', 67, '2020-09-01', '2020-07-01', '-', '-', '-', '-'),
@@ -173,7 +175,7 @@ INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik
 (48, 49, 59, 'Kurohige', 1201164357, 'Pirates', 'Yonko', 'Pirates', 0, '2020-09-01', '2020-07-01', '-', '-', '-', '-'),
 (49, 50, 60, 'Dracule Mihawk', 1101192573, 'Pirates', 'Shichibukai', 'Pirates', 66, '2021-02-01', '2020-07-10', '-', '-', '-', '-'),
 (50, 51, 61, 'Coco', 1301174113, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 74, '2020-08-07', '2020-07-07', 'Diperpanjang 6 Bulan', '-', 'Proyek/program', 'SG-774'),
-(51, NULL, 62, 'Ariq Musyaffa Ramadhani', 130117201, 'Div. SDM & Umum', 'Asisten', 'Bag. SDM', 0, '2019-12-31', '2019-07-01', '-', '-', '-', '-');
+(52, 52, 63, 'Tarjo mantap mantap', 1301171222, 'Div. SDM & Umum', 'Pentolan', 'Bag. SDM', 0, '2020-08-31', '2020-07-23', '-', '-', '-', '-');
 
 --
 -- Indexes for dumped tables
@@ -213,7 +215,7 @@ ALTER TABLE `karyawan`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -225,13 +227,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `evaluasi`
 --
 ALTER TABLE `evaluasi`
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Constraints for dumped tables
