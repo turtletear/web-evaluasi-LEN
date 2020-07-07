@@ -16,13 +16,30 @@ class C_tambah_admin extends CI_Controller {
 		$this->load->view('admin/V_tambah_admin');
 	}
 
-	public function ttl_per($end, $start){ //fungsi mencari selisih dari range tanggal tertentu
-		$date1 = date_create($end);
-		$date2 = date_create($start);
+	public function ttl_per($date1, $date2){ //fungsi mencari selisih dari range tanggal tertentu
+		$start = date_create($date2);
+		$end = date_create($date1);
+		
+		$interv = $end->diff($start);
+		$days = $interv->days;
+		$period = new DatePeriod($start, new DateInterval('P1D'), $end);
+		$holidays = array('2019-12-24','2019-12-25');
 
-		$dif = date_diff($date1,$date2);
-		$interv = $dif->format('%a');
-		return $interv;
+		foreach($period as $dt){
+			$curr = $dt->format('D');
+			// echo "ini curr ".$curr. "<br>";
+			if ($curr == 'Sat' || $curr == 'Sun') {
+				$days--;
+			}
+			elseif (in_array($dt->format('Y-m-d'),$holidays)) {
+				$days--;
+			}
+		}
+		
+		return $days;
+		// $dif = date_diff($date1,$date2);
+		// $interv = $dif->format('%a');
+		// return $interv;
 	}
 
 	public function convert_poin_absen($point, $durasi) // mengubah point2 absensi kedalam bentuk persen %
@@ -80,11 +97,11 @@ class C_tambah_admin extends CI_Controller {
 		else {
 
 			//hitung periode total
-			// $ePeriod = $this->input->post('end_periode');
-			// $sPeriod = $this->input->post('start_periode');
-			//$this->ttl_per($ePeriod,$sPeriod);
-			$ttl_hari = $this->input->post('ttl_hari');
-			
+			$ePeriod = $this->input->post('end_periode');
+			$sPeriod = $this->input->post('start_periode');
+			$ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
+			// $ttl_hari = $this->input->post('ttl_hari');
+			echo "ini hasil return ".$ttl_hari;
 			//konversi point absensi ke dalam bentuk persen%
 			$sakit = $this->convert_poin_absen($this->input->post('sakit'),$ttl_hari);
 			$izin = $this->convert_poin_absen($this->input->post('izin'),$ttl_hari);
@@ -108,7 +125,7 @@ class C_tambah_admin extends CI_Controller {
 				'nilai_absen' => $abs,
 				'nilai_produktivitas' => $prod
 			];
-			$this->M_weblen->addAbesen($data_abs); 
+			// $this->M_weblen->addAbesen($data_abs); 
 			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
 
 			//create data evaluasi
@@ -135,7 +152,7 @@ class C_tambah_admin extends CI_Controller {
                 'nama_atasan' => '-',
                 'nik_atasan' => '-'
 			];
-			$this->M_weblen->addEval($dataEvl);
+			// $this->M_weblen->addEval($dataEvl);
 			$idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi'];
 			
 			
@@ -156,10 +173,10 @@ class C_tambah_admin extends CI_Controller {
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];
-			$this->M_weblen->addKaryawan($data_kar);
-			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
-			Data saved!</div>');
-			redirect('C_tambah_admin');
+			// $this->M_weblen->addKaryawan($data_kar);
+			// $this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
+			// Data saved!</div>');
+			// redirect('C_tambah_admin');
 
 
 
