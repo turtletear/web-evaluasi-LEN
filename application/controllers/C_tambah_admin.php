@@ -8,7 +8,7 @@ class C_tambah_admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library("form_validation");
-		$this->load->model('M_weblen2');
+		$this->load->model('M_weblen');
 	}
 	
 	public function index(){
@@ -97,11 +97,13 @@ class C_tambah_admin extends CI_Controller {
 		else {
 
 			//hitung periode total
-			$ePeriod = $this->input->post('end_periode');
-			$sPeriod = $this->input->post('start_periode');
-			$ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
-			// $ttl_hari = $this->input->post('ttl_hari');
-			echo "<h1>total hari ".$ttl_hari. "</h1>";
+			// $ePeriod = $this->input->post('end_periode');
+			// $sPeriod = $this->input->post('start_periode');
+			// $ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
+
+			$ttl_hari = $this->input->post('ttl_hari');
+			
+			// echo "<h1>total hari ".$ttl_hari. "</h1>";
 			//konversi point absensi ke dalam bentuk persen%
 			$sakit = $this->convert_poin_absen($this->input->post('sakit'),$ttl_hari);
 			$izin = $this->convert_poin_absen($this->input->post('izin'),$ttl_hari);
@@ -125,7 +127,7 @@ class C_tambah_admin extends CI_Controller {
 				'nilai_absen' => $abs,
 				'nilai_produktivitas' => $prod
 			];
-			// $this->M_weblen->addAbesen($data_abs); 
+			$this->M_weblen->addAbesen($data_abs); 
 			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
 
 			//create data evaluasi
@@ -152,7 +154,7 @@ class C_tambah_admin extends CI_Controller {
                 'nama_atasan' => '-',
                 'nik_atasan' => '-'
 			];
-			// $this->M_weblen->addEval($dataEvl);
+			$this->M_weblen->addEval($dataEvl);
 			$idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi'];
 			
 			
@@ -173,10 +175,10 @@ class C_tambah_admin extends CI_Controller {
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];
-			// $this->M_weblen->addKaryawan($data_kar);
-			// $this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
-			// Data saved!</div>');
-			// redirect('C_tambah_admin');
+			$this->M_weblen->addKaryawan($data_kar);
+			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
+			Data saved!</div>');
+			redirect('C_tambah_admin');
 
 
 

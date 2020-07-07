@@ -6,12 +6,12 @@ class C_nilai_atasan extends CI_Controller {
     public function __construct(){
 		parent::__construct();
 		$this->load->library("form_validation");
-		$this->load->model('M_weblen2');
+		$this->load->model('M_weblen');
     }
     
     public function index($id_emp){
 
-        $dataEmp = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
+        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
 		$this->load->view('atasan/V_nilai_atasan',$dataEmp);
     }
 
@@ -50,7 +50,7 @@ class C_nilai_atasan extends CI_Controller {
     {
         //id karyawan dapat dari flashdata
         var_dump($id_emp);
-        $dataEmp = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
+        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
         $name = "Muten Roshi";  //dari flashdata / session
         $nikA = 1201164155;
 
@@ -79,7 +79,7 @@ class C_nilai_atasan extends CI_Controller {
 
         else{
 
-            $dataAbs = $this->M_weblen2->getDataAbs($dataEmp['id_absensi']); //get data absensi
+            $dataAbs = $this->M_weblen->getDataAbs($dataEmp['id_absensi']); //get data absensi
             
             $aa = $this->input->post('inisiatif');
             $bb = $this->input->post('kreatif');
