@@ -23,16 +23,18 @@ class C_tambah_admin extends CI_Controller {
 		$interv = $end->diff($start);
 		$days = $interv->days;
 		$period = new DatePeriod($start, new DateInterval('P1D'), $end);
-		$holidays = array('2019-12-24','2019-12-25');
-
+		$holidays = array('2019-12-24','2019-12-25','2020-01-01');
+		//###########################Perbaikin disini###########################
 		foreach($period as $dt){
 			$curr = $dt->format('D');
-			// echo "ini curr ".$curr. "<br>";
+			
 			if ($curr == 'Sat' || $curr == 'Sun') {
 				$days--;
+				
 			}
 			elseif (in_array($dt->format('Y-m-d'),$holidays)) {
 				$days--;
+				// echo "ini curr ".$dt->format('Y-m-d'). "<br>";
 			}
 		}
 		
@@ -101,7 +103,7 @@ class C_tambah_admin extends CI_Controller {
 			$sPeriod = $this->input->post('start_periode');
 			$ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
 			// $ttl_hari = $this->input->post('ttl_hari');
-			echo "ini hasil return ".$ttl_hari;
+			echo "<h1>total hari ".$ttl_hari. "</h1>";
 			//konversi point absensi ke dalam bentuk persen%
 			$sakit = $this->convert_poin_absen($this->input->post('sakit'),$ttl_hari);
 			$izin = $this->convert_poin_absen($this->input->post('izin'),$ttl_hari);
