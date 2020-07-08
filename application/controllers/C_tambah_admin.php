@@ -12,7 +12,15 @@ class C_tambah_admin extends CI_Controller {
 	}
 	
 	public function index(){
-		$this->load->view('admin/V_tambah_admin');
+		$data['atasan'] = $this->M_weblen->getAtasan();
+		$this->load->view('admin/V_tambah_admin', $data);
+	}
+
+	public function getHolidays() //ambil data libur
+	{
+		$array = json_decode(file_get_contents("https://cdn.jsdelivr.net/gh/guangrei/Json-Indonesia-holidays/calendar.json"));
+		
+		return $array;
 	}
 
 	public function ttl_per($date1, $date2){ //fungsi mencari selisih dari range tanggal tertentu
@@ -22,6 +30,7 @@ class C_tambah_admin extends CI_Controller {
 		$interv = $end->diff($start);
 		$days = $interv->days;
 		$period = new DatePeriod($start, new DateInterval('P1D'), $end);
+		$this->getHolidays();
 		$holidays = array('2019-12-24','2019-12-25','2020-01-01');
 		//###########################Perbaikin disini###########################
 		foreach($period as $dt){
@@ -38,9 +47,6 @@ class C_tambah_admin extends CI_Controller {
 		}
 		
 		return $days;
-		// $dif = date_diff($date1,$date2);
-		// $interv = $dif->format('%a');
-		// return $interv;
 	}
 
 	public function convert_poin_absen($point, $durasi) // mengubah point2 absensi kedalam bentuk persen %
@@ -63,8 +69,11 @@ class C_tambah_admin extends CI_Controller {
 	}
 
 	public function newEntry(){
+		$this->form_validation->set_rules('combo_atasan', 'Atasan', 'required|trim');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-		$this->form_validation->set_rules('nik', 'NIK', 'required|trim'); 
+		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|is_unique[karyawan.nik]',[
+			'is_unique'=> 'NIK is already registered'
+		]); 
 		//is_unique[karyawan.nik]
 		
 		$this->form_validation->set_rules('divisi', 'Divisi', 'required|trim');
@@ -90,7 +99,8 @@ class C_tambah_admin extends CI_Controller {
 		]);
 
 		if($this->form_validation->run() == false){
-			$this->load->view('admin/V_tambah_admin');
+			$data['atasan'] = $this->M_weblen->getAtasan();
+			$this->load->view('admin/V_tambah_admin', $data);
 		
 		} //end if
 

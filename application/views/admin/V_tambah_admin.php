@@ -21,7 +21,8 @@
 	<div class="container">
 		<!-- NAVBAR  -->
         <?php $this->load->view('navbar_admin.php') ?>
-		<div class="container" style="background-color: #E7E7E7">
+		<div class="container pt-3" style="background-color: #E7E7E7">
+
 			<div class="container main_bgr_input" style="width: 75%">
 			<?= $this->session->flashdata('saveEmp');?>	
 				<div class="row" style="margin: 5px 10px">        
@@ -29,6 +30,19 @@
 				</div>
 				<div class="row" style="margin: 0px 10px">
 					<form method="POST" action="<?= base_url("C_tambah_admin/newEntry")?>" style="margin: 10px 10px; width: 100%">
+					<div class="form-group row">
+						<label for="nama" class="col-md-4 col-form-label">Nama Atasan</label>
+						<div class="col-md-8">
+							<select name="combo_atasan" id="" class="form-control" style="width: 100%;">
+								<option disabled selected value>Nama Atasan</option>
+								<?php foreach($atasan as $row) {
+									echo '<option value="'.$row['nik'].'">'.$row['nama'].'</option>';
+								}?>
+							</select>
+							<?= form_error('combo_atasan','<small class="text-danger pl-2">','</small>') ?>
+						</div>
+					</div>
+					
 					<div class="form-group row">
 						<label for="nama" class="col-md-4 col-form-label">Nama Lengkap</label>
 						<div class="col-md-8">
@@ -136,7 +150,7 @@
 							</div>
 						</div>
 					</div>				
-					<button type="submit" class="btn btn-success" style="margin-left: 691px">Save</button>
+					<button type="submit" class="btn btn-success" style="margin-left: 2%">Save</button>
 					</form>
 				</div>
 			</div>

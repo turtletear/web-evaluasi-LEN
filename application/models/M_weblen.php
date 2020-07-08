@@ -116,4 +116,17 @@ class M_weblen extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function regisAtasan($data)
+    {
+        $this->db->insert('atasan',$data);
+    }
+
+    public function getAtasan()
+    {
+        $this->db->select('*');
+        $this->db->from('atasan');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

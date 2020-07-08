@@ -1,5 +1,5 @@
     
-   
+
         <!-- start navbar -->
         <div class="row">
             <div class="col-md-12">
@@ -14,6 +14,9 @@
                         <li class="nav-item">
                             <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_report'); ?>">Report</a>
                         </li>                 
+                        <li class="nav-item">
+                            <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_sign_up_atasan'); ?>">Registrasi Atasan</a>
+                        </li>
                     </ul>                    
                     <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('C_landing_page'); ?>">
                         <button class="btn btn-danger my-2 my-sm-0" type="submit">Log Out</button>
@@ -21,5 +24,5 @@
                 </nav>
             </div>
         </div>
-   
+
         <!-- end navbar -->
