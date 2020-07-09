@@ -5,7 +5,11 @@
 -- Host: localhost
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Generation Time: Jul 09, 2020 at 04:42 PM
+=======
+-- Generation Time: Jul 07, 2020 at 06:49 PM
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
 -- Generation Time: Jul 07, 2020 at 06:49 PM
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
@@ -84,6 +88,9 @@ INSERT INTO `absensi` (`id_absensi`, `nik`, `sakit`, `izin`, `alpa`, `periode`, 
 (62, 130117201, 0, 0, 0, 100, 0, 30, 100),
 (63, 1301171222, 0, 0, 0, 100, 0, 30, 100);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+=======
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
@@ -196,6 +203,9 @@ INSERT INTO `evaluasi` (`id_evaluasi`, `nik`, `date_fill`, `inisiatif`, `daya_kr
 (51, 1301174113, '2020-07-07', 5.3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5.3, 5.3, 6.7, 47, 67, 'monkey d. garp', 10099),
 (52, 1301171222, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+=======
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
@@ -260,6 +270,9 @@ INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik
 (50, 51, 61, 'Coco', 1301174113, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 74, '2020-08-07', '2020-07-07', 'Diperpanjang 6 Bulan', '-', 'Proyek/program', 'SG-774'),
 (52, 52, 63, 'Tarjo mantap mantap', 1301171222, 'Div. SDM & Umum', 'Pentolan', 'Bag. SDM', 0, '2020-08-31', '2020-07-23', '-', '-', '-', '-');
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+=======
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
@@ -310,7 +323,11 @@ ALTER TABLE `karyawan`
 ALTER TABLE `absensi`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+=======
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
   MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
@@ -336,7 +353,11 @@ ALTER TABLE `atasan`
 ALTER TABLE `evaluasi`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+=======
+  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
   MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
@@ -350,7 +371,11 @@ ALTER TABLE `evaluasi`
 ALTER TABLE `karyawan`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+=======
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+>>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
 =======
   MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 >>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
