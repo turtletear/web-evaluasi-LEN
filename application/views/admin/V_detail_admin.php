@@ -408,8 +408,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
+                        
                         <div style="margin : 20px 2px 2px 135px">
-                            <button class="btn btn-secondary"> Print </button>
+                            <?php if ($karyawan['status'] != '-') { ?>
+                                <a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-secondary">Print</button></a>
+                            <?php } else { ?>
+                                <a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-secondary" disabled>Print</button></a>
+                            <?php } ?>
                         </div>
 
                     </div>

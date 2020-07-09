@@ -6,7 +6,6 @@ use Dompdf\Options;
 
 class C_cetak extends CI_Controller {
 	
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -36,7 +35,7 @@ class C_cetak extends CI_Controller {
 		$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']); //ambil data absen dalam bentuk point2
 		$data['absen'] = $this->M_weblen2->getDataAbs($data['karyawan']['id_absensi']); //ambil data absen dalam bentuk persen
 
-	    $this->load->library('pdf');
+	    $this->load->library('Pdf');
 	    $this->pdf->setPaper('A4', 'potrait');
 	    $this->pdf->filename = "Laporan_PKWT.pdf";
 	    $this->pdf->load_view('admin/V_cetak', $data);
