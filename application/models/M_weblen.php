@@ -100,8 +100,6 @@ class M_weblen extends CI_Model {
         
         $this->db->set('nilai_eval',$data['nilai_eval']);
         $this->db->set('nilai_kinerja',$data['nilai_kinerja']);
-        $this->db->set('nama_atasan',$data['nama_atasan']);
-        $this->db->set('nik_atasan',$data['nik_atasan']);
 
         $this->db->update('evaluasi');
     }
@@ -128,5 +126,25 @@ class M_weblen extends CI_Model {
         $this->db->from('atasan');
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function getDataAtasan($id) //get single data atasan w/ id
+    {
+        $this->db->select('nik, nama');
+        $this->db->where('id_atasan', $id);
+        $this->db->from('atasan');
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function getDataAtasanNIK($nik) //get single data atasan w/ id
+    {
+        $this->db->select('*');
+        $this->db->where('nik', $nik);
+        $this->db->from('atasan');
+
+        $query = $this->db->get();
+        return $query->row_array();
     }
 }

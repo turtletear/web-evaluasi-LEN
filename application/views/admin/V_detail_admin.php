@@ -68,13 +68,20 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col"><h5>Hasil Evaluasi</h5>
+                                    <th scope="col">
+                                    <h5>Hasil Evaluasi</h5>
                                     <h6 class="text-secondary">
-                                        <small>
-                                            Graded by : <?=  $evaluasi['nama_atasan'] ?> - <?=  $evaluasi['nik_atasan'] ?> <br> at <?=  $evaluasi['date_fill'] ?>
-
-                                        </small>
+                                        <?php if ($evaluasi['nilai_eval'] != -1) { ?>
+                                            <small>
+                                                Graded by : <?=  $evaluasi['nama_atasan'] ?> - <?=  $evaluasi['nik_atasan'] ?> <br> at <?=  $evaluasi['date_fill'] ?>
+                                            </small>
+                                        <?php } else { ?>
+                                            <small>
+                                                Should be graded by : <?=  $evaluasi['nama_atasan'] ?> - <?=  $evaluasi['nik_atasan'] ?>
+                                            </small>
+                                        <?php } ?>
                                     </h6>
+                                    
                                     </th>
                                     
                                 </tr>

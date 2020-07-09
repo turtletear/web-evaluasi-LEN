@@ -11,7 +11,8 @@ class C_dashboard_atasan extends CI_Controller {
     public function index(){
 
         //get all data karyawan which id_evaluasi = null
-        $data['listEmp'] = $this->M_weblen2->getDatKar2();
+        $nik = $this->session->userdata('sessAtasan')['nik_atasan'];
+        $data['listEmp'] = $this->M_weblen2->getDatKar2($nik);
         $this->load->view('atasan/V_dashboard_atasan',$data);
     }
 }

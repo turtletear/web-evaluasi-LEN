@@ -20,7 +20,7 @@
 	<div class="container">
 		<!-- NAVBAR  -->
         <?php $this->load->view('navbar.php') ?>
-		<div class="container" style="background-color: #E7E7E7">
+		<div class="container pt-2" style="background-color: #E7E7E7">
 			<div class="container main_bgr_input" style="width: 75%;">
 				<div class="row" style="margin: 5px 10px">
 					<h3 style="margin-bottom: 15px">Identitas Karyawan</h3>
@@ -279,7 +279,7 @@
 								<?= form_error('hkerja','<small class="text-danger pl-2">','</small>') ?>
 							</div>
 						</div>
-						<button type="submit"  class="btn btn-success" style="margin-left: 540px">Save</button>
+						<button type="submit"  class="btn btn-success" style="margin-left: 3%">Save</button>
 					</form>
 				</div>
 			</div>

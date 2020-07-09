@@ -141,6 +141,8 @@ class C_tambah_admin extends CI_Controller {
 			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
 
 			//create data evaluasi
+			$test = $this->input->post('combo_atasan');
+			$dataAtasan = $this->M_weblen->getDataAtasan($test);
 			$dataEvl = [
                 'nik' => $this->input->post('nik'),
                 'date_fill' => '0000-00-00',
@@ -161,8 +163,8 @@ class C_tambah_admin extends CI_Controller {
                 'has_kerja' => '0',
                 'nilai_eval' => '-1',
                 'nilai_kinerja' => '0',
-                'nama_atasan' => '-',
-                'nik_atasan' => '-'
+                'nama_atasan' => $dataAtasan['nama'],
+                'nik_atasan' => $dataAtasan['nik']
 			];
 			$this->M_weblen->addEval($dataEvl);
 			$idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi'];
@@ -189,7 +191,6 @@ class C_tambah_admin extends CI_Controller {
 			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
 			redirect('C_tambah_admin');
-
 
 
 

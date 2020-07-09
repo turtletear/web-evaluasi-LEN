@@ -29,7 +29,7 @@ class C_sign_up_atasan extends CI_Controller {
         else {
 			$data['nik'] = $this->input->post('nik');
 			$data['nama'] = $this->input->post('name');
-			$data['password'] = md5($this->input->post('password'));
+			$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 			$this->M_weblen->regisAtasan($data);
 			$this->session->set_flashdata('Success', 'Your account has been successfully registered');
 		redirect('C_sign_up_atasan');

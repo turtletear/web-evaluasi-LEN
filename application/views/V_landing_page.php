@@ -27,7 +27,7 @@
 							<h1><font color="#888888"> PKWT </font> </h1>
 						</div>
 						
-						<div class="row div_center" style="margin-top: 80px;">
+						<div class="row div_center" style="margin-top: 50%;">
 							<h3><font color="#888888"> Login sebagai : </font> </h3>
 						</div>
 
@@ -54,11 +54,14 @@
 								</div>
 								<?php } ?>
 
-							   <?php if($this->session->flashdata('Failed')) { ?>
+								<?php if($this->session->flashdata('Failed')) { ?>
 									<div class="alert alert-danger" role="alert">
 										<?php echo $_SESSION['Failed'];  ?>
 									</div>
 								<?php } ?>
+
+								
+
 								
 								<form action="<?php echo site_url('C_landing_page/check'); ?>" method="post">
 									<div class="row div_center" style="width: 50%;">
@@ -92,18 +95,18 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <br>
-                                <h2> Identitas Atasan </h2>
+                                <h2> Login Atasan </h2>
                                 <br>
-                                
+                                <?= $this->session->flashdata('failed_atasan');?>
                                 <form action="<?php echo site_url('C_landing_page/add'); ?>" method="post">
                                     <div class="row div_center" style="width: 50%;">
                                         <div class="form-group mb-3">
-                                            <input name="nama_atasan" placeholder="Nama Lengkap" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            <label><?= form_error('nama_atasan','<small class="text-danger pl-2">','</small>') ?></label>
+                                            <input name="nik_atasan" placeholder="NIK" type="text" value="<?= set_value('nik_atasan') ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <label><?= form_error('nik_atasan','<small class="text-danger pl-2">','</small>') ?></label>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input name="nik_atasan" placeholder="NIK" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            <label><?= form_error('nik_atasan','<small class="text-danger pl-2">','</small>') ?></label>
+                                            <input name="pass_atasan" placeholder="password" type="Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <label><?= form_error('pass_atasan','<small class="text-danger pl-2">','</small>') ?></label>
                                         </div>
                                     </div>
 

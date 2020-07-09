@@ -36,7 +36,7 @@
 							<select name="combo_atasan" id="" class="form-control" style="width: 100%;">
 								<option disabled selected value>Nama Atasan</option>
 								<?php foreach($atasan as $row) {
-									echo '<option value="'.$row['nik'].'">'.$row['nama'].'</option>';
+									echo '<option value="'.$row['id_atasan'].'">'.$row['nama'].'</option>';
 								}?>
 							</select>
 							<?= form_error('combo_atasan','<small class="text-danger pl-2">','</small>') ?>

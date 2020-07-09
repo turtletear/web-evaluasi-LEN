@@ -97,7 +97,7 @@ class C_nilai_atasan extends CI_Controller {
             $nn = $this->input->post('skerja');
             $oo = $this->input->post('hkerja');
 
-            // echo 'ini poin inisiatif ',$aa,' dikonversi jadi ',$this->convPoint($aa);
+
             $kinerja = $this->convPoint($aa)+$this->convPoint($bb)+$this->convPoint($cc)+$this->convPoint($dd)+
             $this->convPoint($ee)+$this->convPoint($ff)+$this->convPoint($gg)+$this->convPoint($hh)+$this->convPoint($ii)+
             $this->convPoint($jj)+$this->convPoint($kk)+$this->convPoint($ll)+
@@ -123,9 +123,7 @@ class C_nilai_atasan extends CI_Controller {
                 'sis_kerja' => $this->convPoint($nn),
                 'has_kerja' => $this->convPoint($oo),
                 'nilai_eval' => $evl,
-                'nilai_kinerja' => round($kinerja, 0, PHP_ROUND_HALF_DOWN),
-                'nama_atasan' => $name,
-                'nik_atasan' => $nikA
+                'nilai_kinerja' => round($kinerja, 0, PHP_ROUND_HALF_DOWN)
             ];
 
             $res = $this->finalResult($dataAbs['nilai_absen'], $dataEvl['nilai_eval']); //total nilai penilaian keseluruhan

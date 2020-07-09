@@ -22,8 +22,11 @@
 	<div class="container">
 		<!-- NAVBAR  -->
         <?php $this->load->view('navbar.php') ?>
-		<div class="container main_bgr2">
-			<form action="" method="">
+		<div class="main_bgr2 container">
+			<h6 class="ml-1">
+				Hello <?= $this->session->userdata('sessAtasan')['nama_atasan'] ?>
+			</h6>	
+		<form action="" method="">
 			<?= $this->session->flashdata('evalAt');?>	
 			<div class="row" style=" margin-bottom: 10px;">
 					
@@ -31,35 +34,56 @@
 						<input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 					</div>
 				</div>
-		    </form>	        
-		    <div class="row">
-		        <div class="col-md-12">		            
-		            <div class="table-responsive" style="background-color: white;">		                
-		                <table class="table table-striped" id="myTable" style="margin-bottom: 0px;">
-		                    <thead class="thead-dark" style=" text-align: center;">
-		                    <tr>
-		                        <th scope="col">Nama</th>
-		                        <th scope="col">NIK</th>
-		                        <th scope="col">Absensi</th>
-		                        <th scope="col"></th>
-		                    </tr>
-		                    </thead>
-		                    <tbody>
-							<!-- start php loop here.. -->
-							<?php foreach($listEmp as $emp): ?>
-		                    <tr>
-		                        <td><?= $emp['nama']?></td>
-		                        <td style=" text-align: center;"><?= $emp['nik']?></td>
-		                        <td style=" text-align: center;"><?= $emp['nilai_absen']?>%</td>
-		                        <td style=" text-align: center;"><a href="<?= base_url(); ?>C_nilai_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> + Nilai </button> </td>
-							</tr>
-							<?php endforeach ?>
-		                    <!-- end php loop here.. -->
-		                    </tbody>
-		                </table>
-		            </div>
-		        </div>
-		    </div>
+			</form>	  
+
+			<div class="row">
+				<div class="col-md-12">		            
+					<div class="table-responsive" style="background-color: white;">		                
+						<table class="table table-striped" id="myTable" style="margin-bottom: 0px;">
+							<thead class="thead-dark" style=" text-align: center;">
+								<tr>
+									<th scope="col">Nama</th>
+									<th scope="col">NIK</th>
+									<th scope="col">Absensi</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+							
+							<?php if ($listEmp) { ?>
+								<tbody>
+								<!-- start php loop here.. -->
+								<?php foreach($listEmp as $emp): ?>
+									<tr>
+										<td><?= $emp['nama']?></td>
+										<td style=" text-align: center;"><?= $emp['nik']?></td>
+										<td style=" text-align: center;"><?= $emp['nilai_absen']?>%</td>
+										<td style=" text-align: center;"><a href="<?= base_url(); ?>C_nilai_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> + Nilai </button> </td>
+									</tr>
+								<?php endforeach ?>
+								<!-- end php loop here.. -->
+							</tbody>
+								
+							<?php }
+							else {?>
+								<tbody>
+									<tr>
+										<td class="text-center text-danger" colspan="4">
+											<h5>
+												No employee to grade	
+											</h5> 
+										</td>
+									</tr>
+								</tbody>
+							<?php }?>
+
+						
+					</table>
+					
+				</div>
+				
+			</div>
+			
+		</div>
 		</div>
 	</div>
     <!-- end main content -->

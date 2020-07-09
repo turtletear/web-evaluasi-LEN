@@ -18,7 +18,7 @@
                             <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_sign_up_atasan'); ?>">Registrasi Atasan</a>
                         </li>
                     </ul>                    
-                    <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('C_landing_page'); ?>">
+                    <form class="form-inline my-2 my-lg-0" action="<?php echo site_url('C_landing_page/logout'); ?>">
                         <button class="btn btn-danger my-2 my-sm-0" type="submit">Log Out</button>
                     </form>
                 </nav>
