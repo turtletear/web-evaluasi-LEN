@@ -110,6 +110,34 @@ class M_weblen extends CI_Model {
         $this->db->from('karyawan');
         $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
         $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
+        $this->db->order_by("evaluasi.date_fill", "asc");
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function getAllCompletedData() //for report
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
+        $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
+        $this->db->where('karyawan.status !=','-');
+        $this->db->order_by("evaluasi.date_fill", "asc");
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function getAllDataBetweenDate($ds, $de) //for report
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
+        $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
+        $this->db->where('evaluasi.date_fill >=',$ds);
+        $this->db->where('evaluasi.date_fill <=',$de);
+        $this->db->order_by("evaluasi.date_fill", "asc");
 
         $query = $this->db->get();
         return $query->result_array();

@@ -94,3 +94,8 @@
 	margin: auto;
 	width: 98%;
 }
+
+.cb_report{
+    float: left;
+    width: 20%;
+}

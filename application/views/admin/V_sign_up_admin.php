@@ -36,7 +36,7 @@
                                 </div>
                             <?php } ?> 
                         </div>
-                         
+                        
                         <div class="row div_center id_atas" style="margin:auto; margin-top: 20px;">
                             <form action="<?php echo site_url('C_sign_up_admin/add'); ?>" method="post" class="form-signin">
                                 <div class="form-group mb-3">

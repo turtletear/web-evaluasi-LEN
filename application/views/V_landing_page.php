@@ -10,8 +10,6 @@
 <body>
 	
 		<!-- -----------------------BATAS SUCI----------------------- -->
-
-
 		<!-- start main content here..-->
 		<div class="container main_bgr">
 			<div class="row div_center">

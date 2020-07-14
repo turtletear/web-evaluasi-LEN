@@ -19,10 +19,45 @@
         
 
         <div class="row">
-            <div class="col-md-12 mt-2 mb-2">
-            <a href="<?= site_url('C_report/printFunc')?>"><button type="button" class="btn btn-secondary btn-lg">Print</button></a>  
+            <div class="container-fluid ml-3 mr-3" style="background-color: #CFDDFF;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="<?= site_url('C_report/printFunc')?>" method="POST">
+                        <div class="row  mt-2 mb-2">
+                                <div class="col-md-4 mt-1">
+                                        <select id="com_filter" name="com_filter" class="form-control form-control-sm" onchange="hideCombo()">
+                                            <option disabled selected value> -- filter -- </option>
+                                            <option value="all"> All </option>
+                                            <option value="completed"> Completed grading only</option>
+                                            <option value="date"> By Date </option>
+                                        </select>
+                                    
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2" id="datePicker" style="display: none;">
+                                    <input name="dateStart" placeholder="start" type="date" class="form-control form-control-sm">
+                                </div> 
+                                <div class="col-md-2" id="datePicker2" style="display: none;">
+                                    <input name="dateEnd" placeholder="end" type="date" class="form-control form-control-sm">
+                                </div> 
+                            </div>
+
+                            <div class="row mt-2 mb-2 mt-2">
+                                <div class="col-md-1 text-center">
+                                    <button type="submit" id="btPrint" disabled class="btn btn-info btn-md">Print</button></a>  
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+
 
         <!-- start main content here..-->
         <div class="table-responsive">
@@ -149,5 +184,6 @@
     <script src="<?= base_url()?>/assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="<?= base_url()?>/assets/js/popper.min.js"></script>
     <script src="<?= base_url()?>/assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url()?>/assets/style/jscript.js"></script>
 </body>
 </html>
