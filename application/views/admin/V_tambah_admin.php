@@ -11,32 +11,30 @@
 	<!-- CSS only -->
 	<link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.min.css">
     
-	<!-- JS, Popper.js, and jQuery -->
-	<script src="<?= base_url() ?>/assets/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/popper.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 	<div class="container">
 		<!-- NAVBAR  -->
         <?php $this->load->view('navbar_admin.php') ?>
-		<div class="container pt-3" style="background-color: #E7E7E7">
+		<div class="container pt-3 pb-5" style="background-color: #E7E7E7">
 
-			<div class="container main_bgr_input" style="width: 75%">
+			<div class="container main_bgr_input pb-3" style="width: 75%">
 			<?= $this->session->flashdata('saveEmp');?>	
 				<div class="row" style="margin: 5px 10px">        
 					<h3>Identitas Karyawan</h3>
 				</div>
 				<div class="row" style="margin: 0px 10px">
-					<form method="POST" action="<?= base_url("C_tambah_admin/newEntry")?>" style="margin: 10px 10px; width: 100%">
+			<form method="POST" action="<?= base_url("C_tambah_admin/newEntry")?>" style="margin: 10px 10px; width: 100%" id="mainForm" class="mainForm">
 					<div class="form-group row">
 						<label for="nama" class="col-md-4 col-form-label">Nama Atasan</label>
 						<div class="col-md-8">
 							<select name="combo_atasan" id="" class="form-control" style="width: 100%;">
-								<option disabled selected value>Nama Atasan</option>
+								<option disabled selected value>-- Nama Atasan --</option>
 								<?php foreach($atasan as $row) {
-									echo '<option value="'.$row['id_atasan'].'">'.$row['nama'].'</option>';
+									echo '<option value="'.$row['id_atasan'].'"'. set_select('combo_atasan', $row['id_atasan']) .'>'.$row['nama'].'</option>';
+									
 								}?>
 							</select>
 							<?= form_error('combo_atasan','<small class="text-danger pl-2">','</small>') ?>
@@ -60,9 +58,26 @@
 					</div>
 
 					<div class="form-group row">
-						<label for="divisi" class="col-md-4 col-form-label">Divisi / Unit Bisnis</label>
+						<label class="col-md-4 col-form-label">Divisi / Unit Bisnis</label>
 						<div class="col-md-8">
-							<input type="text" class="form-control" id="divisi" name="divisi" placeholder="Divisi" value="<?= set_value('divisi')?>">
+							<select name="divisi" id="divisi" class="form-control" style="width: 100%;">
+								<option disabled selected value>-- Divisi --</option>
+								<option value="sekper" <?php echo set_select('divisi', 'sekper') ?> >Sekretaris Perusahaan</option>
+								<option value="satpi" <?= set_select('divisi', 'satpi'); ?> >Satuan Pengawasan Internal</option>
+								<option value="penjmutu" <?= set_select('divisi', 'penjmutu'); ?> >Divisi Penjamin Mutu, Sistem & K3L</option>
+								<option value="keuakun">Divisi Keuangan & Akuntansi</option>
+								<option value="sdmu">Divisi Sumber Daya Manusia dan Umum</option>
+								<option value="pemtek">Divisi Pengembangan Teknologi</option>
+								<option value="logis">Divisi Logistik</option>
+								<option value="manstraop">Divisi Manajemen Strategi dan Operasi</option>
+								<option value="asdir">Asisten Direksi</option>
+								<option value="enersisda">UB Energi dan Sistem Daya</option>
+								<option value="sistrans">UB Sistem Transportasi</option>
+								<option value="elekhan">UB Elektronika Pertahanan</option>
+								<option value="tiknav">UB Teknologi Informasi, Komunikasi, dan Navigasi</option>
+								<option value="industri">UB Industri</option>
+							</select>
+
 							<?= form_error('divisi','<small class="text-danger pl-2">','</small>') ?>
 						</div>
 					</div>
@@ -70,7 +85,10 @@
 					<div class="form-group row">
 						<label for="bagian" class="col-md-4 col-form-label">Unit Kerja / Bagian</label>
 						<div class="col-md-8">
-							<input type="text" class="form-control" id="bagian" name="bagian" placeholder="Bagian" value="<?= set_value('bagian')?>">
+							<select name="bagian" id="bagian" class="form-control" style="width: 100%;">
+								
+							</select>
+
 							<?= form_error('bagian','<small class="text-danger pl-2">','</small>') ?>
 						</div>
 					</div>
@@ -150,13 +168,18 @@
 							</div>
 						</div>
 					</div>				
-					<button type="submit" class="btn btn-success" style="margin-left: 2%">Save</button>
-					</form>
+					<button type="submit" class="btn btn-success ml-3" style="width: 97%">Save</button>
+			</form>
 				</div>
 			</div>
 		</div>		
 	</div>
 	
 </body>
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="<?= base_url() ?>/assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/popper.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/style/dependent-combo.js"></script>
 
 </html>

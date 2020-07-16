@@ -68,6 +68,55 @@ class C_tambah_admin extends CI_Controller {
 		return round($x, 0, PHP_ROUND_HALF_DOWN);
 	}
 
+	public function divConv($x) //konversi kode divisi
+	{
+		switch ($x) {
+			case "sekper":
+				$ret = "Sekretaris Perusahaan";
+				break;
+			case "satpi":
+				$ret = "Satuan Pengawasan Internal";
+				break;
+			case "penjmutu":
+				$ret = "Divisi Penjamin Mutu, Sistem & K3L";
+				break;
+			case "keuakun":
+				$ret = "Divisi Keuangan & Akuntansi";
+				break;
+			case "sdmu":
+				$ret = "Divisi Sumber Daya Manusia dan Umum";
+				break;
+			case "pemtek":
+				$ret = "Divisi Pengembangan Teknologi";
+				break;
+			case "logis":
+				$ret = "Divisi Logistik";
+				break;
+			case "manstraop":
+				$ret = "Divisi Manajemen Strategi dan Operasi";
+				break;
+			case "asdir":
+				$ret = "Asisten Direksi";
+				break;
+			case "enersida":
+				$ret = "UB Energi dan Sistem Daya";
+				break;
+			case "sistrans":
+				$ret = "UB Sistem Transportasi";
+				break;
+			case "elekhan":
+				$ret = "UB Elektronika Pertahanan";
+				break;
+			case "tiknav":
+				$ret = "UB Teknologi Informasi, Komunikasi, dan Navigasi";
+				break;
+			case "industri":
+				$ret = "UB Industri";
+				break;
+		}
+		return $ret;
+	}
+
 	public function newEntry(){
 		$this->form_validation->set_rules('combo_atasan', 'Atasan', 'required|trim');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -76,10 +125,9 @@ class C_tambah_admin extends CI_Controller {
 			'min_length' => 'NIK at least have 8 digit',
 			'max_length' => 'NIK at least have 8 digit'
 		]); 
-		//is_unique[karyawan.nik]
 		
-		$this->form_validation->set_rules('divisi', 'Divisi', 'required|trim');
-		$this->form_validation->set_rules('bagian', 'Bagian', 'required|trim');
+		$this->form_validation->set_rules('divisi', 'Divisi', 'required');
+		$this->form_validation->set_rules('bagian', 'Bagian', 'required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 		$this->form_validation->set_rules('start_periode', 'Periode mulai', 'required|trim');
 		$this->form_validation->set_rules('end_periode', 'Periode akhir', 'required|trim');
@@ -179,8 +227,10 @@ class C_tambah_admin extends CI_Controller {
 				'id_absensi' => $idAbsen,
 				'nama' => $this->input->post('nama'),
 				'nik' => $this->input->post('nik'),
-				'divisi' => $this->input->post('divisi'),
+				//-----hati-hati disini-----
+				'divisi' => $this->divConv($this->input->post('divisi')),
 				'bagian' => $this->input->post('bagian'),
+				//-----hati-hati disini-----
 				'jabatan' => $this->input->post('jabatan'),
 				'start_periode' => $this->input->post('start_periode'),
 				'end_periode' => $this->input->post('end_periode'),
