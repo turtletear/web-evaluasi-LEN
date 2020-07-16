@@ -10,6 +10,7 @@
 <body>
     <script type="text/javascript">
         localStorage.removeItem('stat');
+        localStorage.removeItem('stat2');
     </script>
     
     <div class="container">

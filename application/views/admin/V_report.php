@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
 <body>
-    
+    <script type="text/javascript">
+        window.onload = function() {
+            var x = localStorage.getItem('stat2');
+            if (x === 'block') {
+                document.getElementById("datePicker").style.display = "block";
+                document.getElementById("datePicker2").style.display = "block";
+            }
+            else if (x === 'none'){
+                document.getElementById("datePicker").style.display = "none";
+                document.getElementById("datePicker2").style.display = "none";
+            }
+        }
+    </script>
 
         <!-- -----------------------BATAS SUCI----------------------- -->
         <div class="container">
@@ -22,6 +34,7 @@
             <div class="container-fluid ml-3 mr-3" style="background-color: #CFDDFF;">
                 <div class="row">
                     <div class="col-md-12">
+                    <?= $this->session->flashdata('notFound');?>
                         <form action="<?= site_url('C_report/printFunc')?>" method="POST">
                         <div class="row  mt-2 mb-2">
                                 <div class="col-md-4 mt-1">
@@ -31,6 +44,7 @@
                                             <option value="completed"> Completed grading only</option>
                                             <option value="date"> By Date </option>
                                         </select>
+                                        <?= form_error('com_filter','<small class="text-danger pl-2">','</small>') ?>
                                     
                                 </div>
 
@@ -39,15 +53,17 @@
                             <div class="row">
                                 <div class="col-md-2" id="datePicker" style="display: none;">
                                     <input name="dateStart" placeholder="start" type="date" class="form-control form-control-sm">
+                                    <?= form_error('dateStart','<small class="text-danger pl-2">','</small>') ?>
                                 </div> 
                                 <div class="col-md-2" id="datePicker2" style="display: none;">
                                     <input name="dateEnd" placeholder="end" type="date" class="form-control form-control-sm">
+                                    <?= form_error('dateEnd','<small class="text-danger pl-2">','</small>') ?>
                                 </div> 
                             </div>
 
                             <div class="row mt-2 mb-2 mt-2">
                                 <div class="col-md-1 text-center">
-                                    <button type="submit" id="btPrint" disabled class="btn btn-info btn-md">Print</button></a>  
+                                    <button type="submit" id="btPrint" class="btn btn-info btn-md">Print</button></a>  
                                 </div>
                             </div>
                             

@@ -16,7 +16,12 @@
 </head>
 
 <body>
-	<div class="container">
+    <script type="text/javascript">
+        localStorage.removeItem('stat');
+        localStorage.removeItem('stat2');
+    </script>
+    
+    <div class="container">
     <?php $this->load->view('navbar_admin.php') ?>
 		<div class="container main_bgr2" style="height: 86%">
             <div class="row div_center" style="margin: auto; display: block;">        

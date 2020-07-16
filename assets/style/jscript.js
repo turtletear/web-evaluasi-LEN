@@ -57,12 +57,14 @@ function hideCombo() {
     if (a === "date") {
         dp1.style.display = "block";
         dp2.style.display = "block";
-        document.getElementById("btPrint").disabled = false;
+        localStorage.setItem('stat2','block');
+        
     }
     else if (a === "completed" || a === "all"){
         dp1.style.display = "none";
         dp2.style.display = "none";
-        document.getElementById("btPrint").disabled = false;
+        localStorage.setItem('stat2','none');
+        
     }
 
     
