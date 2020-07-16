@@ -29,8 +29,9 @@
     background-color: white;
     overflow: auto;   /*experimental, biar konten gak offside */
     border-radius: 10px;
-    margin-left: 17%;
-    margin-top: 13px;
+    /*margin-left: 17%;
+    margin-top: 13px;*/
+    margin: auto;
     width: 65%;
 }
 
