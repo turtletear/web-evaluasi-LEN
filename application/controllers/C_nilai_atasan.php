@@ -45,15 +45,37 @@ class C_nilai_atasan extends CI_Controller {
     }
     
 
+    public function kesimpulan($stat, $jpagu, $putus, $lain)
+    {
+        if ($stat === "Diputus") {
+            $dataStat = [
+                'status' => $stat,
+                'alasan' => $putus,
+                'j_pagu' => '-'
+            ];
+		}
+		elseif ($stat === "Lainnya") {
+            $dataStat = [
+                'status' => $lain,
+                'alasan' => '-',
+                'j_pagu' => $jpagu
+            ];
+		}
+		elseif ($stat === "Diperpanjang 3 Bulan" || $stat === "Diperpanjang 1 Tahun" || $stat === "Diperpanjang 6 Bulan") {
+			$dataStat = [
+                'status' => $stat,
+                'alasan' => '-',
+                'j_pagu' => $jpagu
+            ];
+        } //end if
+        
+        return $dataStat;
+    }
 
     public function addPenilaian($id_emp) //kasih parameter
     {
-        //id karyawan dapat dari flashdata
-        var_dump($id_emp);
-        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
-        $name = "Muten Roshi";  //dari flashdata / session
-        $nikA = 1201164155;
 
+        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
 
         $this->form_validation->set_rules('inisiatif', 'Inisiatif', 'required|trim');
         $this->form_validation->set_rules('kreatif', 'Kreatif', 'required|trim');
@@ -70,6 +92,19 @@ class C_nilai_atasan extends CI_Controller {
         $this->form_validation->set_rules('disiplin', 'Disiplin', 'required|trim');
         $this->form_validation->set_rules('skerja', 'Sistematika', 'required|trim');
         $this->form_validation->set_rules('hkerja', 'Hasil Pekerjaan', 'required|trim');
+
+        $this->form_validation->set_rules('combo1','Status','required');
+		$x = $this->input->post('combo1');
+		if ($x === "Diputus") {
+			$this->form_validation->set_rules('combo_putus', 'Alasan putus', 'required|trim');
+		}
+		elseif ($x === "Lainnya") {
+			$this->form_validation->set_rules('inp_lainnya', 'Lainnya', 'required|trim');
+		} //end if
+		elseif ($x === "Diperpanjang 3 Bulan" || $x === "Diperpanjang 1 Tahun" || $x === "Diperpanjang 6 Bulan") {
+			$this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');
+		} //end if
+		
 
         if($this->form_validation->run() == false){
 
@@ -128,9 +163,19 @@ class C_nilai_atasan extends CI_Controller {
 
             $res = $this->finalResult($dataAbs['nilai_absen'], $dataEvl['nilai_eval']); //total nilai penilaian keseluruhan
             $this->M_weblen->updateEvl($dataEvl); //save to table evaluasi
+            
             $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
             $this->M_weblen->updateKar($dataEvl['nik'],$idEvl,$res);
             
+            $stat = $this->input->post('combo1');
+            $jpagu = $this->input->post('combo_pagu');
+            $putus = $this->input->post('combo_putus');
+            $lain = $this->input->post('inp_lainnya');
+
+            $dataStat = $this->kesimpulan($stat, $jpagu, $putus, $lain);
+            
+            $this->M_weblen->updateStat($id_emp, $dataStat);
+
             $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
             redirect('C_dashboard_atasan'); 

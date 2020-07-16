@@ -175,4 +175,21 @@ class M_weblen extends CI_Model {
         $query = $this->db->get();
         return $query->row_array();
     }
+
+    public function updateStat($id, $dataStat) //untuk karyawan
+    {
+        $this->db->where('id_karyawan', $id);
+        $this->db->set('status', $dataStat['status']);
+        $this->db->set('alasan', $dataStat['alasan']);
+        $this->db->set('anggaran', $dataStat['j_pagu']);
+        $this->db->update('karyawan');
+        
+    }
+    public function updateStat2($id, $kpagu) //untuk karyawan
+    {
+        $this->db->where('id_karyawan', $id);
+        $this->db->set('kode_pagu', $kpagu);
+        $this->db->update('karyawan');
+
+    }
 }

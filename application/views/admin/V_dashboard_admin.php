@@ -65,7 +65,7 @@
                                     <td><?= $value['nama']; ?></td>
                                     <td style="text-align: center;"><?= $value['nik']; ?></td>
                                     
-                                    <?php if ($value['status'] == '-' && $value['nilai_eval'] != '-1') { ?>
+                                    <?php if ($value['status'] != 'Diputus' && $value['nilai_eval'] != '-1') { ?>
                                         <td style="text-align: center;" > 
                                             <h6 class="text-warning" >
                                             Contract status not graded yet
