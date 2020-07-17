@@ -3,25 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kesimpulan Penilaian</title>
     <link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
 <body>
-    <script type="text/javascript">
-        window.onload = function() {
-            var x = localStorage.getItem('stat');
-            if (x === 'lain') {
-                f_lain();
-            }
-            else if (x === 'putus'){
-                f_put();
-            }
-            else if (x === 'other'){
-                f_other();
-            }
-    }
-    </script>
     
     <div class="container">
         <!-- -----------------------BATAS SUCI----------------------- -->
@@ -294,73 +280,40 @@
                 <form action="<?= base_url();?>C_kesimpulan_penilaian/saveKesimpulan/<?= $karyawan['id_karyawan']?>" method="post">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="detail_area" style="height: 350px;">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col"><h5>Kesimpulan</h5></th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                    
-                                    <!-- start dropdown -->
-                                    <div style="margin-left: 27%;">
-                                        <div>
-                                            <label for="cars" class="combo_lbl">Status Kontrak PKWT</label>
-                                        </div>
-    
-                                        <div style="margin: 5px 5px 5px 5px;">
-                                            <select id="combo1" name="combo1" onchange="func1()" class="combo-style">
-                                                <option disabled selected value="NULL">-- status --</option>
-                                                <option value="Diperpanjang 3 Bulan" <?= set_select('combo1', 'Diperpanjang 3 Bulan'); ?> >Diperpanjang 3 Bulan</option>
-                                                <option value="Diperpanjang 1 Tahun" <?= set_select('combo1', 'Diperpanjang 1 Tahun'); ?> >Diperpanjang 1 Tahun</option>
-                                                <option value="Diperpanjang 6 Bulan" <?= set_select('combo1', 'Diperpanjang 6 Bulan'); ?> >Diperpanjang 6 Bulan</option>
-                                                <option value="Diputus" <?= set_select('combo1', 'Diputus'); ?> >Diputus</option>
-                                                <option value="Lainnya" <?= set_select('combo1', 'Lainnya'); ?> >Lainnya</option>
-                                            </select>
-                                        </div>
-                                        <?= form_error('combo1','<small class="text-danger pl-2">','</small>') ?>
-                                        
-                                        <div style="margin: 5px 5px 5px 5px; display: none;" id="pagu">
-                                            <select id="combo_pagu" name="combo_pagu" class="combo-style">
-                                                <option disabled selected value>-- Jenis Pagu --</option>
-                                                <option value="Rutin" <?= set_select('combo_pagu', 'Rutin'); ?> >Rutin</option>
-                                                <option value="Proyek/program"<?= set_select('combo_pagu', 'Proyek/program'); ?> >Proyek / Program</option>
-                                            </select>
-                                        </div>
-                                        <?= form_error('combo_pagu','<small class="text-danger pl-2">','</small>') ?>
-                                        
-                                        <div style="margin: 5px 5px 5px 5px; display: none;" id="putus">
-                                            <select id="combo_putus" name="combo_putus" class="combo-style">
-                                                <option disabled selected value>-- Alasan diputus --</option>
-                                                <option value="Hasil Evaluasi Penilaian" <?= set_select('combo_putus', 'Hasil Evaluasi Penilaian'); ?> >Hasil Evaluasi Penilaian</option>
-                                                <option value="Kegiatan Proyek/Program Selesai" <?= set_select('combo_putus', 'Kegiatan Proyek/Program Selesai'); ?> >Kegiatan Proyek / Program Selesai</option>
-                                            </select>
-                                        </div>
-                                        <?= form_error('combo_putus','<small class="text-danger pl-2">','</small>') ?>
-    
-                                        <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="kode_pagu">
-                                        <input id="inp_kpagu" name="inp_kpagu" placeholder="kode pagu" type="text" class="form-control input-style">
-                                        </div>
-                                        <?= form_error('inp_kpagu','<small class="text-danger pl-2">','</small>') ?>
-    
-                                        <div style="width: 30%; display: none; margin: 5px 5px 5px 5px;" id="Lainnya">
-                                            <input id="inp_lainnya" name="inp_lainnya" placeholder="Lainnya" type="text" class="form-control input-style">
-                                        </div>
-                                        <?= form_error('inp_lainnya','<small class="text-danger pl-2">','</small>') ?>
-    
-
-                                    </div>
-                                    
-                                    
+                            <div class="detail_area" style="height: 240px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><h5>Kesimpulan</h5></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Status</th>
+                                            <td><center><?= $karyawan['status']; ?></center></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Pagu Anggaran</th>
+                                            <td><center><?= $karyawan['anggaran']; ?></center></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Kode Pagu</th>
+                                            <td><center><input id="inp_kpagu" name="inp_kpagu" placeholder="Kode Pagu" type="text" class="form-control ml-3" style="width: 70% "></center></td>
+                                            <?= form_error('inp_kpagu','<small class="text-danger pl-2">','</small>') ?>
+                                        </tr>                                            
+                                    </tbody>
+                                </table>    
                             </div>
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div style="margin-left: 600px; margin-top: 10px;">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                        <div class="col-md-12 text-center mt-3">
+                            <div class="mr-2" style="margin: auto;">
+                                <button style="width: 65%;" type="submit" class="btn btn-success">Save</button>    
+                            </div>
+                            
                         </div>
                     </div>
                 </form>

@@ -368,37 +368,37 @@
                                 <!-- IF php here -->
                                 <?php if ($evaluasi['nilai_eval'] != -1) { ?>
                                 
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Absensi</th>
-                                        <td><?= $absensi['nilai_absen']; ?>%</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Hasil Evaluasi</th>
-                                        <td><?= $evaluasi['nilai_eval']; ?>%</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Penilaian Kerja</th>
-                                        <td><?= $karyawan['nilai_hasil']; ?>%</td>
-                                    </tr>
-                                </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Absensi</th>
+                                            <td><?= $absensi['nilai_absen']; ?>%</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Hasil Evaluasi</th>
+                                            <td><?= $evaluasi['nilai_eval']; ?>%</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Penilaian Kerja</th>
+                                            <td><?= $karyawan['nilai_hasil']; ?>%</td>
+                                        </tr>
+                                    </tbody>
                                 <!-- end IF php here -->
-                                <? } else { ?>
+                                <?php } else { ?>
                                     
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Absensi</th>
-                                        <td><?= $absensi['nilai_absen']; ?>%</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Hasil Evaluasi</th>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Penilaian Kerja</th>
-                                        <td>-</td>
-                                    </tr>
-                                </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Absensi</th>
+                                            <td><?= $absensi['nilai_absen']; ?>%</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Hasil Evaluasi</th>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Penilaian Kerja</th>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
                                 
                                 <?php } ?>
                             </table>
