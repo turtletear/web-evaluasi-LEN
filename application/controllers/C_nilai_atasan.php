@@ -99,7 +99,8 @@ class C_nilai_atasan extends CI_Controller {
 			$this->form_validation->set_rules('combo_putus', 'Alasan putus', 'required|trim');
 		}
 		elseif ($x === "Lainnya") {
-			$this->form_validation->set_rules('inp_lainnya', 'Lainnya', 'required|trim');
+            $this->form_validation->set_rules('inp_lainnya', 'Lainnya', 'required|trim');
+            $this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');
 		} //end if
 		elseif ($x === "Diperpanjang 3 Bulan" || $x === "Diperpanjang 1 Tahun" || $x === "Diperpanjang 6 Bulan") {
 			$this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');

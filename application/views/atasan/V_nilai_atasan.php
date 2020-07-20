@@ -66,7 +66,7 @@
 								</tr>
 								<tr>
 									<th scope="row">Periode Kontrak</th>
-									<td><?= $start_periode," - ",$end_periode?> </td>
+									<td><?= $start_periode," s.d. ",$end_periode?> </td>
 								</tr>
 							</tbody>
 							</table>
@@ -299,7 +299,9 @@
 						<!-------------------------- DARI SINI WOYYY -------------------------->
 
 						<div class="form-group row form_eval">
-							<label for="bagian" class="col-md-4 col-form-label">Status</label>
+							<div class="col-md-4">
+								<label for="bagian" class="mt-2">Status</label>
+							</div>
 							<div class="col-md-4">
 								<select id="combo1" name="combo1" onchange="func1()" class="form-control">
 									<option disabled selected value="NULL">-- status --</option>
@@ -310,38 +312,55 @@
                                     <option value="Lainnya" <?= set_select('combo1', 'Lainnya'); ?> >Lainnya</option>
                                 </select>
 								<?= form_error('combo1','<small class="text-danger pl-2">','</small>') ?>
-							</div>
-						</div>
-						<div class="form-group row form_eval" id="Lainnya" style="display: none;">
-							<label for="bagian" class="col-md-4 col-form-label">Lainnya</label>
-							<div class="col-md-4">
-								<input id="inp_lainnya" name="inp_lainnya" placeholder="Lainnya" type="text" class="form-control">	
+								
+								<input id="Lainnya" name="inp_lainnya" value="<?= set_value('inp_lainnya')?>" placeholder="Lainnya" type="text" class="form-control mt-1" style="display: none;">	
 								<?= form_error('inp_lainnya','<small class="text-danger pl-2">','</small>') ?>
-							</div>
-						</div>
-						<div class="form-group row form_eval" id="pagu">
-							<label for="bagian" class="col-md-4 col-form-label">Jenis Pagu</label>
-							<div class="col-md-4">
-								<select id="combo_pagu" name="combo_pagu" class="form-control">
+
+								<select id="pagu" name="combo_pagu" class="form-control mt-1">
                                     <option disabled selected value>-- Jenis Pagu --</option>
                                     <option value="Rutin" <?= set_select('combo_pagu', 'Rutin'); ?> >Rutin</option>
-                                    <option value="Proyek/program"<?= set_select('combo_pagu', 'Proyek/program'); ?> >Proyek / Program</option>
+                                    <option value="Proyek/program"<?= set_select('combo_pagu', 'Proyek/program'); ?> >Proyek/Program</option>
                                 </select>
 								<?= form_error('combo_pagu','<small class="text-danger pl-2">','</small>') ?>
-							</div>
-						</div>
-						<div class="form-group row form_eval" id="putus">
-							<label for="bagian" class="col-md-4 col-form-label">Alasan</label>
-							<div class="col-md-4">
-							<select id="combo_putus" name="combo_putus" class="form-control">
-                                <option disabled selected value>-- Alasan diputus --</option>
-                                <option value="Hasil Evaluasi Penilaian" <?= set_select('combo_putus', 'Hasil Evaluasi Penilaian'); ?> >Hasil Evaluasi Penilaian</option>
-                                <option value="Kegiatan Proyek/Program Selesai" <?= set_select('combo_putus', 'Kegiatan Proyek/Program Selesai'); ?> >Kegiatan Proyek / Program Selesai</option>
-                            </select>
+
+								<select id="putus" name="combo_putus" class="form-control mt-1">
+									<option disabled selected value>-- Alasan diputus --</option>
+									<option value="Hasil Evaluasi Penilaian" <?= set_select('combo_putus', 'Hasil Evaluasi Penilaian'); ?> >Hasil Evaluasi Penilaian</option>
+									<option value="Kegiatan Proyek/Program Selesai" <?= set_select('combo_putus', 'Kegiatan Proyek/Program Selesai'); ?> >Kegiatan Proyek / Program Selesai</option>
+								</select>
 								<?= form_error('combo_putus','<small class="text-danger pl-2">','</small>') ?>
+
 							</div>
 						</div>
-						
+
+						<!-- <div class="form-group row form_eval" id="Lainnya" style="display: none;">
+							<div class="col-md-4">
+								<label for="bagian" class="">Lainnya</label>
+							</div>
+							
+							<div class="col-md-4">
+
+							</div>
+						</div> -->
+
+						<!-- <div class="form-group row form_eval" id="pagu" style="display: none;">
+							<div class="col-md-4">
+								<label for="bagian" class="">Jenis Pagu</label>
+							</div>	
+							<div class="col-md-4">
+								
+							</div>
+						</div> -->
+
+						<div class="form-group row form_eval" id="putus" style="display: none;">
+							<div class="col-md-4">
+								<label for="bagian" class="">Alasan</label>
+							</div>
+							<div class="col-md-4">
+							
+							</div>
+						</div>
+
 						<button type="submit"  class="btn btn-success" style="margin-left: 3%">Save</button>
 						
 					</div>
