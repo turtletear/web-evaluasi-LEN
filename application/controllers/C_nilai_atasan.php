@@ -11,8 +11,10 @@ class C_nilai_atasan extends CI_Controller {
     
     public function index($id_emp){
 
-        $dataEmp = $this->M_weblen->getDataKar($id_emp); //get data karyawan
-		$this->load->view('atasan/V_nilai_atasan',$dataEmp);
+        $data = array();
+        $data['karyawan'] = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
+        $data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
+		$this->load->view('atasan/V_nilai_atasan',$data);
     }
 
     public function convPoint($point){
@@ -44,7 +46,29 @@ class C_nilai_atasan extends CI_Controller {
         return $abs + $eval;
     }
     
+    public function convertAbs($point, $durasi) // mengubah persen% absensi kedalam bentuk point2
+    {
+        $x = ($point * $durasi) / 100 ;
 
+        return round($x);
+    }
+    
+    public function newDataAbs($id)
+    {
+        $abs = array();
+        $abs = $this->M_weblen2->getDataAbs($id);
+        $dataAbs = [
+            'id_absensi' => $abs['id_absensi'],
+            'sakit' => $this->convertAbs($abs['sakit'],$abs['periode']),
+            'izin'=> $this->convertAbs($abs['izin'],$abs['periode']),
+            'alpa' => $this->convertAbs($abs['alpa']/2,$abs['periode']),
+            'periode'=> $abs['periode'],
+            'terlambat'=> $this->convertAbs($abs['terlambat'],$abs['periode']),
+            'nilai_absen' => $abs['nilai_absen'],
+            'nilai_produktivitas' => $abs['nilai_produktivitas']
+        ];
+        return $dataAbs;
+    }
 
     public function addPenilaian($id_emp) //kasih parameter
     {
