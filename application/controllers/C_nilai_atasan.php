@@ -134,7 +134,11 @@ class C_nilai_atasan extends CI_Controller {
 
         if($this->form_validation->run() == false){
 
-			$this->load->view('atasan/V_nilai_atasan', $dataEmp);
+            // $this->load->view('atasan/V_nilai_atasan', $dataEmp);
+            $data = array();
+            $data['karyawan'] = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
+            $data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
+            $this->load->view('atasan/V_nilai_atasan',$data);
 		
         } //end if
 
