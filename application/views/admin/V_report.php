@@ -39,10 +39,10 @@
                         <div class="row  mt-2 mb-2">
                                 <div class="col-md-4 mt-1">
                                         <select id="com_filter" name="com_filter" class="form-control form-control-sm" onchange="hideCombo()">
-                                            <option disabled selected value> -- filter -- </option>
-                                            <option value="all"> All </option>
-                                            <option value="completed"> Completed grading only</option>
-                                            <option value="date"> By Date </option>
+                                            <!-- <option disabled selected value> -- filter -- </option> -->
+                                            <option value="all" <?= set_select('com_filter', 'all'); ?> > All </option>
+                                            <option value="completed" <?= set_select('com_filter', 'completed'); ?> > Completed grading only</option>
+                                            <option value="date" <?= set_select('com_filter', 'date'); ?> > By Date </option>
                                         </select>
                                         <?= form_error('com_filter','<small class="text-danger pl-2">','</small>') ?>
                                     
@@ -52,18 +52,21 @@
 
                             <div class="row">
                                 <div class="col-md-2" id="datePicker" style="display: none;">
-                                    <input name="dateStart" placeholder="start" type="date" class="form-control form-control-sm">
+                                    <input name="dateStart" placeholder="start" value="<?= set_value('dateStart')?>" type="date" class="form-control form-control-sm">
                                     <?= form_error('dateStart','<small class="text-danger pl-2">','</small>') ?>
                                 </div> 
                                 <div class="col-md-2" id="datePicker2" style="display: none;">
-                                    <input name="dateEnd" placeholder="end" type="date" class="form-control form-control-sm">
+                                    <input name="dateEnd" placeholder="end" value="<?= set_value('dateEnd')?>" type="date" class="form-control form-control-sm">
                                     <?= form_error('dateEnd','<small class="text-danger pl-2">','</small>') ?>
                                 </div> 
                             </div>
 
                             <div class="row mt-2 mb-2 mt-2">
                                 <div class="col-md-1 text-center">
-                                    <button type="submit" id="btPrint" class="btn btn-info btn-md">Print</button></a>  
+                                    <button name="p_btn" type="submit" value="preview" id="btPrint" class="btn btn-secondary btn-md">Preview</button></a>  
+                                </div>
+                                <div class="col-md-1 text-center">
+                                    <button name="p_btn" type="submit" value="print" id="btPrint" class="btn btn-info btn-md">Print</button></a>  
                                 </div>
                             </div>
                             

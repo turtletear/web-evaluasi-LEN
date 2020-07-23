@@ -316,48 +316,20 @@
 								<input id="Lainnya" name="inp_lainnya" value="<?= set_value('inp_lainnya')?>" placeholder="Lainnya" type="text" class="form-control mt-1" style="display: none;">	
 								<?= form_error('inp_lainnya','<small class="text-danger pl-2">','</small>') ?>
 
-								<select id="pagu" name="combo_pagu" class="form-control mt-1">
+								<select id="pagu" name="combo_pagu" class="form-control mt-1" style="display: none;">
                                     <option disabled selected value>-- Jenis Pagu --</option>
                                     <option value="Rutin" <?= set_select('combo_pagu', 'Rutin'); ?> >Rutin</option>
                                     <option value="Proyek/program"<?= set_select('combo_pagu', 'Proyek/program'); ?> >Proyek/Program</option>
                                 </select>
 								<?= form_error('combo_pagu','<small class="text-danger pl-2">','</small>') ?>
 
-								<select id="putus" name="combo_putus" class="form-control mt-1">
+								<select id="putus" name="combo_putus" class="form-control mt-1" style="display: none;">
 									<option disabled selected value>-- Alasan diputus --</option>
 									<option value="Hasil Evaluasi Penilaian" <?= set_select('combo_putus', 'Hasil Evaluasi Penilaian'); ?> >Hasil Evaluasi Penilaian</option>
 									<option value="Kegiatan Proyek/Program Selesai" <?= set_select('combo_putus', 'Kegiatan Proyek/Program Selesai'); ?> >Kegiatan Proyek / Program Selesai</option>
 								</select>
 								<?= form_error('combo_putus','<small class="text-danger pl-2">','</small>') ?>
 
-							</div>
-						</div>
-
-						<!-- <div class="form-group row form_eval" id="Lainnya" style="display: none;">
-							<div class="col-md-4">
-								<label for="bagian" class="">Lainnya</label>
-							</div>
-							
-							<div class="col-md-4">
-
-							</div>
-						</div> -->
-
-						<!-- <div class="form-group row form_eval" id="pagu" style="display: none;">
-							<div class="col-md-4">
-								<label for="bagian" class="">Jenis Pagu</label>
-							</div>	
-							<div class="col-md-4">
-								
-							</div>
-						</div> -->
-
-						<div class="form-group row form_eval" id="putus" style="display: none;">
-							<div class="col-md-4">
-								<label for="bagian" class="">Alasan</label>
-							</div>
-							<div class="col-md-4">
-							
 							</div>
 						</div>
 

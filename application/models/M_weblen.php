@@ -122,7 +122,8 @@ class M_weblen extends CI_Model {
         $this->db->from('karyawan');
         $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
         $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
-        $this->db->where('karyawan.status !=','-');
+        $this->db->where('karyawan.status','Diputus');
+        $this->db->or_where('karyawan.kode_pagu !=','-');
         $this->db->order_by("evaluasi.date_fill", "asc");
 
         $query = $this->db->get();

@@ -114,105 +114,204 @@ class C_report extends CI_Controller {
     public function printFunc()
     { 
       
-      //spreadsheet instance
-      $spreadsheet = new Spreadsheet();
-			$sheet = $spreadsheet->getActiveSheet(); 
+      if ($_POST['p_btn'] == 'print') {
+          //spreadsheet instance
+          $spreadsheet = new Spreadsheet();
+          $sheet = $spreadsheet->getActiveSheet(); 
+          
       
-
-      //array of style
-      $styleArray = [
-          'borders' => [
-              'allBorders' => [
-                  'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+          //array of style
+          $styleArray = [
+              'borders' => [
+                  'allBorders' => [
+                      'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                  ],
               ],
-          ],
-      ];
+          ];
+      
+          //set cell color 
+          $sheet->getStyle('A2:AH2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+          $sheet->getStyle('A2:AH2')->getFill()->getStartColor()->setARGB('d0cece');
+          
+      
+          //set cell width
+          $cell_width = 17;
+          foreach(range('B','Z') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setWidth($cell_width);
+          }
+          $sheet->getColumnDimension('A')->setWidth(5);
+          $sheet->getColumnDimension('AA')->setWidth($cell_width);
+          $sheet->getColumnDimension('AB')->setWidth($cell_width);
+          $sheet->getColumnDimension('AC')->setWidth($cell_width);
+          $sheet->getColumnDimension('AD')->setWidth($cell_width);
+          $sheet->getColumnDimension('AE')->setWidth($cell_width);
+          $sheet->getColumnDimension('AF')->setWidth($cell_width);
+          $sheet->getColumnDimension('AG')->setWidth($cell_width);
+          $sheet->getColumnDimension('AH')->setWidth($cell_width);
+          
+          
+          //kategori nilai evaluasi
+          $sheet->getStyle('J1:X1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+          $sheet->getStyle('J1:X1')->getFill()->getStartColor()->setARGB('729fcf');
+          $sheet->getStyle('J1:X1')->applyFromArray($styleArray);
+          $sheet->getStyle('J1:X1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+      
+          $sheet->setCellValue('J1', 'Innovation');
+          $sheet->mergeCells('J1:L1');
+          
+          $sheet->setCellValue('M1', 'Integrity');
+          $sheet->mergeCells('M1:O1');
+          
+          $sheet->setCellValue('P1', 'Customer Oriented');
+          $sheet->mergeCells('P1:R1');
+          
+          $sheet->setCellValue('S1', 'Team Work');
+          $sheet->mergeCells('S1:U1');
+          
+          $sheet->setCellValue('V1', 'Professionalism');
+          $sheet->mergeCells('V1:X1');
+          
+          //column name
+          $sheet->setCellValue('A2', 'No');
+          $sheet->setCellValue('B2', 'Tanggal Terima Form');
+          $sheet->setCellValue('C2', 'NIK PKWT');
+          $sheet->setCellValue('D2', 'Nama');
+          $sheet->setCellValue('E2', 'Divisi/Unit Bisnis');
+          $sheet->setCellValue('F2', 'Unit Kerja/Bagian');
+          $sheet->setCellValue('G2', 'Jabatan');
+          $sheet->setCellValue('H2', 'Periode Kontrak (Awal)');
+          $sheet->setCellValue('I2', 'Periode Kontrak (Akhir)');
+          
+          $sheet->setCellValue('J2', 'Inisiatif');
+          $sheet->setCellValue('K2', 'Daya Kreativitas');
+          $sheet->setCellValue('L2', 'Problem Solving');
+          
+          $sheet->setCellValue('M2', 'Tanggung Jawab');
+          $sheet->setCellValue('N2', 'Komitmen Kepada Perusahaan');
+          $sheet->setCellValue('O2', 'Etika Kerja');
+          
+          $sheet->setCellValue('P2', 'Adaptasi Kerja');
+          $sheet->setCellValue('Q2', 'Pelayanan Terhadap Unit Kerja/Pihak Eksternal');
+          $sheet->setCellValue('R2', 'Kemampuan Melaksanakan Tugas');
+          
+          $sheet->setCellValue('S2', 'Penyesuaian Diri');
+          $sheet->setCellValue('T2', 'Kemampuan Berkomunikasi');
+          $sheet->setCellValue('U2', 'Kerja Sama');
+          
+          $sheet->setCellValue('V2', 'Disiplin');
+          $sheet->setCellValue('W2', 'Sistematika Kerja');
+          $sheet->setCellValue('X2', 'Hasil Pekerjaan');
+          $sheet->setCellValue('Y2', 'Penilaian Kinerja');
+          $sheet->setCellValue('Z2', 'Hasil Evaluasi');
+      
+          $sheet->setCellValue('AA2', 'Hari Kerja(Durasi Kontrak)');
+          $sheet->setCellValue('AB2', 'Sakit');
+          $sheet->setCellValue('AC2', 'Izin');
+          $sheet->setCellValue('AD2', 'Alpa');
+          $sheet->setCellValue('AE2', 'Absen Terlambat(1 Hari = 8 Jam)');
+          $sheet->setCellValue('AF2', 'Produktivitas Kehadiran');
+          $sheet->setCellValue('AG2', 'Absensi');
+          $sheet->setCellValue('AH2', 'Hasil Evaluasi Penilaian');
+          
+      
+          $this->form_validation->set_rules('com_filter','Filter','required',[
+            'required' => 'Please select the filter'
+          ]);
+          $x = $this->input->post("com_filter");
+          if ($x == "date") {
+            $this->form_validation->set_rules('dateStart','Date start','required',[
+              'required' => 'Please choose a date'
+            ]);
+            $this->form_validation->set_rules('dateEnd','Date end','required',[
+              'required' => 'Please choose a date'
+            ]);
+          }
+      
+          if ($this->form_validation->run() == false) {
+            $data = $this->M_weblen->getAlldata();
+            $datConv['allDat'] = $this->convertAllData($data);
+            $this->load->view('admin/V_report',$datConv);
+          }
+          else{
+            //fill cell with data from database
+            $data = $this->printFilter($x);
+            if ($data) {
+              $datConv = $this->convertAllData($data);
+              $no = 1;
+              $x = 3;
+              foreach($datConv as $row)
+              {
+                $sheet->setCellValue('A'.$x, $no++);
+                $sheet->setCellValue('B'.$x, $row['date_fill']);
+                $sheet->setCellValue('C'.$x, $row['nik']);
+                $sheet->setCellValue('D'.$x, $row['nama']);
+                $sheet->setCellValue('E'.$x, $row['divisi']);
+                $sheet->setCellValue('F'.$x, $row['bagian']);
+                $sheet->setCellValue('G'.$x, $row['jabatan']);
+                $sheet->setCellValue('H'.$x, $row['start_periode']);
+                $sheet->setCellValue('I'.$x, $row['end_periode']);
+                
+                $sheet->setCellValue('J'.$x, $row['inisiatif']);
+                $sheet->setCellValue('K'.$x, $row['daya_kreatif']);
+                $sheet->setCellValue('L'.$x, $row['prob_solve']);
+                
+                $sheet->setCellValue('M'.$x, $row['tang_jawab']);
+                $sheet->setCellValue('N'.$x, $row['kom_per']);
+                $sheet->setCellValue('O'.$x, $row['etika_kerja']);
+                
+                $sheet->setCellValue('P'.$x, $row['adap_kerja']);
+                $sheet->setCellValue('Q'.$x, $row['pelayanan']);
+                $sheet->setCellValue('R'.$x, $row['kem_tugas']);
+                
+                $sheet->setCellValue('S'.$x, $row['pen_diri']);
+                $sheet->setCellValue('T'.$x, $row['kem_komunikasi']);
+                $sheet->setCellValue('U'.$x, $row['ker_sama']);
+                
+                $sheet->setCellValue('V'.$x, $row['disiplin']);
+                $sheet->setCellValue('W'.$x, $row['sis_kerja']);
+                $sheet->setCellValue('X'.$x, $row['has_kerja']);
+                $sheet->setCellValue('Y'.$x, $row['nilai_eval']);
+                $sheet->setCellValue('Z'.$x, $row['nilai_kinerja']);
+                
+                $sheet->setCellValue('AA'.$x, $row['periode']);
+                $sheet->setCellValue('AB'.$x, $row['sakit']);
+                $sheet->setCellValue('AC'.$x, $row['izin']);
+                $sheet->setCellValue('AD'.$x, $row['alpa']);
+                $sheet->setCellValue('AE'.$x, $row['terlambat']);
+                $sheet->setCellValue('AF'.$x, $row['nilai_produktivitas']);
+                $sheet->setCellValue('AG'.$x, $row['nilai_absen']);
+                $sheet->setCellValue('AH'.$x, $row['nilai_hasil']);
+        
+                $x++;
+              }
+              //set array style for table
+              $sheet->getStyle('A2:AH'.($x-1))->applyFromArray($styleArray);
+        
+        
+              $writer = new Xlsx($spreadsheet);
+              $filename = 'report-pkwt';
+              
+              header('Content-Type: application/vnd.ms-excel');
+              header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+              header('Cache-Control: max-age=0');
+              $writer->save('php://output');
+              
+      
+      
+            }// end if data found
+            else{
+              $this->session->set_flashdata('notFound', '<div class="alert alert-danger mt-2" role="alert">
+              No data found!</div>');
+              redirect("C_report");
+            } //end else
+      
+      
+          }//end else
+        
 
-      //set cell color 
-      $sheet->getStyle('A2:AH2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
-      $sheet->getStyle('A2:AH2')->getFill()->getStartColor()->setARGB('d0cece');
-      
-
-      //set cell width
-      $cell_width = 17;
-      foreach(range('B','Z') as $columnID) {
-        $sheet->getColumnDimension($columnID)->setWidth($cell_width);
-      }
-      $sheet->getColumnDimension('A')->setWidth(5);
-      $sheet->getColumnDimension('AA')->setWidth($cell_width);
-      $sheet->getColumnDimension('AB')->setWidth($cell_width);
-      $sheet->getColumnDimension('AC')->setWidth($cell_width);
-      $sheet->getColumnDimension('AD')->setWidth($cell_width);
-      $sheet->getColumnDimension('AE')->setWidth($cell_width);
-      $sheet->getColumnDimension('AF')->setWidth($cell_width);
-      $sheet->getColumnDimension('AG')->setWidth($cell_width);
-      $sheet->getColumnDimension('AH')->setWidth($cell_width);
-      
-      
-      //kategori nilai evaluasi
-      $sheet->getStyle('J1:X1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
-      $sheet->getStyle('J1:X1')->getFill()->getStartColor()->setARGB('729fcf');
-      $sheet->getStyle('J1:X1')->applyFromArray($styleArray);
-      $sheet->getStyle('J1:X1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-
-      $sheet->setCellValue('J1', 'Innovation');
-      $sheet->mergeCells('J1:L1');
-      
-      $sheet->setCellValue('M1', 'Integrity');
-      $sheet->mergeCells('M1:O1');
-      
-      $sheet->setCellValue('P1', 'Customer Oriented');
-      $sheet->mergeCells('P1:R1');
-      
-      $sheet->setCellValue('S1', 'Team Work');
-      $sheet->mergeCells('S1:U1');
-      
-      $sheet->setCellValue('V1', 'Professionalism');
-      $sheet->mergeCells('V1:X1');
-      
-      //column name
-      $sheet->setCellValue('A2', 'No');
-			$sheet->setCellValue('B2', 'Tanggal Terima Form');
-      $sheet->setCellValue('C2', 'NIK PKWT');
-			$sheet->setCellValue('D2', 'Nama');
-			$sheet->setCellValue('E2', 'Divisi/Unit Bisnis');
-			$sheet->setCellValue('F2', 'Unit Kerja/Bagian');
-			$sheet->setCellValue('G2', 'Jabatan');
-			$sheet->setCellValue('H2', 'Periode Kontrak (Awal)');
-      $sheet->setCellValue('I2', 'Periode Kontrak (Akhir)');
-      
-			$sheet->setCellValue('J2', 'Inisiatif');
-			$sheet->setCellValue('K2', 'Daya Kreativitas');
-			$sheet->setCellValue('L2', 'Problem Solving');
-      
-			$sheet->setCellValue('M2', 'Tanggung Jawab');
-			$sheet->setCellValue('N2', 'Komitmen Kepada Perusahaan');
-			$sheet->setCellValue('O2', 'Etika Kerja');
-      
-			$sheet->setCellValue('P2', 'Adaptasi Kerja');
-			$sheet->setCellValue('Q2', 'Pelayanan Terhadap Unit Kerja/Pihak Eksternal');
-			$sheet->setCellValue('R2', 'Kemampuan Melaksanakan Tugas');
-      
-			$sheet->setCellValue('S2', 'Penyesuaian Diri');
-			$sheet->setCellValue('T2', 'Kemampuan Berkomunikasi');
-			$sheet->setCellValue('U2', 'Kerja Sama');
-      
-			$sheet->setCellValue('V2', 'Disiplin');
-			$sheet->setCellValue('W2', 'Sistematika Kerja');
-      $sheet->setCellValue('X2', 'Hasil Pekerjaan');
-      $sheet->setCellValue('Y2', 'Penilaian Kinerja');
-      $sheet->setCellValue('Z2', 'Hasil Evaluasi');
-
-      $sheet->setCellValue('AA2', 'Hari Kerja(Durasi Kontrak)');
-      $sheet->setCellValue('AB2', 'Sakit');
-      $sheet->setCellValue('AC2', 'Izin');
-      $sheet->setCellValue('AD2', 'Alpa');
-      $sheet->setCellValue('AE2', 'Absen Terlambat(1 Hari = 8 Jam)');
-      $sheet->setCellValue('AF2', 'Produktivitas Kehadiran');
-      $sheet->setCellValue('AG2', 'Absensi');
-      $sheet->setCellValue('AH2', 'Hasil Evaluasi Penilaian');
-      
-
+    }//end if btn print pressed 
+    
+    else if ($_POST['p_btn'] == 'preview') {
       $this->form_validation->set_rules('com_filter','Filter','required',[
         'required' => 'Please select the filter'
       ]);
@@ -231,82 +330,23 @@ class C_report extends CI_Controller {
         $datConv['allDat'] = $this->convertAllData($data);
         $this->load->view('admin/V_report',$datConv);
       }
-      else{
-        //fill cell with data from database
-  
+      else {  
         $data = $this->printFilter($x);
-        if ($data) {
-          $datConv = $this->convertAllData($data);
-          $no = 1;
-          $x = 3;
-          foreach($datConv as $row)
-          {
-            $sheet->setCellValue('A'.$x, $no++);
-            $sheet->setCellValue('B'.$x, $row['date_fill']);
-            $sheet->setCellValue('C'.$x, $row['nik']);
-            $sheet->setCellValue('D'.$x, $row['nama']);
-            $sheet->setCellValue('E'.$x, $row['divisi']);
-            $sheet->setCellValue('F'.$x, $row['bagian']);
-            $sheet->setCellValue('G'.$x, $row['jabatan']);
-            $sheet->setCellValue('H'.$x, $row['start_periode']);
-            $sheet->setCellValue('I'.$x, $row['end_periode']);
-            
-            $sheet->setCellValue('J'.$x, $row['inisiatif']);
-            $sheet->setCellValue('K'.$x, $row['daya_kreatif']);
-            $sheet->setCellValue('L'.$x, $row['prob_solve']);
-            
-            $sheet->setCellValue('M'.$x, $row['tang_jawab']);
-            $sheet->setCellValue('N'.$x, $row['kom_per']);
-            $sheet->setCellValue('O'.$x, $row['etika_kerja']);
-            
-            $sheet->setCellValue('P'.$x, $row['adap_kerja']);
-            $sheet->setCellValue('Q'.$x, $row['pelayanan']);
-            $sheet->setCellValue('R'.$x, $row['kem_tugas']);
-            
-            $sheet->setCellValue('S'.$x, $row['pen_diri']);
-            $sheet->setCellValue('T'.$x, $row['kem_komunikasi']);
-            $sheet->setCellValue('U'.$x, $row['ker_sama']);
-            
-            $sheet->setCellValue('V'.$x, $row['disiplin']);
-            $sheet->setCellValue('W'.$x, $row['sis_kerja']);
-            $sheet->setCellValue('X'.$x, $row['has_kerja']);
-            $sheet->setCellValue('Y'.$x, $row['nilai_eval']);
-            $sheet->setCellValue('Z'.$x, $row['nilai_kinerja']);
-            
-            $sheet->setCellValue('AA'.$x, $row['periode']);
-            $sheet->setCellValue('AB'.$x, $row['sakit']);
-            $sheet->setCellValue('AC'.$x, $row['izin']);
-            $sheet->setCellValue('AD'.$x, $row['alpa']);
-            $sheet->setCellValue('AE'.$x, $row['terlambat']);
-            $sheet->setCellValue('AF'.$x, $row['nilai_produktivitas']);
-            $sheet->setCellValue('AG'.$x, $row['nilai_absen']);
-            $sheet->setCellValue('AH'.$x, $row['nilai_hasil']);
-    
-            $x++;
-          }
-          //set array style for table
-          $sheet->getStyle('A2:AH'.($x-1))->applyFromArray($styleArray);
-    
-    
-          $writer = new Xlsx($spreadsheet);
-          $filename = 'report-pkwt';
-          
-          header('Content-Type: application/vnd.ms-excel');
-          header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
-          header('Cache-Control: max-age=0');
-          $writer->save('php://output');
-          
-  
-  
-        }// end if data found
-        else{
+        if ($data) { //data found
+          $datConv['allDat'] = $this->convertAllData($data);
+          $this->load->view('admin/V_report',$datConv);
+        }
+        else{ //data not found
           $this->session->set_flashdata('notFound', '<div class="alert alert-danger mt-2" role="alert">
           No data found!</div>');
           redirect("C_report");
-        } //end else
-
+        }
 
       }
+
+    
+    }//end if btn preview pressed
+
       
     } //end printFunc
 }// end
