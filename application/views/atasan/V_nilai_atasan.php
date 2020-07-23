@@ -39,46 +39,83 @@
 				<div class="row" style="margin: 5px 10px">
 					<h3 style="margin-bottom: 15px">Identitas Karyawan</h3>
 				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="idkar_area">
-							<table class="table table-striped" style="margin-bottom: 0px">
-							<tbody>
-								<tr>
-									<th scope="row">Nama</th>
-									<td><?= $nama?></td>
-								</tr>
-								<tr>
-									<th scope="row">NIK PKWT</th>
-									<td><?= $nik?></td>
-								</tr>
-								<tr>
-									<th scope="row">Divisi / Unit Bisnis</th>
-									<td><?= $divisi?></td>
-								</tr>
-								<tr>
-									<th scope="row">Unit Kerja / Bagian</th>
-									<td><?= $bagian?></td>
-								</tr>
-								<tr>
-									<th scope="row">Jabatan</th>
-									<td><?= $jabatan?></td>
-								</tr>
-								<tr>
-									<th scope="row">Periode Kontrak</th>
-									<td><?= $start_periode," s.d. ",$end_periode?> </td>
-								</tr>
-							</tbody>
-							</table>
-						</div>
-					</div>
+		        <div class="row">
+		            <div class="col-md-12">
+		                <div class="idkar_area">
+		                    <table class="table table-striped" style="margin-bottom: 0px">
+		                        <tbody>
+		                        <tr>
+                                    <th scope="row">Nama</th>
+                                    <td style="width: 50%"><?= $karyawan['nama']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">NIK PKWT</th>
+                                    <td><?= $karyawan['nik']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Divisi / Unit Bisnis</th>
+                                    <td><?= $karyawan['divisi']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Unit Kerja / Bagian</th>
+                                    <td><?= $karyawan['bagian']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Jabatan</th>
+                                    <td><?= $karyawan['jabatan']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Periode Kontrak</th>
+                                    <td><?= $karyawan['start_periode']; ?> s.d. <?= $karyawan['end_periode']; ?></td>
+                                </tr>
+		                        </tbody>
+		                    </table>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="row" style="margin: 5px 10px">
+					<h3 style="margin-bottom: 15px; margin-top: 15px">Absensi</h3>
 				</div>
+		        <div class="row">
+		            <div class="col-md-12">
+		                <div class="idkar_area">
+		                    <table class="table table-striped" style="margin-bottom: 0px">
+		                        <tbody>
+		                        <tr>
+                                    <th scope="row">Hari Kerja</th>
+                                    <td style="width: 50%;"><?= $absensi['periode']; ?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sakit</th>
+                                    <td><?= $absensi['sakit']; ?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Izin</th>
+                                    <td><?= $absensi['izin']; ?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Alpa</th>
+                                    <td><?= $absensi['alpa']; ?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Absen Terlambat</th>
+                                    <td><?= $absensi['terlambat']; ?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Nilai Produktivitas</th>
+                                    <td><b><?= $absensi['nilai_produktivitas']; ?>%</b></td>
+                                </tr>
+		                        </tbody>
+		                    </table>
+		                </div>
+		            </div>
+		        </div>
 				<div class="row" style="margin: 5px 10px">
 				
 					<h3 style="margin-top: 15px">Hasil Evaluasi</h3>
 				</div>
 				<div class="row" style="margin: 0px 10px">
-					<form method="POST" action="<?= site_url('C_nilai_atasan');?>/addPenilaian/<?= $id_karyawan?>" style="margin: 0px 10px; width: 100%"> 
+					<form method="POST" action="<?php site_url('C_nilai_atasan/addPenilaian/' . $karyawan['id_karyawan']); ?>" style="margin: 0px 10px; width: 100%"> 
 						<h4>Innovation</h4>
 						<div class="form-group row form_eval">
 							<label for="nama" class="col-md-4 col-form-label">Inisiatif</label>
