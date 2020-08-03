@@ -98,7 +98,7 @@ class C_tambah_admin extends CI_Controller {
 			case "asdir":
 				$ret = "Asisten Direksi";
 				break;
-			case "enersida":
+			case "enersisda":
 				$ret = "UB Energi dan Sistem Daya";
 				break;
 			case "sistrans":
