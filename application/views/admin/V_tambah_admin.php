@@ -64,7 +64,7 @@
 								<option disabled selected value>-- Divisi --</option>
 								<option value="sekper" <?php echo set_select('divisi', 'sekper') ?> >Sekretaris Perusahaan</option>
 								<option value="satpi" <?= set_select('divisi', 'satpi'); ?> >Satuan Pengawasan Internal</option>
-								<option value="penjmutu" <?= set_select('divisi', 'penjmutu'); ?> >Divisi Penjamin Mutu, Sistem & K3L</option>
+								<option value="penjmutu">Divisi Penjamin Mutu, Sistem & K3L</option>
 								<option value="keuakun">Divisi Keuangan & Akuntansi</option>
 								<option value="sdmu">Divisi Sumber Daya Manusia dan Umum</option>
 								<option value="pemtek">Divisi Pengembangan Teknologi</option>
@@ -96,7 +96,12 @@
 					<div class="form-group row">
 						<label for="jabatan" class="col-md-4 col-form-label">Jabatan</label>
 						<div class="col-md-8">
-							<input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan" value="<?= set_value('jabatan')?>">
+							<select name="jabatan" id="jabatan" class="form-control" style="width: 100%;">
+								<option value disabled selected>-- Jabatan --</option>
+								<option value="Pejabat Struktural">Pejabat Struktural</option>
+								<option value="Staff">Staff</option>	
+							</select>
+							<!-- <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan" value="<?= set_value('jabatan')?>"> -->
 							<?= form_error('jabatan','<small class="text-danger pl-2">','</small>') ?>
 						</div>
 					</div>

@@ -44,14 +44,14 @@
                                     <label><?= form_error('username','<small class="text-danger pl-2">','</small>') ?></label>
                                 </div>
                                 <div class="form-group mb-3">
-                                	<input name="password" placeholder="Password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input name="password" placeholder="Password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                     <label><?= form_error('password','<small class="text-danger pl-2">','</small>') ?></label>
                                 </div>
                                 <div class="form-group mb-3">
                                     <input name="confirm_password" placeholder="Confirm Password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                     <label><?= form_error('confirm_password','<small class="text-danger pl-2">','</small>') ?></label>
                                 </div>
-                            	<button type="submit" class="btn btn-info" style="display: block; text-align: center; margin: auto;">Sign Up</button>
+                                <button type="submit" class="btn btn-info" style="display: block; text-align: center; margin: auto;">Sign Up</button>
                                 <p class="mt-5 mb-3 text-muted">Already have an account? <a href="<?php echo site_url('C_landing_page'); ?>">Log In</a></p> 
                             </form>
                         </div>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_sign_up_atasan extends CI_Controller {
+class C_sign_up_admUnit extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,9 +11,8 @@ class C_sign_up_atasan extends CI_Controller {
 	
 	public function index()
 	{
-		$data = array();
-
-		$this->load->view('admin/V_sign_up_atasan');
+		// $data = array();
+		$this->load->view('admin/V_sign_up_admUnit');
 	}
 
 	public function add()

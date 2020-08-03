@@ -34,12 +34,10 @@
                 <div class="col-md-3">
                 <input class="form-control" type="text" id="myInput" onkeyup="searchName()" placeholder="Search for names.." title="Type in a name">
                 </div>
-                <!-- <div>
-                    <button class="btn btn-info" type="submit">search</button>
+
+                <!-- <div class="col-md-7" style="text-align: right; margin-left: 180px;">
+                    <a href="#" class="btn btn-success">+ New</a>
                 </div> -->
-                <div class="col-md-7" style="text-align: right; margin-left: 180px;">
-                    <a href="<?= site_url('C_tambah_admin'); ?>" class="btn btn-success">+ New</a>
-                </div>
             </div>
         </form>
             

@@ -29,7 +29,8 @@
 							<h3><font color="#888888"> Login sebagai : </font> </h3>
 						</div>
 
-						<div class="row div_center">							
+						<div class="row div_center">
+														
 							<button class="btn btn-secondary btn-lg" data-target="#myModal1" data-toggle="modal" >atasan</button>		
 							<button class="btn btn-info btn-lg" data-target="#myModal2" data-toggle="modal" >admin</button>        
 						</div>				   

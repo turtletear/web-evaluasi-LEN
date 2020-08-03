@@ -20,7 +20,7 @@ class C_sign_up_admin extends CI_Controller {
 			$this->load->view('admin/V_sign_up_admin');
         }
         else {
-        	if ($this->input->post('password') == $this->input->post('confirm_password')) {
+			if ($this->input->post('password') == $this->input->post('confirm_password')) {
 			$check = $this->M_weblen2->checkSignUp($this->input->post('username'));
 				if ($check == False) {
 					$data = array();
