@@ -1,3 +1,4 @@
+/*
 // object literal holding data for option elements
 var Select_List_Data = {
     
@@ -168,4 +169,40 @@ document.forms['mainForm'].elements['divisi'].onchange = function(e) {
     // add options to associated select box
     appendDataToSelect(rel, data);
     
-}());
+}()); */
+
+function getDivisi(){
+    $.ajax({
+        type : 'get',
+        url : site_url+'fetchDivisi',
+        dataType : 'json',
+        success : function(result){
+            $('#divisi').append('<option disabled selected value >-- Divisi --</option>');
+            $.each(result, function(i, data){
+                $('#divisi').append('<option value='+ data.id_divisi +'>'+ data.nama_divisi +'</option>');
+            })
+        }
+
+    });
+}
+
+function getBagian() {
+    $('#divisi').change(function() {
+        var idDiv = $(this).val();
+        // console.log("print id = " + idDiv);
+        $.ajax({
+            type : 'get',
+            url : site_url+'fetchBagian/'+ idDiv,
+            dataType : 'json',
+            success : function(result){
+                $('#bagian').empty();
+                $('#bagian').append('<option disabled selected value >-- Bagian --</option>');
+                $.each(result, function(i, data){
+                    $('#bagian').append('<option value='+ data.id_bagian +'>'+ data.nama_bagian +'</option>');
+                })
+            }
+    
+        }); //end ajax
+    });
+}
+

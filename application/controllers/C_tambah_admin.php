@@ -16,37 +16,51 @@ class C_tambah_admin extends CI_Controller {
 		$this->load->view('admin/V_tambah_admin', $data);
 	}
 
-	public function getHolidays() //ambil data libur
-	{
-		$array = json_decode(file_get_contents("https://cdn.jsdelivr.net/gh/guangrei/Json-Indonesia-holidays/calendar.json"));
+	// public function getHolidays() //ambil data libur
+	// {
+	// 	$array = json_decode(file_get_contents("https://cdn.jsdelivr.net/gh/guangrei/Json-Indonesia-holidays/calendar.json"));
 		
-		return $array;
+	// 	return $array;
+	// }
+
+	// public function ttl_per($date1, $date2){ //fungsi mencari selisih dari range tanggal tertentu
+	// 	$start = date_create($date2);
+	// 	$end = date_create($date1);
+		
+	// 	$interv = $end->diff($start);
+	// 	$days = $interv->days;
+	// 	$period = new DatePeriod($start, new DateInterval('P1D'), $end);
+	// 	$this->getHolidays();
+	// 	$holidays = array('2019-12-24','2019-12-25','2020-01-01');
+	// 	//###########################Perbaikin disini###########################
+	// 	foreach($period as $dt){
+	// 		$curr = $dt->format('D');
+			
+	// 		if ($curr == 'Sat' || $curr == 'Sun') {
+	// 			$days--;
+				
+	// 		}
+	// 		elseif (in_array($dt->format('Y-m-d'),$holidays)) {
+	// 			$days--;
+	// 			// echo "ini curr ".$dt->format('Y-m-d'). "<br>";
+	// 		}
+	// 	}
+		
+	// 	return $days;
+	// }
+
+	public function fetchDivisi()
+	{
+		$obj = $this->M_weblen->getAllDivisi();
+		echo json_encode($obj);
 	}
 
-	public function ttl_per($date1, $date2){ //fungsi mencari selisih dari range tanggal tertentu
-		$start = date_create($date2);
-		$end = date_create($date1);
-		
-		$interv = $end->diff($start);
-		$days = $interv->days;
-		$period = new DatePeriod($start, new DateInterval('P1D'), $end);
-		$this->getHolidays();
-		$holidays = array('2019-12-24','2019-12-25','2020-01-01');
-		//###########################Perbaikin disini###########################
-		foreach($period as $dt){
-			$curr = $dt->format('D');
-			
-			if ($curr == 'Sat' || $curr == 'Sun') {
-				$days--;
-				
-			}
-			elseif (in_array($dt->format('Y-m-d'),$holidays)) {
-				$days--;
-				// echo "ini curr ".$dt->format('Y-m-d'). "<br>";
-			}
-		}
-		
-		return $days;
+
+	public function fetchBagian($idDiv)
+	{
+		// $idDiv = $_POST['id'];
+		$obj = $this->M_weblen->getBagian($idDiv);
+		echo json_encode($obj);
 	}
 
 	public function convert_poin_absen($point, $durasi) // mengubah point2 absensi kedalam bentuk persen %
@@ -156,21 +170,14 @@ class C_tambah_admin extends CI_Controller {
 
 		else {
 
-			//hitung periode total
-			// $ePeriod = $this->input->post('end_periode');
-			// $sPeriod = $this->input->post('start_periode');
-			// $ttl_hari = $this->ttl_per($ePeriod,$sPeriod);
-
 			$ttl_hari = $this->input->post('ttl_hari');
 			
-			// echo "<h1>total hari ".$ttl_hari. "</h1>";
 			//konversi point absensi ke dalam bentuk persen%
 			$sakit = $this->convert_poin_absen($this->input->post('sakit'),$ttl_hari);
 			$izin = $this->convert_poin_absen($this->input->post('izin'),$ttl_hari);
 			$alpa = $this->convert_poin_absen($this->input->post('alpa')*2,$ttl_hari);
 			$telat = $this->convert_poin_absen($this->input->post('atelat'),$ttl_hari);
 
-			//ttl_hari bukan dari selisih tanggal:)
 			$prod = $this->ttlProductvt($sakit,$izin,$alpa,$telat); //total nilai produktivitas
 			$abs = $this->ttlAbsensi($prod);//total nilai absensi, 30% x nilai produktivitas
 

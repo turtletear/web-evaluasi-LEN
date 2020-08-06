@@ -193,4 +193,25 @@ class M_weblen extends CI_Model {
         $this->db->update('karyawan');
 
     }
+
+    public function getAllDivisi()
+    {
+        $this->db->select('*');
+        $this->db->from('divisi');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getBagian($id) //get data bagian berdasarkan divisi tertentu
+    {
+        $this->db->select('*');
+        $this->db->from('bagian');
+        $this->db->where('id_divisi', $id);
+        $this->db->where('status', 1);
+
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
