@@ -189,7 +189,6 @@ function getDivisi(){
 function getBagian() {
     $('#divisi').change(function() {
         var idDiv = $(this).val();
-        // console.log("print id = " + idDiv);
         $.ajax({
             type : 'get',
             url : site_url+'fetchBagian/'+ idDiv,
@@ -198,7 +197,7 @@ function getBagian() {
                 $('#bagian').empty();
                 $('#bagian').append('<option disabled selected value >-- Bagian --</option>');
                 $.each(result, function(i, data){
-                    $('#bagian').append('<option value='+ data.id_bagian +'>'+ data.nama_bagian +'</option>');
+                    $('#bagian').append('<option value="'+ data.nama_bagian +'">'+ data.nama_bagian +'</option>');
                 })
             }
     

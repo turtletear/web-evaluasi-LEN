@@ -82,56 +82,28 @@ class C_tambah_admin extends CI_Controller {
 		return round($x, 0, PHP_ROUND_HALF_DOWN);
 	}
 
-	public function divConv($x) //konversi kode divisi
+	public function divConv($id) //konversi kode divisi
 	{
-		switch ($x) {
-			case "sekper":
-				$ret = "Sekretaris Perusahaan";
-				break;
-			case "satpi":
-				$ret = "Satuan Pengawasan Internal";
-				break;
-			case "penjmutu":
-				$ret = "Divisi Penjamin Mutu, Sistem & K3L";
-				break;
-			case "keuakun":
-				$ret = "Divisi Keuangan & Akuntansi";
-				break;
-			case "sdmu":
-				$ret = "Divisi Sumber Daya Manusia dan Umum";
-				break;
-			case "pemtek":
-				$ret = "Divisi Pengembangan Teknologi";
-				break;
-			case "logis":
-				$ret = "Divisi Logistik";
-				break;
-			case "manstraop":
-				$ret = "Divisi Manajemen Strategi dan Operasi";
-				break;
-			case "asdir":
-				$ret = "Asisten Direksi";
-				break;
-			case "enersisda":
-				$ret = "UB Energi dan Sistem Daya";
-				break;
-			case "sistrans":
-				$ret = "UB Sistem Transportasi";
-				break;
-			case "elekhan":
-				$ret = "UB Elektronika Pertahanan";
-				break;
-			case "tiknav":
-				$ret = "UB Teknologi Informasi, Komunikasi, dan Navigasi";
-				break;
-			case "industri":
-				$ret = "UB Industri";
-				break;
+		$data = $this->M_weblen->geetDivisibyId($id);
+		if ($data) {
+			return $data['nama_divisi'];
 		}
-		return $ret;
+		else {
+			return "not found!";
+		}
 	}
 
 	public function newEntry(){
+
+		// $div = $this->divConv($this->input->post('divisi'));
+		// $bag = $this->input->post('bagian');
+
+		// echo "divisi : ". $div . "<br> ";
+		// echo "bagian : ". $bag;
+
+		// die;
+
+
 		$this->form_validation->set_rules('combo_atasan', 'Atasan', 'required|trim');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|min_length[8]|max_length[8]|is_unique[karyawan.nik]',[
@@ -169,7 +141,6 @@ class C_tambah_admin extends CI_Controller {
 		} //end if
 
 		else {
-
 			$ttl_hari = $this->input->post('ttl_hari');
 			
 			//konversi point absensi ke dalam bentuk persen%

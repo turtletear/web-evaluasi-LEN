@@ -203,6 +203,16 @@ class M_weblen extends CI_Model {
         return $query->result();
     }
 
+    public function geetDivisibyId($id)
+    {
+        $this->db->select('*');
+        $this->db->from('divisi');
+        $this->db->where('id_divisi', $id);
+        
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
     public function getBagian($id) //get data bagian berdasarkan divisi tertentu
     {
         $this->db->select('*');
