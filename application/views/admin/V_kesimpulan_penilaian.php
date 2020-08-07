@@ -60,8 +60,7 @@
                         </div>
                     </div>
                 </div>
-
-
+                <br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="detail_area">
@@ -239,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <br>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="detail_area">
@@ -276,7 +275,7 @@
                         </div>
                     </div>
                 </div>
-
+                <br>
                 <form action="<?= base_url();?>C_kesimpulan_penilaian/saveKesimpulan/<?= $karyawan['id_karyawan']?>" method="post">
                     <div class="row"">
                         <div class="col-md-12">

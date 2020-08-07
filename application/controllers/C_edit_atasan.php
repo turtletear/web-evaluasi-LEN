@@ -1,20 +1,75 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_nilai_atasan extends CI_Controller {
+class C_edit_atasan extends CI_Controller {
     
     public function __construct(){
-		parent::__construct();
-		$this->load->library("form_validation");
-		$this->load->model('M_weblen');
+        parent::__construct();
+        $this->load->library("form_validation");
+        $this->load->model('M_weblen');
     }
     
     public function index($id_emp){
 
         $data = array();
-        $data['karyawan'] = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
+        $data['karyawan'] = $this->M_weblen2->getDataKar($id_emp); //get data karyawan        
+        $data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
         $data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
-		$this->load->view('atasan/V_nilai_atasan',$data);
+        $this->load->view('atasan/V_edit_atasan',$data);
+    }
+
+    public function convertEval ($point) // mengubah persen% evaluasi kedalam bentuk point2
+    {
+        if ($point == 6.7) {
+            $x = '5 (Sangat Baik)' ;
+        }
+        elseif ($point == 5.3){
+            $x = '4 (Baik)';
+        }
+        elseif ($point == 4.0){
+            $x = '3 (Cukup)';
+        }
+        elseif ($point == 2.7){
+            $x = '2 (Kurang)';
+        }
+        elseif ($point == 1.3){
+            $x = '1 (Sangat Kurang';
+        }
+        else{
+            $x = 'none';
+        }
+        return $x;
+    }
+
+    public function newDataEval ($id)
+    {
+        $eval = array();
+        $eval = $this->M_weblen2->getDataEval($id);
+        $dataEval = [
+            'id_evaluasi' => $eval['id_evaluasi'],
+            'nik' => $eval['nik'],
+            'date_fill' => $eval['date_fill'],
+            'inisiatif' => $this->convertEval($eval['inisiatif']),
+            'daya_kreatif' => $this->convertEval($eval['daya_kreatif']),
+            'prob_solve' => $this->convertEval($eval['prob_solve']),
+            'tang_jawab' => $this->convertEval($eval['tang_jawab']),
+            'kom_per' => $this->convertEval($eval['kom_per']),
+            'etika_kerja' => $this->convertEval($eval['etika_kerja']),
+            'adap_kerja' => $this->convertEval($eval['adap_kerja']),
+            'pelayanan' => $this->convertEval($eval['pelayanan']),
+            'kem_tugas' => $this->convertEval($eval['kem_tugas']),
+            'pen_diri' => $this->convertEval($eval['pen_diri']),
+            'kem_komunikasi' => $this->convertEval($eval['kem_komunikasi']),
+            'ker_sama' => $this->convertEval($eval['ker_sama']),
+            'disiplin' => $this->convertEval($eval['disiplin']),
+            'sis_kerja' => $this->convertEval($eval['sis_kerja']),
+            'has_kerja' => $this->convertEval($eval['has_kerja']),
+            'nilai_eval' => $eval['nilai_eval'],
+            'nilai_kinerja' => $eval['nilai_kinerja'],
+            'nama_atasan' => $eval['nama_atasan'],
+            'nik_atasan' => $eval['nik_atasan']
+        ];
+        return $dataEval;
     }
 
     public function convPoint($point){
@@ -60,16 +115,16 @@ class C_nilai_atasan extends CI_Controller {
                 'alasan' => $putus,
                 'j_pagu' => '-'
             ];
-		}
-		elseif ($stat === "Lainnya") {
+        }
+        elseif ($stat === "Lainnya") {
             $dataStat = [
                 'status' => $lain,
                 'alasan' => '-',
                 'j_pagu' => $jpagu
             ];
-		}
-		elseif ($stat === "Diperpanjang 3 Bulan" || $stat === "Diperpanjang 1 Tahun" || $stat === "Diperpanjang 6 Bulan") {
-			$dataStat = [
+        }
+        elseif ($stat === "Diperpanjang 3 Bulan" || $stat === "Diperpanjang 1 Tahun" || $stat === "Diperpanjang 6 Bulan") {
+            $dataStat = [
                 'status' => $stat,
                 'alasan' => '-',
                 'j_pagu' => $jpagu
@@ -119,18 +174,18 @@ class C_nilai_atasan extends CI_Controller {
         $this->form_validation->set_rules('hkerja', 'Hasil Pekerjaan', 'required|trim');
 
         $this->form_validation->set_rules('combo1','Status','required');
-		$x = $this->input->post('combo1');
-		if ($x === "Diputus") {
-			$this->form_validation->set_rules('combo_putus', 'Alasan putus', 'required|trim');
-		}
-		elseif ($x === "Lainnya") {
+        $x = $this->input->post('combo1');
+        if ($x === "Diputus") {
+            $this->form_validation->set_rules('combo_putus', 'Alasan putus', 'required|trim');
+        }
+        elseif ($x === "Lainnya") {
             $this->form_validation->set_rules('inp_lainnya', 'Lainnya', 'required|trim');
             $this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');
-		} //end if
-		elseif ($x === "Diperpanjang 3 Bulan" || $x === "Diperpanjang 1 Tahun" || $x === "Diperpanjang 6 Bulan") {
-			$this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');
-		} //end if
-		
+        } //end if
+        elseif ($x === "Diperpanjang 3 Bulan" || $x === "Diperpanjang 1 Tahun" || $x === "Diperpanjang 6 Bulan") {
+            $this->form_validation->set_rules('combo_pagu', 'Jenis pagu', 'required|trim');
+        } //end if
+        
 
         if($this->form_validation->run() == false){
 
@@ -139,7 +194,7 @@ class C_nilai_atasan extends CI_Controller {
             $data['karyawan'] = $this->M_weblen2->getDataKar($id_emp); //get data karyawan
             $data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
             $this->load->view('atasan/V_nilai_atasan',$data);
-		
+        
         } //end if
 
         else{
@@ -207,8 +262,8 @@ class C_nilai_atasan extends CI_Controller {
             $this->M_weblen->updateStat($id_emp, $dataStat);
 
             $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
-			Data saved!</div>');
-            redirect('C_dashboard_atasan'); 
+            Data saved!</div>');
+            redirect('C_history_atasan'); 
 
 
 
@@ -216,6 +271,6 @@ class C_nilai_atasan extends CI_Controller {
             
         }// end else
     }
-	
+    
 
 }

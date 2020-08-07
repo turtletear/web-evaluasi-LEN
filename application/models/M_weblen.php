@@ -122,7 +122,8 @@ class M_weblen extends CI_Model {
         $this->db->from('karyawan');
         $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
         $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
-        $this->db->where('karyawan.status !=','-');
+        $this->db->where('karyawan.status','Diputus');
+        $this->db->or_where('karyawan.kode_pagu !=','-');
         $this->db->order_by("evaluasi.date_fill", "asc");
 
         $query = $this->db->get();
@@ -174,5 +175,22 @@ class M_weblen extends CI_Model {
 
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    public function updateStat($id, $dataStat) //untuk karyawan
+    {
+        $this->db->where('id_karyawan', $id);
+        $this->db->set('status', $dataStat['status']);
+        $this->db->set('alasan', $dataStat['alasan']);
+        $this->db->set('anggaran', $dataStat['j_pagu']);
+        $this->db->update('karyawan');
+        
+    }
+    public function updateStat2($id, $kpagu) //untuk karyawan
+    {
+        $this->db->where('id_karyawan', $id);
+        $this->db->set('kode_pagu', $kpagu);
+        $this->db->update('karyawan');
+
     }
 }

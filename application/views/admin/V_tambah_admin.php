@@ -167,8 +167,11 @@
 								</div>								
 							</div>
 						</div>
+					</div>
+					<div class="col-md-12">
+						<center><button type="submit" class="btn btn-success" style="width: 100%">Save</button></center>	
 					</div>				
-					<button type="submit" class="btn btn-success ml-3" style="width: 97%">Save</button>
+					
 			</form>
 				</div>
 			</div>
