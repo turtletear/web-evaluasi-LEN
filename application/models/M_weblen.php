@@ -213,7 +213,7 @@ class M_weblen extends CI_Model {
         return $query->row_array();
     }
 
-    public function getBagian($id) //get data bagian berdasarkan divisi tertentu
+    public function getBagian($id) //get data bagian berdasarkan divisi tertentu dgn status = 1
     {
         $this->db->select('*');
         $this->db->from('bagian');
@@ -223,5 +223,23 @@ class M_weblen extends CI_Model {
 
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function getAllBagianbyIdDivisi($id) //get data bagian berdasarkan divisi tertentu 
+    {
+        $this->db->select('*');
+        $this->db->from('bagian');
+        $this->db->where('id_divisi', $id);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function updateSB($idDiv, $idBag, $value)  //update status bagian, 0->1 / 1->0
+    {
+        $this->db->set('status', $value);
+        $this->db->where('id_divisi', $idDiv);
+        $this->db->where('id_bagian', $idBag);
+        $this->db->update('bagian');
     }
 }

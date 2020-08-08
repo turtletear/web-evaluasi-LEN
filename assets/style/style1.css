@@ -90,7 +90,7 @@
 
 .idkar_area{
 	background-color: white;
-	overflow: auto;   /*experimental, biar konten gak offside */
+	overflow: auto;
 	border-radius: 10px;
 	margin: auto;
 	width: 98%;
@@ -99,4 +99,18 @@
 .cb_report{
     float: left;
     width: 20%;
+}
+
+
+.div_set_uk{
+    border-radius: 5px;
+    background-color: whitesmoke;
+    display: block;
+    height: 210px;
+}
+
+.overflow_enable{
+    display: block;
+    height: 160px;
+    overflow: scroll;
 }

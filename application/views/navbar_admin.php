@@ -1,6 +1,7 @@
     
 
         <!-- start navbar -->
+        
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #004D8D;">
@@ -9,16 +10,16 @@
                     </a>                     
                     <ul class="navbar-nav ml-auto">                  
                         <li class="nav-item">
-                            <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_dashboard_admin'); ?>">Home</a>
+                            <a class="nav-link ml-2" href="<?php echo site_url('C_dashboard_admin'); ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="padding-right: 30px;" href="#">Setting Admin Unit</a>
+                            <a class="nav-link ml-2" href="<?php echo site_url('C_setting_uk'); ?>">Setting Unit Kerja</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="padding-right: 30px;" href="<?php echo site_url('C_report'); ?>">Report</a>
+                            <a class="nav-link ml-2" href="<?php echo site_url('C_report'); ?>">Report</a>
                         </li>
                         <li class="nav-item dropdown mr-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link ml-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Registration
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">

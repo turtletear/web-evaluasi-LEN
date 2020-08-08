@@ -95,15 +95,6 @@ class C_tambah_admin extends CI_Controller {
 
 	public function newEntry(){
 
-		// $div = $this->divConv($this->input->post('divisi'));
-		// $bag = $this->input->post('bagian');
-
-		// echo "divisi : ". $div . "<br> ";
-		// echo "bagian : ". $bag;
-
-		// die;
-
-
 		$this->form_validation->set_rules('combo_atasan', 'Atasan', 'required|trim');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|min_length[8]|max_length[8]|is_unique[karyawan.nik]',[

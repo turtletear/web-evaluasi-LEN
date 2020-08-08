@@ -60,8 +60,8 @@
 						<label class="col-md-4 col-form-label">Divisi / Unit Bisnis</label>
 						<div class="col-md-8">
 							<select name="divisi" id="divisi" class="form-control" style="width: 100%;">
-								<!-- <option disabled selected value>-- Divisi --</option>
-								<option value="sekper">Sekretaris Perusahaan</option>
+								<option disabled selected value>-- Divisi --</option>
+								<!-- <option value="sekper">Sekretaris Perusahaan</option>
 								<option value="satpi">Satuan Pengawasan Internal</option>
 								<option value="penjmutu">Divisi Penjamin Mutu, Sistem & K3L</option>
 								<option value="keuakun">Divisi Keuangan & Akuntansi</option>
@@ -85,7 +85,7 @@
 						<label for="bagian" class="col-md-4 col-form-label">Unit Kerja / Bagian</label>
 						<div class="col-md-8">
 							<select name="bagian" id="bagian" class="form-control" style="width: 100%;">
-								
+							<option disabled selected value>-- Bagian --</option>
 							</select>
 
 							<?= form_error('bagian','<small class="text-danger pl-2">','</small>') ?>
@@ -183,7 +183,7 @@
 	<!-- JS, Popper.js, and jQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		var site_url = "<?= site_url('C_tambah_admin/')?>"
+		var site_url = "<?= site_url()?>"
 		getDivisi()
 		getBagian()
 	</script>
