@@ -3,19 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
--- Generation Time: Jul 09, 2020 at 04:42 PM
-=======
--- Generation Time: Jul 07, 2020 at 06:49 PM
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
--- Generation Time: Jul 07, 2020 at 06:49 PM
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
--- Generation Time: Jul 07, 2020 at 06:49 PM
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+-- Generation Time: Aug 09, 2020 at 03:21 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -56,7 +44,6 @@ CREATE TABLE `absensi` (
 --
 
 INSERT INTO `absensi` (`id_absensi`, `nik`, `sakit`, `izin`, `alpa`, `periode`, `terlambat`, `nilai_absen`, `nilai_produktivitas`) VALUES
-<<<<<<< HEAD
 (66, 71129019, 1, 1, 4, 100, 9, 25, 85),
 (67, 123456, 0, 0, 0, 100, 0, 30, 100),
 (68, 123456777, 0, 2, 8, 50, 0, 27, 90),
@@ -69,31 +56,23 @@ INSERT INTO `absensi` (`id_absensi`, `nik`, `sakit`, `izin`, `alpa`, `periode`, 
 (75, 1301171212, 2, 0, 0, 100, 1, 29, 97),
 (76, 1201162021, 0, 2, 0, 100, 1, 29, 97),
 (77, 1301174352, 0, 2, 4, 100, 0, 28, 94),
-(78, 1301174353, 0, 0, 18, 100, 0, 25, 82);
-=======
-(45, 1301174354, 1, 1, 0, 100, 0, 29, 98),
-(47, 130117222, 0, 0, 0, 100, 0, 30, 100),
-(48, 1301174359, 2.9, 1.4, 2.9, 70, 1.4, 27, 91),
-(49, 1201164352, 1, 1, 2, 100, 1, 28, 95),
-(50, 1301174002, 0, 0, 2, 100, 0, 29, 98),
-(51, 1301174111, 0, 0, 10, 100, 0, 27, 90),
-(52, 1301174355, 0, 3, 0, 100, 0, 29, 97),
-(55, 1301174399, 0, 2, 0, 100, 0, 29, 98),
-(56, 1201164111, 0, 0, 28.6, 70, 0, 21, 71),
-(57, 1201164358, 0, 0, 0, 100, 2, 29, 98),
-(58, 1401111534, 0, 2.2, 0, 180, 0, 29, 98),
-(59, 1201164357, 0, 9, 0, 100, 0, 27, 91),
-(60, 1101192573, 0, 0, 4, 100, 3, 28, 93),
-(61, 1301174113, 2, 2, 4, 100, 2, 27, 90),
-(62, 130117201, 0, 0, 0, 100, 0, 30, 100),
-(63, 1301171222, 0, 0, 0, 100, 0, 30, 100);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+(78, 1301174353, 0, 0, 18, 100, 0, 25, 82),
+(79, 12345679, 14, 0, 0, 100, 2, 25, 84),
+(80, 11223333, 0, 0, 4, 100, 9, 26, 87),
+(81, 11223322, 0, 0, 4, 100, 0, 29, 96),
+(82, 12331232, 2, 2, 0, 100, 0, 29, 96),
+(83, 11231151, 0, 2, 0, 100, 1, 29, 97),
+(84, 22551126, 0, 2, 0, 100, 4, 28, 94),
+(85, 12345670, 0, 0, 0, 100, 2, 29, 98),
+(86, 12345990, 0, 0, 0, 100, 2, 29, 98),
+(87, 12345678, 1, 0, 0, 100, 2, 29, 97),
+(88, 12345678, 0, 0, 0, 100, 0, 30, 100),
+(89, 12345600, 0, 3, 0, 100, 2, 28, 95),
+(90, 12345688, 3.8, 0, 0, 80, 3.8, 28, 92),
+(91, 12345981, 0, 3, 6, 100, 2, 27, 89),
+(92, 19247126, 1.1, 0, 2.2, 90, 1.1, 29, 96),
+(93, 12394816, 1, 0, 18, 100, 2, 24, 79),
+(94, 10294716, 3.3, 0, 0, 30, 0, 29, 97);
 
 -- --------------------------------------------------------
 
@@ -139,6 +118,55 @@ INSERT INTO `atasan` (`id_atasan`, `nik`, `nama`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bagian`
+--
+
+CREATE TABLE `bagian` (
+  `id_bagian` int(11) NOT NULL,
+  `id_divisi` int(11) NOT NULL,
+  `nama_bagian` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bagian`
+--
+
+INSERT INTO `bagian` (`id_bagian`, `id_divisi`, `nama_bagian`, `status`) VALUES
+(1, 1, 'Legal', 1),
+(2, 1, 'Komunikasi Korporasi', 1),
+(3, 1, 'Program Kemitraan & Bina Lingkungan', 1),
+(4, 1, 'Manajemen Korporasi', 1),
+(5, 2, 'Monitoring & Kualitas Audit', 1),
+(6, 2, 'Audit', 1),
+(7, 3, 'Penjamin Mutu', 1),
+(8, 3, 'Penjaminan Sistem', 1),
+(9, 3, 'Keselamatan, Kesehatan Kerja, dan Lingkungan', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `divisi`
+--
+
+CREATE TABLE `divisi` (
+  `id_divisi` int(11) NOT NULL,
+  `nama_divisi` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `divisi`
+--
+
+INSERT INTO `divisi` (`id_divisi`, `nama_divisi`, `status`) VALUES
+(1, 'Sekretaris Perusahaan', 1),
+(2, 'Satuan Pengawasan Internal', 1),
+(3, 'Divisi Penjamin Mutu, Sistem & K3L', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `evaluasi`
 --
 
@@ -172,43 +200,35 @@ CREATE TABLE `evaluasi` (
 --
 
 INSERT INTO `evaluasi` (`id_evaluasi`, `nik`, `date_fill`, `inisiatif`, `daya_kreatif`, `prob_solve`, `tang_jawab`, `kom_per`, `etika_kerja`, `adap_kerja`, `pelayanan`, `kem_tugas`, `pen_diri`, `kem_komunikasi`, `ker_sama`, `disiplin`, `sis_kerja`, `has_kerja`, `nilai_eval`, `nilai_kinerja`, `nama_atasan`, `nik_atasan`) VALUES
-<<<<<<< HEAD
 (56, 71129019, '2020-07-09', 6.7, 5.3, 5.3, 6.7, 5.3, 5.3, 6.7, 6.7, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 60, 85, 'aweee', 1201164155),
 (57, 123456, '2020-07-09', 5.3, 5.3, 4, 5.3, 5.3, 4, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 54, 77, 'ariq lagi', 1301174352),
 (58, 123456777, '2020-07-09', 5.3, 4, 4, 5.3, 4, 2.7, 1.3, 1.3, 4, 4, 4, 4, 4, 5.3, 6.7, 42, 60, 'Ariq Musyaffa Ramadhani', 1301174354),
-(59, 1234567011, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
-(60, 1301170000, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
-(61, 130117112, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
+(59, 1234567011, '2020-07-16', 5.3, 4, 5.3, 5.3, 5.3, 5.3, 4, 4, 4, 5.3, 4, 4, 2.7, 2.7, 2.7, 45, 64, 'aweeee', 1201164155),
+(60, 1301170000, '2020-07-09', 4, 4, 5.3, 5.3, 1.3, 1.3, 5.3, 1.3, 1.3, 2.7, 1.3, 1.3, 5.3, 2.7, 1.3, 31, 44, 'Ariq Musyaffa Ramadhani', 1301174354),
+(61, 130117112, '2020-07-13', 4, 4, 6.7, 6.7, 5.3, 5.3, 6.7, 5.3, 5.3, 5.3, 5.3, 6.7, 5.3, 4, 6.7, 58, 83, 'Ariq Musyaffa Ramadhani', 1301174354),
 (62, 1201164111, '2020-07-09', 6.7, 5.3, 6.7, 5.3, 6.7, 5.3, 2.7, 4, 2.7, 1.3, 1.3, 2.7, 4, 1.3, 2.7, 41, 59, 'ariq lagi', 1301174352),
-(63, 1301174359, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
-(64, 1201164113, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
+(63, 1301174359, '2020-07-16', 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 6.7, 70, 100, 'Ariq Musyaffa Ramadhani', 1301174354),
+(64, 1201164113, '2020-07-14', 4, 4, 6.7, 5.3, 6.7, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 4, 4, 4, 6.7, 54, 77, 'Ariq Musyaffa Ramadhani', 1301174354),
 (65, 1301171212, '2020-07-09', 4, 4, 4, 5.3, 2.7, 1.3, 2.7, 1.3, 4, 2.7, 5.3, 5.3, 5.3, 4, 5.3, 40, 57, 'Ariq Musyaffa Ramadhani', 1301174354),
-(66, 1201162021, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
-(67, 1301174352, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
-(68, 1301174353, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354);
-=======
-(35, 1301174354, '2020-06-30', 4, 4, 5.3, 4, 4, 4, 5.3, 5.3, 5.3, 5.3, 4, 4, 4, 6.7, 6.7, 50, 72, 'ariq ganteng', 1312313),
-(37, 130117222, '2020-06-30', 4, 5.3, 6.7, 5.3, 5.3, 6.7, 5.3, 6.7, 5.3, 6.7, 6.7, 6.7, 5.3, 4, 6.7, 61, 87, 'ariq ganteng', 1312313),
-(38, 1301174359, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
-(39, 1201164352, '2020-07-07', 4, 5.3, 5.3, 5.3, 4, 4, 4, 4, 4, 4, 4, 4, 5.3, 5.3, 5.3, 47, 68, 'Muten Roshi', 1201164155),
-(40, 1301174002, '2020-07-01', 4, 4, 5.3, 2.7, 5.3, 5.3, 6.7, 4, 6.7, 5.3, 5.3, 6.7, 5.3, 6.7, 5.3, 55, 79, 'ariq', 1312313),
-(41, 1301174111, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
-(42, 1301174355, '2020-07-06', 4, 5.3, 6.7, 4, 2.7, 2.7, 4, 2.7, 1.3, 1.3, 5.3, 2.7, 1.3, 5.3, 5.3, 38, 55, 'ariq ganteng', 1312313),
-(45, 1301174399, '2020-07-06', 5.3, 4, 4, 6.7, 6.7, 6.7, 2.7, 6.7, 6.7, 2.7, 6.7, 4, 6.7, 6.7, 5.3, 57, 82, 'Ariq Musyaffa Ramadhani', 1234123),
-(46, 1201164111, '2020-07-02', 4, 5.3, 5.3, 5.3, 4, 4, 1.3, 5.3, 4, 5.3, 2.7, 1.3, 5.3, 2.7, 4, 42, 60, 'monkey d. garp', 11111111),
-(47, 1201164358, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
-(48, 1401111534, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
-(49, 1201164357, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0),
-(50, 1101192573, '2020-07-02', 6.7, 5.3, 4, 5.3, 4, 4, 4, 2.7, 1.3, 4, 2.7, 1.3, 1.3, 2.7, 5.3, 38, 55, 'monkey d. garp', 11111111),
-(51, 1301174113, '2020-07-07', 5.3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5.3, 5.3, 6.7, 47, 67, 'monkey d. garp', 10099),
-(52, 1301171222, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, '-', 0);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+(66, 1201162021, '2020-07-09', 5.3, 6.7, 5.3, 6.7, 5.3, 5.3, 2.7, 6.7, 5.3, 4, 4, 4, 4, 5.3, 4, 52, 75, 'Ariq Musyaffa Ramadhani', 1301174354),
+(67, 1301174352, '2020-07-16', 4, 4, 5.3, 6.7, 2.7, 4, 1.3, 6.7, 5.3, 4, 6.7, 5.3, 4, 5.3, 4, 49, 69, 'Ariq Musyaffa Ramadhani', 1301174354),
+(68, 1301174353, '2020-07-13', 4, 4, 5.3, 2.7, 6.7, 5.3, 4, 5.3, 5.3, 6.7, 5.3, 5.3, 4, 2.7, 2.7, 49, 69, 'Ariq Musyaffa Ramadhani', 1301174354),
+(69, 12345679, '2020-08-04', 4, 5.3, 1.3, 4, 1.3, 5.3, 4, 2.7, 1.3, 1.3, 6.7, 2.7, 5.3, 1.3, 5.3, 36, 52, 'aweeee', 1201164155),
+(70, 11223333, '2020-07-16', 4, 5.3, 5.3, 4, 4, 4, 4, 5.3, 5.3, 5.3, 4, 4, 5.3, 4, 4, 47, 68, 'Ariq Musyaffa Ramadhani', 1301174354),
+(71, 11223322, '2020-08-03', 2.7, 4, 5.3, 6.7, 6.7, 5.3, 5.3, 5.3, 4, 5.3, 4, 2.7, 1.3, 1.3, 2.7, 44, 63, 'Ariq Musyaffa Ramadhani', 1301174354),
+(72, 12331232, '2020-07-16', 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 4, 6.7, 5.3, 5.3, 5.3, 5.3, 5.3, 56, 80, 'Ariq Musyaffa Ramadhani', 1301174354),
+(73, 11231151, '2020-07-17', 6.7, 5.3, 5.3, 5.3, 5.3, 4, 4, 4, 5.3, 4, 5.3, 5.3, 4, 5.3, 4, 51, 73, 'Ariq Musyaffa Ramadhani', 1301174354),
+(74, 22551126, '2020-07-17', 5.3, 5.3, 5.3, 5.3, 5.3, 5.3, 6.7, 6.7, 5.3, 6.7, 6.7, 5.3, 6.7, 5.3, 4, 60, 85, 'Ariq Musyaffa Ramadhani', 1301174354),
+(75, 12345670, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
+(76, 12345990, '2020-08-03', 6.7, 2.7, 4, 1.3, 5.3, 6.7, 6.7, 1.3, 2.7, 5.3, 4, 2.7, 4, 5.3, 1.3, 42, 60, 'Ariq Musyaffa Ramadhani', 1301174354),
+(77, 12345678, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
+(78, 12345678, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
+(79, 12345600, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
+(80, 12345688, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
+(81, 12345981, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
+(82, 19247126, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
+(83, 12394816, '2020-08-06', 4, 6.7, 5.3, 4, 1.3, 2.7, 1.3, 2.7, 2.7, 1.3, 1.3, 4, 2.7, 4, 4, 34, 48, 'Ariq Musyaffa Ramadhani', 1301174354),
+(84, 10294716, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354);
 
 -- --------------------------------------------------------
 
@@ -239,43 +259,33 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik`, `divisi`, `jabatan`, `bagian`, `nilai_hasil`, `end_periode`, `start_periode`, `status`, `alasan`, `anggaran`, `kode_pagu`) VALUES
-<<<<<<< HEAD
 (55, 56, 66, 'Ed Sheeran', 71129019, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 85, '2020-07-09', '2020-07-09', 'Diperpanjang 6 Bulan', '-', 'Proyek/program', 'SG-774'),
 (56, 57, 67, 'ini bawahan ariq lagi', 123456, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 84, '2020-07-09', '2020-07-09', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
-(57, 58, 68, 'ini bawahan Ariq Musyaffa Ramadhani', 123456777, 'Div. SDM & Umum', 'Ketua', 'Bag. PKBL', 69, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
-(58, 59, 69, 'ini bawahan ariq lagi aweeee', 1234567011, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 0, '2020-08-09', '2020-07-09', '-', '-', '-', '-'),
-(59, 60, 70, 'Ariq Musyaffa Ramadhani Jr.', 1301170000, 'Div. SDM & Umum', 'Pelaksana', 'Bag. PKBL', 0, '2020-07-09', '2020-07-09', '-', '-', '-', '-'),
-(60, 61, 71, 'Peter', 130117112, 'Div. SDM & Umum', 'Asisten', 'Bag. Legal', 0, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
+(57, 58, 68, 'ini bawahan Ariq Musyaffa Ramadhani', 123456777, 'Div. SDM & Umum', 'Ketua', 'Bag. PKBL', 69, '2020-09-09', '2020-07-09', 'Diperpanjang 1 Tahun', '-', 'Rutin', 'SG-774'),
+(58, 59, 69, 'ini bawahan ariq lagi aweeee', 1234567011, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 69, '2020-08-09', '2020-07-09', 'Diperpanjang 6 Bulan', '-', 'Rutin', '6339 mantap'),
+(59, 60, 70, 'Ariq Musyaffa Ramadhani Jr.', 1301170000, 'Div. SDM & Umum', 'Pelaksana', 'Bag. PKBL', 59, '2020-07-09', '2020-07-09', '-', '-', '-', '-'),
+(60, 61, 71, 'Peter', 130117112, 'Div. SDM & Umum', 'Asisten', 'Bag. Legal', 86, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
 (61, 62, 72, 'Rama', 1201164111, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 69, '2020-08-09', '2020-07-09', 'diperpanjang 2 tahun', '-', '-', '-'),
-(62, 63, 73, 'Kaido', 1301174359, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 0, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
-(63, 64, 74, 'Kizaru', 1201164113, 'Div. SDM & Umum', 'Fungsional', 'Bag. Legal', 0, '2020-08-09', '2020-07-09', '-', '-', '-', '-'),
+(62, 63, 73, 'Kaido', 1301174359, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 98, '2020-09-09', '2020-07-09', 'diperpanjang 2 tahun', '-', 'Rutin', 'SG-774 custom'),
+(63, 64, 74, 'Kizaru', 1201164113, 'Div. SDM & Umum', 'Fungsional', 'Bag. Legal', 81, '2020-08-09', '2020-07-09', '-', '-', '-', '-'),
 (64, 65, 75, 'Marco the phoenix', 1301171212, 'Pirates', 'Captain Division', 'Captain', 69, '2020-08-09', '2020-07-09', '-', '-', '-', '-'),
-(65, 66, 76, 'Portgas D. Ace', 1201162021, 'Pirates', 'Captain Division', 'Captain', 0, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
-(66, 67, 77, 'H.Tarjo', 1301174352, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 0, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
-(67, 68, 78, 'Dracule Mihawk', 1301174353, 'Pirates', 'Shichibukai', 'Marine', 0, '2020-08-09', '2020-07-09', '-', '-', '-', '-');
-=======
-(34, 35, 45, 'Ariq Musyaffa Ramadhani', 1301174354, 'Div. SDM & Umum', 'Pelaksana', 'Marketing', 79, '2020-06-30', '2020-06-30', 'Diperpanjang 3 Bulan', '-', 'Rutin', '6339 mantap'),
-(36, 37, 47, 'acha', 130117222, 'Ginyu Force', 'Pentolan', 'Marketing', 91, '2020-08-30', '2020-06-30', 'diperpanjang 2 minggu', '-', '-', '-'),
-(37, 38, 48, 'Peter', 1301174359, 'Ginyu Force', 'Pelaksana', 'Nyapu halaman', 0, '2020-06-30', '2020-06-30', '-', '-', '-', '-'),
-(38, 39, 49, 'Tarjo', 1201164352, 'MBP', 'Pelaksana', 'PHP', 75, '2020-08-30', '2020-06-30', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
-(39, 40, 50, 'spopovich', 1301174002, 'Strike Force', 'Asisten', 'Sniper', 84, '2021-03-28', '2020-06-30', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
-(40, 41, 51, 'Rama', 1301174111, 'Ginyu Force', 'Fungsional', 'Marketing', 0, '2020-10-01', '2020-07-01', '-', '-', '-', '-'),
-(41, 42, 52, 'Bittersweet by najla', 1301174355, 'Div. SDM & Umum', 'Ketua', 'Bag. PKBL', 67, '2020-09-01', '2020-07-01', '-', '-', '-', '-'),
-(44, 45, 55, 'Marco the phoenix', 1301174399, 'Shirohige', 'Captain Division', 'Pirates', 86, '2020-08-01', '2020-07-01', '-', '-', '-', '-'),
-(45, 46, 56, 'Akainu', 1201164111, 'Navy', 'Fleet Admiral', 'Navy', 63, '2020-08-31', '2020-07-01', '-', '-', '-', '-'),
-(46, 47, 57, 'Kizaru', 1201164358, 'Navy', 'Admiral', 'Navy', 0, '2020-09-01', '2020-07-01', '-', '-', '-', '-'),
-(47, 48, 58, 'Kaido', 1401111534, 'Pirates', 'Yonko', 'Pirates', 0, '2020-10-01', '2020-07-01', '-', '-', '-', '-'),
-(48, 49, 59, 'Kurohige', 1201164357, 'Pirates', 'Yonko', 'Pirates', 0, '2020-09-01', '2020-07-01', '-', '-', '-', '-'),
-(49, 50, 60, 'Dracule Mihawk', 1101192573, 'Pirates', 'Shichibukai', 'Pirates', 66, '2021-02-01', '2020-07-10', '-', '-', '-', '-'),
-(50, 51, 61, 'Coco', 1301174113, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 74, '2020-08-07', '2020-07-07', 'Diperpanjang 6 Bulan', '-', 'Proyek/program', 'SG-774'),
-(52, 52, 63, 'Tarjo mantap mantap', 1301171222, 'Div. SDM & Umum', 'Pentolan', 'Bag. SDM', 0, '2020-08-31', '2020-07-23', '-', '-', '-', '-');
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+(65, 66, 76, 'Portgas D. Ace', 1201162021, 'Pirates', 'Captain Division', 'Captain', 81, '2020-09-09', '2020-07-09', 'mantap', '-', '-', '-'),
+(66, 67, 77, 'H.Tarjo', 1301174352, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 77, '2020-09-09', '2020-07-09', 'diperpanjang 15 Bulan', '-', 'Proyek/program', '-'),
+(67, 68, 78, 'Dracule Mihawk', 1301174353, 'Pirates', 'Shichibukai', 'Marine', 74, '2020-08-09', '2020-07-09', 'Diputus', 'Kegiatan Proyek/Program Selesai', '-', '-'),
+(68, 69, 79, 'Peter Spopovich Ivankov Cyka Cyka', 12345679, 'Divisi Keuangan & Akuntansi', 'Asisten', 'Akuntansi & Perpajakan', 61, '2020-09-17', '2020-07-16', 'diperpanjang 2 tahun', '-', 'Rutin', '-'),
+(69, 70, 80, 'kakarotto', 11223333, 'UB Elektronika Pertahanan', 'Pelaksana', 'Komersial', 73, '2020-10-16', '2020-07-16', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
+(70, 71, 81, 'mamat', 11223322, 'Divisi Logistik', 'Asisten', 'Operasi Logistik', 73, '2020-11-17', '2020-07-16', 'Diperpanjang 3 Bulan', '-', 'Rutin', 'SG-774'),
+(71, 72, 82, 'Steve', 12331232, 'UB Teknologi Informasi, Komunikasi, dan Navigasi', 'Ketua', 'Komersial', 85, '2020-09-17', '2020-07-17', 'Diperpanjang 1 Tahun', '-', 'Rutin', '-'),
+(72, 73, 83, 'Super Vegito', 11231151, 'Divisi Pengembangan Teknologi', 'Ketua', 'Produk Energi & Traksi', 80, '2020-08-17', '2020-07-17', 'Diperpanjang 3 Bulan', '-', 'Proyek/program', 'SG-73122'),
+(73, 74, 84, 'Arnim Zola', 22551126, 'Divisi Pengembangan Teknologi', 'Ketua', 'Produl Hankam & TIKN', 88, '2020-08-17', '2020-07-17', 'Diperpanjang 2 tahun', '-', 'Proyek/program', 'SGM-009'),
+(74, 76, 86, 'Ariq Musyaffa Ramadhani', 12345990, 'Sekretaris Perusahaan', 'Ketua', 'Legal', 71, '2020-08-03', '2020-08-03', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
+(75, 77, 87, 'Diana', 12345678, 'UB Energi dan Sistem Daya', 'Ketua', 'Pemasaran & Penjualan', 0, '2020-09-03', '2020-08-03', '-', '-', '-', '-'),
+(76, 79, 89, 'azmi', 12345600, 'UB Sistem Transportasi', 'Pelaksana', 'Rekayasa Sistem', 0, '2020-08-03', '2020-08-03', '-', '-', '-', '-'),
+(77, 80, 90, 'ulya', 12345688, 'UB Elektronika Pertahanan', 'Asisten', 'Komersial', 0, '2020-10-03', '2020-08-03', '-', '-', '-', '-'),
+(78, 81, 91, 'jojo', 12345981, 'UB Teknologi Informasi, Komunikasi, dan Navigasi', 'Pelaksana', 'Komersial', 0, '2020-08-03', '2020-08-03', '-', '-', '-', '-'),
+(79, 82, 92, 'nicholas', 19247126, 'UB Industri', 'Asisten', 'Rekayasa Produk', 0, '2020-10-03', '2020-08-03', '-', '-', '-', '-'),
+(80, 83, 93, 'lalalisa', 12394816, 'Sekretaris Perusahaan', 'Pejabat Struktural', 'Program Kemitraan & Bina Lingkungan', 58, '2020-10-06', '2020-08-06', 'Diperpanjang 1 Tahun', '-', 'Proyek/program', 'SG-774'),
+(81, 84, 94, 'robin', 10294716, 'Divisi Penjamin Mutu, Sistem & K3L', 'Pejabat Struktural', 'Keselamatan, Kesehatan Kerja, dan Lingkungan', 0, '2020-09-08', '2020-08-08', '-', '-', '-', '-');
 
 --
 -- Indexes for dumped tables
@@ -300,6 +310,19 @@ ALTER TABLE `atasan`
   ADD PRIMARY KEY (`id_atasan`);
 
 --
+-- Indexes for table `bagian`
+--
+ALTER TABLE `bagian`
+  ADD PRIMARY KEY (`id_bagian`),
+  ADD KEY `id_divisi` (`id_divisi`);
+
+--
+-- Indexes for table `divisi`
+--
+ALTER TABLE `divisi`
+  ADD PRIMARY KEY (`id_divisi`);
+
+--
 -- Indexes for table `evaluasi`
 --
 ALTER TABLE `evaluasi`
@@ -321,19 +344,7 @@ ALTER TABLE `karyawan`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
-=======
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -348,44 +359,38 @@ ALTER TABLE `atasan`
   MODIFY `id_atasan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `bagian`
+--
+ALTER TABLE `bagian`
+  MODIFY `id_bagian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `divisi`
+--
+ALTER TABLE `divisi`
+  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `evaluasi`
 --
 ALTER TABLE `evaluasi`
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
-=======
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
-=======
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
-=======
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
->>>>>>> 4669ac38bbdc69342388e0e4a47c3c54afab53ae
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bagian`
+--
+ALTER TABLE `bagian`
+  ADD CONSTRAINT `bagian_ibfk_1` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id_divisi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `karyawan`
