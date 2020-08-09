@@ -61,20 +61,6 @@
 						<div class="col-md-8">
 							<select name="divisi" id="divisi" class="form-control" style="width: 100%;">
 								<option disabled selected value>-- Divisi --</option>
-								<!-- <option value="sekper">Sekretaris Perusahaan</option>
-								<option value="satpi">Satuan Pengawasan Internal</option>
-								<option value="penjmutu">Divisi Penjamin Mutu, Sistem & K3L</option>
-								<option value="keuakun">Divisi Keuangan & Akuntansi</option>
-								<option value="sdmu">Divisi Sumber Daya Manusia dan Umum</option>
-								<option value="pemtek">Divisi Pengembangan Teknologi</option>
-								<option value="logis">Divisi Logistik</option>
-								<option value="manstraop">Divisi Manajemen Strategi dan Operasi</option>
-								<option value="asdir">Asisten Direksi</option>
-								<option value="enersisda">UB Energi dan Sistem Daya</option>
-								<option value="sistrans">UB Sistem Transportasi</option>
-								<option value="elekhan">UB Elektronika Pertahanan</option>
-								<option value="tiknav">UB Teknologi Informasi, Komunikasi, dan Navigasi</option>
-								<option value="industri">UB Industri</option> -->
 							</select>
 
 							<?= form_error('divisi','<small class="text-danger pl-2">','</small>') ?>
