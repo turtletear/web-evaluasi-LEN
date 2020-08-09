@@ -4,7 +4,7 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard Atasan</title>
+	<title>History Penilaian Atasan</title>
 
 	<link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 
@@ -19,21 +19,17 @@
 </head>
 
 <body>
-	<script type="text/javascript">
-        localStorage.removeItem('stat');
-        localStorage.removeItem('stat2');
-    </script>
 	<div class="container">
 		<!-- NAVBAR  -->
         <?php $this->load->view('navbar.php') ?>
-        
 		<div class="main_bgr2 container">
 			<h6 class="ml-1">
 				Hello <?= $this->session->userdata('sessAtasan')['nama_atasan'] ?>
 			</h6>	
-			<form action="" method="">
+		<form action="" method="">
 			<?= $this->session->flashdata('evalAt');?>	
-				<div class="row" style=" margin-bottom: 10px;">					
+			<div class="row" style=" margin-bottom: 10px;">
+					
 					<div class="col-md-3">
 						<input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 					</div>
@@ -48,7 +44,8 @@
 								<tr>
 									<th scope="col">Nama</th>
 									<th scope="col">NIK</th>
-									<th scope="col">Absensi</th>
+									<th scope="col">Nilai</th>
+									<th scope="col">Tanggal Penilaian</th>
 									<th scope="col"></th>
 								</tr>
 							</thead>
@@ -60,8 +57,9 @@
 									<tr>
 										<td><?= $emp['nama']?></td>
 										<td style=" text-align: center;"><?= $emp['nik']?></td>
-										<td style=" text-align: center;"><?= $emp['nilai_produktivitas']?>%</td>
-										<td style=" text-align: center;"><a href="<?= base_url(); ?>C_nilai_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> + Nilai </button> </td>
+										<td style=" text-align: center;"><?= $emp['nilai_hasil']?>%</td>
+										<td style=" text-align: center;"><?= $emp['date_fill']?></td>
+										<td style=" text-align: center;"><a href="<?= base_url(); ?>C_detail_atasan/index/<?= $emp['id_karyawan'] ?>"> <button class="btn btn-primary"> Detail </button> </td>
 									</tr>
 								<?php endforeach ?>
 								<!-- end php loop here.. -->
@@ -73,16 +71,21 @@
 									<tr>
 										<td class="text-center text-danger" colspan="4">
 											<h5>
-												No employee to grade	
+												No employees have been graded	
 											</h5> 
 										</td>
 									</tr>
 								</tbody>
-							<?php }?>						
-						</table>						
-					</div>					
-				</div>				
+							<?php }?>
+
+						
+					</table>
+					
+				</div>
+				
 			</div>
+			
+		</div>
 		</div>
 	</div>
     <!-- end main content -->

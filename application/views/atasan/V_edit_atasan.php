@@ -115,7 +115,7 @@
 					<h3 style="margin-top: 15px">Hasil Evaluasi</h3>
 				</div>
 				<div class="row" style="margin: 0px 10px">
-					<form method="POST" action="<?= site_url('C_nilai_atasan/addPenilaian/' . $karyawan['id_karyawan']); ?>" style="margin: 0px 10px; width: 100%"> 
+					<form method="POST" action="<?= site_url('C_edit_atasan/addPenilaian/' . $karyawan['id_karyawan']); ?>" style="margin: 0px 10px; width: 100%"> 
 						<h4>Innovation</h4>
 						<div class="form-group row form_eval">
 							<label for="nama" class="col-md-4 col-form-label">Inisiatif</label>
@@ -332,7 +332,7 @@
 							</div>
 						</div>
 						<hr>
-						<h3 style="margin-left: -10px;">Kesimpulan</h3>
+						<h4>Kesimpulan</h4>
 						<!-------------------------- DARI SINI WOYYY -------------------------->
 
 						<div class="form-group row form_eval">
@@ -370,7 +370,7 @@
 							</div>
 						</div>
 
-						<center><button type="submit"  class="btn btn-success justify-content-center" style="width: 97%">Save</button></center>
+						<center><button type="submit"  class="btn btn-success justify-content-center" style="width: 97%;">Save</button></center>
 						
 					</div>
 					<!-- endrow -->

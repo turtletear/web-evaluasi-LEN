@@ -14,7 +14,7 @@
 		<div class="container main_bgr">
 			<div class="row div_center">
 				
-				<div class="login_area2" style="margin-top: 100px; margin-bottom: 53px; height: auto;">
+				<div class="login_area2" style="margin-top: 5%; margin-bottom: 50%; height: auto;">
 					
 					<div class="container-fluid">
 						<div class="row div_center">
@@ -24,8 +24,12 @@
 						<div class="row div_center">
 							<h1><font color="#888888"> PKWT </font> </h1>
 						</div>
+
+						<div>
+							<img src="<?= base_url()?>/assets/img/logo.png" style="height: 30%; width: 30%;">
+						</div>
 						
-						<div class="row div_center" style="margin-top: 50%;">
+						<div class="row div_center" style="margin-top: 5%;">
 							<h3><font color="#888888"> Login sebagai : </font> </h3>
 						</div>
 
@@ -94,7 +98,7 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <br>
-                                <h2> Login Atasan </h2>
+                                <h2> Log in Atasan </h2>
                                 <br>
                                 <?= $this->session->flashdata('failed_atasan');?>
                                 <form action="<?php echo site_url('C_landing_page/add'); ?>" method="post">
@@ -104,13 +108,13 @@
                                             <label><?= form_error('nik_atasan','<small class="text-danger pl-2">','</small>') ?></label>
                                         </div>
                                         <div class="form-group mb-3">
-                                            <input name="pass_atasan" placeholder="password" type="Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <input name="pass_atasan" placeholder="Password" type="Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                             <label><?= form_error('pass_atasan','<small class="text-danger pl-2">','</small>') ?></label>
                                         </div>
                                     </div>
 
                                     <div>
-                                        <button style="margin-bottom: 30px;" type="submit" class="btn btn-info btn-lg" >Next</button>
+                                        <button style="margin-bottom: 30px;" type="submit" class="btn btn-info btn-lg" >Log in</button>
                                         <br>
                                     </div>
                                 </form>

@@ -78,7 +78,7 @@ class M_weblen2 extends CI_Model {
 
     public function getDatKar2($nik) //for dashboard atasan
     {
-        $this->db->select('karyawan.id_karyawan,karyawan.nama,karyawan.nik,absensi.nilai_absen');
+        $this->db->select('karyawan.id_karyawan,karyawan.nama,karyawan.nik,absensi.nilai_absen, absensi.nilai_produktivitas');
         $this->db->from('karyawan');  //karyawan join absensi  
         $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
         $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
@@ -88,6 +88,19 @@ class M_weblen2 extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function getDatKar3($nik) //for history atasan
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');  //karyawan join absensi  
+        $this->db->join('absensi','karyawan.id_absensi = absensi.id_absensi');
+        $this->db->join('evaluasi','karyawan.id_evaluasi = evaluasi.id_evaluasi');
+        $this->db->where('nilai_hasil !=',0);
+        $this->db->where('nik_atasan',$nik);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }    
 
     public function updateKesimpulan($id,$data)
     {

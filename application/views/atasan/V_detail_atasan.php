@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Admin</title>
+    <title>Detail Karyawan Atasan</title>
     <link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
@@ -13,7 +13,7 @@
         <!-- -----------------------BATAS SUCI----------------------- -->
 
         <!-- NAVBAR  -->
-        <?php $this->load->view('navbar_admin.php') ?>
+        <?php $this->load->view('navbar.php') ?>
 
         <!-- start main content here..-->
         <div class="container" style="background-color: #E7E7E7;">
@@ -61,6 +61,7 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="detail_area">
@@ -103,7 +104,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width: 70%;" scope="row">Inisiatif</th>
+                                                        <th scope="row" style="width: 70%">Inisiatif</th>
                                                         <td style="width: 30%"><?= $evaluasi['inisiatif']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -134,7 +135,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width: 70%" scope="row">Tanggung Jawab</th>
+                                                        <th scope="row" style="width: 70%">Tanggung Jawab</th>
                                                         <td style="width: 30%"><?= $evaluasi['tang_jawab']; ?></td>
                                                     </tr>
                                                     <tr>
@@ -321,8 +322,7 @@
                                         <td> <?= $karyawan['alasan']; ?> </td>
                                     </tr>
                                 <?php }
-                                else if ($karyawan['status']==='Diperpanjang 1 Tahun' || $karyawan['status']==='Diperpanjang 6 Bulan' || $karyawan['status']==='Diperpanjang 3 Bulan') { ?>
-                                    
+                                else if ($karyawan['status']==='Diperpanjang 1 Tahun' || $karyawan['status']==='Diperpanjang 6 Bulan' || $karyawan['status']==='Diperpanjang 3 Bulan') { ?>                                    
                                     <tr>
                                         <th scope="row">Status</th>
                                         <td><?= $karyawan['status']; ?></td>
@@ -342,12 +342,7 @@
                                         <h5 class="text-danger"> contract status not graded yet </h5>
                                         </td>
                                     </tr>
-                                <?php } else if($karyawan['status'] == 'Diputus'){?>
-                                    <tr>
-                                        <th scope="row">Status</th>
-                                        <td><?= $karyawan['status']; ?></td>
-                                    </tr>
-                                <?php } else { ?>
+                                <?php } else{?>
                                     <tr>
                                         <th scope="row">Status</th>
                                         <td><?= $karyawan['status']; ?></td>
@@ -421,12 +416,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         
-                        <div style="margin-top: 3%;">
-                            <?php if ($karyawan['status'] != '-') { ?>
-                                <center><a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>" target="_blank"><button type="button" class="btn btn-secondary" style="width: 65%;">Print</button></a></center>
-                            <?php } else { ?>
-                                <center><a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-secondary" style="width: 65%;" disabled>Print</button></a></center>
-                            <?php } ?>
+                        <div style="margin-top: 5%;">
+                            <center><a href="<?php echo site_url('C_edit_atasan/index/' . $karyawan['id_karyawan']); ?>" target="_blank"><button type="button" class="btn btn-success" style="width: 65%;" >Edit</button></a></center>
                         </div>
 
                     </div>
