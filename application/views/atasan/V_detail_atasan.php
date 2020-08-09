@@ -417,7 +417,7 @@
                     <div class="col-md-12">
                         
                         <div style="margin-top: 5%;">
-                            <center><a href="<?php echo site_url('C_edit_atasan/index/' . $karyawan['id_karyawan']); ?>" target="_blank"><button type="button" class="btn btn-success" style="width: 65%;" >Edit</button></a></center>
+                            <center><a href="<?php echo site_url('C_edit_atasan/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-success" style="width: 65%;" >Edit</button></a></center>
                         </div>
 
                     </div>
