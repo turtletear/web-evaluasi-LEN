@@ -22,7 +22,7 @@ function getBagian() {
             success : function(result){
                 $('#bagian').empty();
                 $.each(result, function(i, data){
-                    $('#bagian').append('<option value="'+ data.nama_bagian +'">'+ data.nama_bagian +'</option>');
+                    $('#bagian').append('<option value="'+ data.id_bagian +'">'+ data.nama_bagian +'</option>');
                 })
             }
     
@@ -105,6 +105,31 @@ function updateStatusBagian(idBag, idDiv, value) {
             console.log(error);
         }
     }) //end ajax
+}
+
+function setDivBag(){
+    $('#combo_atasan').change(function() {
+        var idAt = $(this).val()
+        $.ajax({
+            type : 'get',
+            url : site_url+'C_tambah_admin/fetchBagian2/'+ idAt,
+            dataType : 'json',
+            success : function(result) {
+                data = result[0]
+                $('#inp_div').val(data.nama_divisi);
+                $('#inp_bag').val(data.nama_bagian);
+            },
+            error : function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        }); //end ajax
+    });
+
+
+
+
 }
 
 

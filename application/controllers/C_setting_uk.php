@@ -27,7 +27,7 @@ class C_setting_uk extends CI_Controller {
     $idDiv = $_POST['id_divisi'][0]; //gara2 jadi array setelah get dari variable global _POST
     $val = $_POST['value'];
     if (isset($idBag) && isset($idDiv)) {
-      echo "id bagian:" . $idBag . " dari divisi:". $idDiv . " berhasil di update dengan value:". $val;
+
       $this->M_weblen->updateSB($idDiv, $idBag, $val);
     }
     else{

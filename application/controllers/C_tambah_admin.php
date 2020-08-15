@@ -16,38 +16,6 @@ class C_tambah_admin extends CI_Controller {
 		$this->load->view('admin/V_tambah_admin', $data);
 	}
 
-	// public function getHolidays() //ambil data libur
-	// {
-	// 	$array = json_decode(file_get_contents("https://cdn.jsdelivr.net/gh/guangrei/Json-Indonesia-holidays/calendar.json"));
-		
-	// 	return $array;
-	// }
-
-	// public function ttl_per($date1, $date2){ //fungsi mencari selisih dari range tanggal tertentu
-	// 	$start = date_create($date2);
-	// 	$end = date_create($date1);
-		
-	// 	$interv = $end->diff($start);
-	// 	$days = $interv->days;
-	// 	$period = new DatePeriod($start, new DateInterval('P1D'), $end);
-	// 	$this->getHolidays();
-	// 	$holidays = array('2019-12-24','2019-12-25','2020-01-01');
-	// 	//###########################Perbaikin disini###########################
-	// 	foreach($period as $dt){
-	// 		$curr = $dt->format('D');
-			
-	// 		if ($curr == 'Sat' || $curr == 'Sun') {
-	// 			$days--;
-				
-	// 		}
-	// 		elseif (in_array($dt->format('Y-m-d'),$holidays)) {
-	// 			$days--;
-	// 			// echo "ini curr ".$dt->format('Y-m-d'). "<br>";
-	// 		}
-	// 	}
-		
-	// 	return $days;
-	// }
 
 	public function fetchDivisi()
 	{
@@ -58,8 +26,13 @@ class C_tambah_admin extends CI_Controller {
 
 	public function fetchBagian($idDiv)
 	{
-		// $idDiv = $_POST['id'];
 		$obj = $this->M_weblen->getBagian($idDiv);
+		echo json_encode($obj);
+	}
+
+	public function fetchBagian2($id)
+	{
+		$obj = $this->M_weblen->getAtasanDetail($id);
 		echo json_encode($obj);
 	}
 
@@ -95,6 +68,12 @@ class C_tambah_admin extends CI_Controller {
 
 	public function newEntry(){
 
+		// $idAt = $this->input->post('combo_atasan');
+		// $dataAtasan = $this->M_weblen->getDataAtasan($idAt);
+		// var_dump($dataAtasan);
+		// die;
+
+
 		$this->form_validation->set_rules('combo_atasan', 'Atasan', 'required|trim');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|min_length[8]|max_length[8]|is_unique[karyawan.nik]',[
@@ -102,9 +81,6 @@ class C_tambah_admin extends CI_Controller {
 			'min_length' => 'NIK at least have 8 digit',
 			'max_length' => 'NIK at least have 8 digit'
 		]); 
-		
-		$this->form_validation->set_rules('divisi', 'Divisi', 'required');
-		$this->form_validation->set_rules('bagian', 'Bagian', 'required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 		$this->form_validation->set_rules('start_periode', 'Periode mulai', 'required|trim');
 		$this->form_validation->set_rules('end_periode', 'Periode akhir', 'required|trim');
@@ -156,12 +132,12 @@ class C_tambah_admin extends CI_Controller {
 				'nilai_absen' => $abs,
 				'nilai_produktivitas' => $prod
 			];
-			$this->M_weblen->addAbesen($data_abs); 
+			$this->M_weblen->addAbesen($data_abs);
 			$Absen = $this->M_weblen->getIdAbsen($data_abs['nik']);
 
 			//create data evaluasi
-			$test = $this->input->post('combo_atasan');
-			$dataAtasan = $this->M_weblen->getDataAtasan($test);
+			$idAt = $this->input->post('combo_atasan');
+			$dataAtasan = $this->M_weblen->getDataAtasan($idAt);
 			$dataEvl = [
                 'nik' => $this->input->post('nik'),
                 'date_fill' => '0000-00-00',
@@ -185,6 +161,7 @@ class C_tambah_admin extends CI_Controller {
                 'nama_atasan' => $dataAtasan['nama'],
                 'nik_atasan' => $dataAtasan['nik']
 			];
+
 			$this->M_weblen->addEval($dataEvl);
 			$idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi'];
 			
@@ -197,8 +174,8 @@ class C_tambah_admin extends CI_Controller {
 				'nama' => $this->input->post('nama'),
 				'nik' => $this->input->post('nik'),
 				//-----hati-hati disini-----
-				'divisi' => $this->divConv($this->input->post('divisi')),
-				'bagian' => $this->input->post('bagian'),
+				'divisi' =>  $dataAtasan['nama_divisi'],//$this->divConv($this->input->post('divisi')),
+				'bagian' => $dataAtasan['nama_bagian'],
 				//-----hati-hati disini-----
 				'jabatan' => $this->input->post('jabatan'),
 				'start_periode' => $this->input->post('start_periode'),
@@ -208,6 +185,7 @@ class C_tambah_admin extends CI_Controller {
 				'anggaran' => "-",
 				'kode_pagu' => "-"
 			];
+
 			$this->M_weblen->addKaryawan($data_kar);
 			$this->session->set_flashdata('saveEmp', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
