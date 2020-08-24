@@ -29,25 +29,30 @@ class C_landing_page extends CI_Controller {
 			$this->load->view('V_landing_page');
         }
         else {
-			$data = array();
-			$data['username'] = $this->input->post('username');
+			$this->loginAdmin();
+        }		
+	}
+
+	private function loginAdmin()
+	{
+		$data = array();
+		$data['username'] = $this->input->post('username');
+		$check = $this->M_weblen2->Sign_In($data);
+		if ($check == TRUE) {
+			$data['password'] = md5($this->input->post('password'));
 			$check = $this->M_weblen2->Sign_In($data);
 			if ($check == TRUE) {
-				$data['password'] = md5($this->input->post('password'));
-				$check = $this->M_weblen2->Sign_In($data);
-				if ($check == TRUE) {
-					$data = array();
-					$data['username'] = $check->username;
-					$this->session->set_userdata('userAdmin', $data);
-					redirect(site_url('C_dashboard_admin'));
-				} else {
-					$this->session->set_flashdata('Failed', 'Incorrect Password');
-				}
+				$data = array();
+				$data['username'] = $check->username;
+				$this->session->set_userdata('userAdmin', $data);
+				redirect(site_url('C_dashboard_admin'));
 			} else {
-				$this->session->set_flashdata('Failed', 'Username not found');
+				$this->session->set_flashdata('Failed', 'Incorrect Password!');
 			}
-			redirect(site_url('C_landing_page'));
-        }		
+		} else {
+			$this->session->set_flashdata('Failed', 'Username not found');
+		}
+		redirect(site_url('C_landing_page'));
 	}
 
 	public function add() 
@@ -85,13 +90,59 @@ class C_landing_page extends CI_Controller {
 			else{
 				$this->session->set_flashdata('failed_atasan', '
 				<div class="alert alert-danger" role="alert">
-					incorrect password!
+					Incorrect Password!
 				</div>');
 				redirect('C_landing_page');
 			}
 		}
 		else { //gagal login
 			$this->session->set_flashdata('failed_atasan', '
+			<div class="alert alert-danger" role="alert">
+				Account is not registered, please contact the administrator for registration!
+			</div>');
+			redirect('C_landing_page');
+		}	
+	}
+
+	public function login() 
+	{
+		$this->form_validation->set_rules('nik_admUnit', 'NIK', 'required|trim'); 
+		$this->form_validation->set_rules('pass_admUnit', 'Password', 'required|trim');
+
+		if($this->form_validation->run() == false) {            
+			$this->load->view('V_landing_page');
+        }
+        else{
+			$this->loginAdmUnit();
+        }
+	}
+
+	private function loginAdmUnit()
+	{
+		$datAdmUnit = $this->M_weblen2->getDataAdmUnitNIK($this->input->post('nik_admUnit'));		
+
+		if ($datAdmUnit) { //terdaftar
+			
+			$pass = $this->input->post('pass_admUnit');
+			if (password_verify($pass, $datAdmUnit['password'])) {
+				$sess_data = array(
+					'nama_admUnit' => $datAdmUnit['nama'],
+					'nik_admUnit' =>  $datAdmUnit['nik'],
+					'id_bagian' => $datAdmUnit['id_bagian']
+				);
+				$this->session->set_userdata('sessAdmUnit',$sess_data);
+				redirect('C_dashboard_admUnit');
+			}
+			else{
+				$this->session->set_flashdata('failed_admUnit', '
+				<div class="alert alert-danger" role="alert">
+					Incorrect Password!
+				</div>');
+				redirect('C_landing_page');
+			}
+		}
+		else { //gagal login
+			$this->session->set_flashdata('failed_admUnit', '
 			<div class="alert alert-danger" role="alert">
 				Account is not registered, please contact the administrator for registration!
 			</div>');

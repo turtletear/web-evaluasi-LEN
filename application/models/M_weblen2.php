@@ -41,13 +41,31 @@ class M_weblen2 extends CI_Model {
 
 	public function read_hasil_evaluasi () //dashboard admin
 	{
-		$this->db->select('karyawan.id_karyawan as id_karyawan, karyawan.id_absensi as id_absensi, karyawan.id_evaluasi as id_evaluasi, karyawan.nama as nama, karyawan.nik as nik, karyawan.kode_pagu as kode_pagu, evaluasi.nilai_eval as nilai_eval, absensi.nilai_produktivitas as nilai_produktivitas, karyawan.nilai_hasil as nilai_hasil, karyawan.status as status');
+		$this->db->select('*');
 		$this->db->from('karyawan');
 		$this->db->join('evaluasi', 'karyawan.id_evaluasi = evaluasi.id_evaluasi');
 		$this->db->join('absensi', 'karyawan.id_absensi = absensi.id_absensi');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+    public function getDataKar4 ($id) //dashboard admin unit
+    {
+        $this->db->select('*');
+        $this->db->from('karyawan');
+        $this->db->join('evaluasi', 'karyawan.id_evaluasi = evaluasi.id_evaluasi');
+        $this->db->join('absensi', 'karyawan.id_absensi = absensi.id_absensi');
+        // $this->db->join('bagian', 'karyawan.id_bagian = bagian.id_bagian');
+        // $this->db->join('admin_uk', 'karyawan.id_bagian = admin_uk.id_bagian');
+        // $where = $this->db->select('nama_bagian')
+        //         ->from('bagian')
+        //         ->join('admin_uk','admin_uk.id_bagian = bagian.id_bagian')
+        //         ->where('id_bagian',$id_bagian)
+        //         ->get();
+        $this->db->where('id_bagian', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 	public function getDataKar($id)
 	{
@@ -135,5 +153,33 @@ class M_weblen2 extends CI_Model {
         $this->db->where($data);
         $query = $this->db->get();
         return $query->first_row();
+    }
+
+    public function getAdmUnit()
+    {
+        $this->db->select('*');
+        $this->db->from('admin_uk');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getDataAdmUnit($id) //get single data admin unit w/ id
+    {
+        $this->db->select('nik, nama');
+        $this->db->where('id_admin_uk', $id);
+        $this->db->from('admin_uk');
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    public function getDataAdmUnitNIK($nik) //get single data admin unit w/ id
+    {
+        $this->db->select('*');
+        $this->db->where('nik', $nik);
+        $this->db->from('admin_uk');
+
+        $query = $this->db->get();
+        return $query->row_array();
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Admin</title>
+    <title>Detail Admin Unit</title>
     <link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
@@ -13,7 +13,7 @@
         <!-- -----------------------BATAS SUCI----------------------- -->
 
         <!-- NAVBAR  -->
-        <?php $this->load->view('navbar_admin.php') ?>
+        <?php $this->load->view('navbar_admUnit.php') ?>
 
         <!-- start main content here..-->
         <div class="container" style="background-color: #E7E7E7;">
@@ -23,6 +23,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="detail_area">
+                            <?= $this->session->flashdata('kesimpSuccess');?><br>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -423,9 +424,11 @@
                         
                         <div style="margin-top: 3%;">
                             <?php if (($karyawan['status'] != 'Diputus' && $karyawan['kode_pagu'] != '-') || ($karyawan['status'] === 'Diputus')) { ?>
-                                <center><a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>" target="_blank"><button type="button" class="btn btn-secondary" style="width: 65%;">Print</button></a></center>
+                                <center><a href="<?php echo site_url('C_edit_kesimpulan_penilaian/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-success" style="width: 65%;">Edit</button></a></center>
+                            <?php } else if ($karyawan['status'] != '-') { ?>
+                                <center><a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-primary" style="width: 65%;" >+ Nilai</button></a></center>
                             <?php } else { ?>
-                                <center><a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-secondary" style="width: 65%;" disabled>Print</button></a></center>
+                                <center><a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-primary" style="width: 65%;" disabled>+ Nilai</button></a></center>
                             <?php } ?>
                         </div>
 

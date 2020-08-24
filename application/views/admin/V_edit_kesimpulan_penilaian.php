@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Admin</title>
+    <title>Edit Kesimpulan Penilaian</title>
     <link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
@@ -13,7 +13,7 @@
         <!-- -----------------------BATAS SUCI----------------------- -->
 
         <!-- NAVBAR  -->
-        <?php $this->load->view('navbar_admin.php') ?>
+        <?php $this->load->view('navbar_admUnit.php') ?>
 
         <!-- start main content here..-->
         <div class="container" style="background-color: #E7E7E7;">
@@ -53,7 +53,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Periode Kontrak</th>
-                                    <td><?= $karyawan['start_periode']; ?> s.d. <?= $karyawan['end_periode']; ?></td>
+                                    <td><?= $karyawan['start_periode']; ?> - <?= $karyawan['end_periode']; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -68,27 +68,15 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">
-                                    <h5>Hasil Evaluasi</h5>
-                                    <h6 class="text-secondary">
-                                        <?php if ($evaluasi['nilai_eval'] != -1) { ?>
+                                        <h5>Hasil Evaluasi</h5>
+                                        <h6 class="text-secondary">
                                             <small>
                                                 Graded by : <?=  $evaluasi['nama_atasan'] ?> - <?=  $evaluasi['nik_atasan'] ?> <br> at <?=  $evaluasi['date_fill'] ?>
                                             </small>
-                                        <?php } else { ?>
-                                            <small>
-                                                Should be graded by : <?=  $evaluasi['nama_atasan'] ?> - <?=  $evaluasi['nik_atasan'] ?>
-                                            </small>
-                                        <?php } ?>
-                                    </h6>
-                                    
-                                    </th>
-                                    
+                                        </h6>
+                                    </th>                                    
                                 </tr>
                                 </thead>
-                                
-                                <!-- tag php IF here.. -->
-                                <?php if ($evaluasi['nilai_eval'] != -1) { ?>
-                                
                                 <tbody>
                                 <tr>
                                     <td style="padding: 0px 0px 0px 0px;">
@@ -103,8 +91,8 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width: 70%;" scope="row">Inisiatif</th>
-                                                        <td style="width: 30%"><?= $evaluasi['inisiatif']; ?></td>
+                                                        <th scope="row">Inisiatif</th>
+                                                        <td><?= $evaluasi['inisiatif']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Daya Kreatifitas</th>
@@ -134,8 +122,8 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width: 70%" scope="row">Tanggung Jawab</th>
-                                                        <td style="width: 30%"><?= $evaluasi['tang_jawab']; ?></td>
+                                                        <th scope="row">Tanggung Jawab</th>
+                                                        <td><?= $evaluasi['tang_jawab']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Komitmen Kepada Perusahaan</th>
@@ -165,8 +153,8 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row" style="width: 70%">Adaptasi Kerja</th>
-                                                        <td style="width: 30%"><?= $evaluasi['adap_kerja']; ?></td>
+                                                        <th scope="row">Adaptasi Kerja</th>
+                                                        <td><?= $evaluasi['adap_kerja']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Pelayanan Terhadap Unit Kerja / Pihak Eksternal</th>
@@ -196,8 +184,8 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row" style="width: 70%">Penyesuaian Diri</th>
-                                                        <td style="width: 30%"><?= $evaluasi['pen_diri']; ?></td>
+                                                        <th scope="row">Penyesuaian Diri</th>
+                                                        <td><?= $evaluasi['pen_diri']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Kemampuan Berkomunikasi</th>
@@ -227,8 +215,8 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th scope="row" style="width: 70%">Disiplin</th>
-                                                        <td style="width: 30%"><?= $evaluasi['disiplin']; ?></td>
+                                                        <th scope="row">Disiplin</th>
+                                                        <td><?= $evaluasi['disiplin']; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Sistematika Kerja</th>
@@ -246,16 +234,6 @@
                                     </td>
                                 </tr>                                
                                 </tbody>
-                            <!-- php end IF here.. -->
-                                <?php } else { ?>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="2" align="center">
-                                                <h5 class="text-danger">evaluation not graded yet</h5>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                <?php } ?>
                             </table>
                         </div>
                     </div>
@@ -298,151 +276,56 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="detail_area">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col"><h5>Kesimpulan</h5></th>
-                                    <th scope="col"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php if ($karyawan['status']==='Diputus') { ?>
-                                    
-                                
-                                    <tr>
-                                        <th scope="row">Status</th>
-                                        <td><?= $karyawan['status']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Alasan</th>
-                                        <td> <?= $karyawan['alasan']; ?> </td>
-                                    </tr>
-                                <?php }
-                                else if ($karyawan['status']==='Diperpanjang 1 Tahun' || $karyawan['status']==='Diperpanjang 6 Bulan' || $karyawan['status']==='Diperpanjang 3 Bulan') { ?>
-                                    
-                                    <tr>
-                                        <th scope="row">Status</th>
-                                        <td><?= $karyawan['status']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Pagu Anggaran</th>
-                                        <td> <?= $karyawan['anggaran']; ?> </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Kode Pagu</th>
-                                        <td> <?= $karyawan['kode_pagu']; ?> </td>
-                                    </tr>
-                                <?php } else if($karyawan['status']=='-') { ?>
-                                    <tr>
-                                        
-                                        <td colspan="2" align="center">
-                                        <h5 class="text-danger"> contract status not graded yet </h5>
-                                        </td>
-                                    </tr>
-                                <?php } else if($karyawan['status'] == 'Diputus'){?>
-                                    <tr>
-                                        <th scope="row">Status</th>
-                                        <td><?= $karyawan['status']; ?></td>
-                                    </tr>
-                                <?php } else { ?>
-                                    <tr>
-                                        <th scope="row">Status</th>
-                                        <td><?= $karyawan['status']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Pagu Anggaran</th>
-                                        <td> <?= $karyawan['anggaran']; ?> </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Kode Pagu</th>
-                                        <td> <?= $karyawan['kode_pagu']; ?> </td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="detail_area">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col"><h5>Hasil Evaluasi Penilaian</h5></th>
-                                    <th scope="col"></th>
-                                </tr>
-                                </thead>
-                                <!-- IF php here -->
-                                <?php if ($evaluasi['nilai_eval'] != -1) { ?>
-                                
+                <form action="<?= base_url();?>C_edit_kesimpulan_penilaian/editKesimpulan/<?= $karyawan['id_karyawan']?>" method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="detail_area" style="height: 240px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><h5>Kesimpulan</h5></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">Absensi</th>
-                                            <td><?= $absensi['nilai_absen']; ?>%</td>
+                                            <th scope="row">Status</th>
+                                            <td><center><?= $karyawan['status']; ?></center></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Hasil Evaluasi</th>
-                                            <td><?= $evaluasi['nilai_eval']; ?>%</td>
+                                            <th scope="row">Pagu Anggaran</th>
+                                            <td><center><?= $karyawan['anggaran']; ?></center></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Penilaian Kerja</th>
-                                            <td><?= $karyawan['nilai_hasil']; ?>%</td>
-                                        </tr>
+                                            <th scope="row">Kode Pagu</th>
+                                            <td><center><input id="inp_kpagu" name="inp_kpagu" value="<?= $karyawan['kode_pagu']; ?>" placeholder="Kode Pagu" type="text" class="form-control ml-3" style="width: 70% "></center></td>
+                                            
+                                        </tr>                                            
                                     </tbody>
-                                <!-- end IF php here -->
-                                <?php } else { ?>
-                                    
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Absensi</th>
-                                            <td><?= $absensi['nilai_absen']; ?>%</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Hasil Evaluasi</th>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Penilaian Kerja</th>
-                                            <td>-</td>
-                                        </tr>
-                                    </tbody>
-                                
-                                <?php } ?>
-                            </table>
+                                </table>    
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                        <div style="margin-top: 3%;">
-                            <?php if (($karyawan['status'] != 'Diputus' && $karyawan['kode_pagu'] != '-') || ($karyawan['status'] === 'Diputus')) { ?>
-                                <center><a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>" target="_blank"><button type="button" class="btn btn-secondary" style="width: 65%;">Print</button></a></center>
-                            <?php } else { ?>
-                                <center><a href="<?php echo site_url('C_cetak/index/' . $karyawan['id_karyawan']); ?>"><button type="button" class="btn btn-secondary" style="width: 65%;" disabled>Print</button></a></center>
-                            <?php } ?>
+                    
+                    <div class="row">
+                        <div class="col-md-12 text-center mt-3">
+                            <div class="mr-2" style="margin: auto;">
+                                <button style="width: 65%;" type="submit" class="btn btn-success">Save</button>    
+                            </div>
+                            
                         </div>
-
                     </div>
-                </div>
-
-
+                </form>
             </div>
                 
         </div>
 
         <!-- end main content -->
 
-
     
     <script src="<?= base_url()?>/assets/js/jquery-3.5.1.slim.min.js"></script>
     <script src="<?= base_url()?>/assets/js/popper.min.js"></script>
     <script src="<?= base_url()?>/assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url()?>/assets/style/jscript.js"></script>
 </body>
 </html>

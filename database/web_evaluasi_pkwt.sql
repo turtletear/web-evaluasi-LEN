@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 09, 2020 at 03:21 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Host: 127.0.0.1
+-- Generation Time: Aug 19, 2020 at 03:42 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -72,7 +73,13 @@ INSERT INTO `absensi` (`id_absensi`, `nik`, `sakit`, `izin`, `alpa`, `periode`, 
 (91, 12345981, 0, 3, 6, 100, 2, 27, 89),
 (92, 19247126, 1.1, 0, 2.2, 90, 1.1, 29, 96),
 (93, 12394816, 1, 0, 18, 100, 2, 24, 79),
-(94, 10294716, 3.3, 0, 0, 30, 0, 29, 97);
+(94, 10294716, 3.3, 0, 0, 30, 0, 29, 97),
+(95, 10194817, 0, 0, 0, 100, 2, 29, 98),
+(96, 10194817, 0, 0, 0, 100, 2, 29, 98),
+(97, 10194817, 0, 0, 0, 100, 2, 29, 98),
+(98, 19373716, 0, 2, 2, 100, 1, 28, 95),
+(99, 11224161, 0, 2, 2, 100, 2, 28, 94),
+(100, 12071918, 2, 1, 4, 100, 1, 28, 92);
 
 -- --------------------------------------------------------
 
@@ -96,6 +103,28 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_uk`
+--
+
+CREATE TABLE `admin_uk` (
+  `id_admin_uk` int(11) NOT NULL,
+  `nik` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `id_divisi` int(11) NOT NULL,
+  `id_bagian` int(11) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_uk`
+--
+
+INSERT INTO `admin_uk` (`id_admin_uk`, `nik`, `nama`, `id_divisi`, `id_bagian`, `password`) VALUES
+(4, 12345678, 'Nicholas', 2, 6, '$2y$10$iBV/uxFyWSDGrlxpUzDOpO1EX.9QGMZ5omLXzh2IoaBAcpOWlaAoy');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `atasan`
 --
 
@@ -103,6 +132,8 @@ CREATE TABLE `atasan` (
   `id_atasan` int(10) NOT NULL,
   `nik` varchar(10) NOT NULL,
   `nama` varchar(255) NOT NULL,
+  `id_divisi` int(11) NOT NULL,
+  `id_bagian` int(11) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -110,10 +141,11 @@ CREATE TABLE `atasan` (
 -- Dumping data for table `atasan`
 --
 
-INSERT INTO `atasan` (`id_atasan`, `nik`, `nama`, `password`) VALUES
-(4, '1301174352', 'ariq lagi', '$2y$10$4GhhmIyM7CTkeiCnE9FyvuiPM1pPYVtKR56wdTudo3AnQ9cZFthnu'),
-(5, '1301174354', 'Ariq Musyaffa Ramadhani', '$2y$10$.Pyjrza16wCzQvd6.ZXFceufIrKvgAF0bSfEBIp7J6pxWMV8X16Ky'),
-(6, '1201164155', 'aweeee', '$2y$10$wpHBFXH5GZuIpNXaaXfZyOQnwNKybglrLMHkEAZONVUolRQr.PgHm');
+INSERT INTO `atasan` (`id_atasan`, `nik`, `nama`, `id_divisi`, `id_bagian`, `password`) VALUES
+(4, '1301174352', 'ariq lagi', 1, 1, '$2y$10$4GhhmIyM7CTkeiCnE9FyvuiPM1pPYVtKR56wdTudo3AnQ9cZFthnu'),
+(5, '1301174354', 'Ariq Musyaffa Ramadhani', 2, 5, '$2y$10$.Pyjrza16wCzQvd6.ZXFceufIrKvgAF0bSfEBIp7J6pxWMV8X16Ky'),
+(6, '1201164155', 'aweeee', 3, 8, '$2y$10$wpHBFXH5GZuIpNXaaXfZyOQnwNKybglrLMHkEAZONVUolRQr.PgHm'),
+(9, '12345678', 'Leonardo', 2, 6, '$2y$10$DKhhPd6wUlvf1cJ.j6VmzO5oxeH3oFnEngFs0rGgyelEqUNoPILxi');
 
 -- --------------------------------------------------------
 
@@ -135,7 +167,7 @@ CREATE TABLE `bagian` (
 INSERT INTO `bagian` (`id_bagian`, `id_divisi`, `nama_bagian`, `status`) VALUES
 (1, 1, 'Legal', 1),
 (2, 1, 'Komunikasi Korporasi', 1),
-(3, 1, 'Program Kemitraan & Bina Lingkungan', 1),
+(3, 1, 'Program Kemitraan & Bina Lingkungan', 0),
 (4, 1, 'Manajemen Korporasi', 1),
 (5, 2, 'Monitoring & Kualitas Audit', 1),
 (6, 2, 'Audit', 1),
@@ -228,7 +260,9 @@ INSERT INTO `evaluasi` (`id_evaluasi`, `nik`, `date_fill`, `inisiatif`, `daya_kr
 (81, 12345981, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
 (82, 19247126, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'aweeee', 1201164155),
 (83, 12394816, '2020-08-06', 4, 6.7, 5.3, 4, 1.3, 2.7, 1.3, 2.7, 2.7, 1.3, 1.3, 4, 2.7, 4, 4, 34, 48, 'Ariq Musyaffa Ramadhani', 1301174354),
-(84, 10294716, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354);
+(84, 10294716, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
+(85, 11224161, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354),
+(86, 12071918, '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 'Ariq Musyaffa Ramadhani', 1301174354);
 
 -- --------------------------------------------------------
 
@@ -260,9 +294,6 @@ CREATE TABLE `karyawan` (
 
 INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik`, `divisi`, `jabatan`, `bagian`, `nilai_hasil`, `end_periode`, `start_periode`, `status`, `alasan`, `anggaran`, `kode_pagu`) VALUES
 (55, 56, 66, 'Ed Sheeran', 71129019, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 85, '2020-07-09', '2020-07-09', 'Diperpanjang 6 Bulan', '-', 'Proyek/program', 'SG-774'),
-(56, 57, 67, 'ini bawahan ariq lagi', 123456, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 84, '2020-07-09', '2020-07-09', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
-(57, 58, 68, 'ini bawahan Ariq Musyaffa Ramadhani', 123456777, 'Div. SDM & Umum', 'Ketua', 'Bag. PKBL', 69, '2020-09-09', '2020-07-09', 'Diperpanjang 1 Tahun', '-', 'Rutin', 'SG-774'),
-(58, 59, 69, 'ini bawahan ariq lagi aweeee', 1234567011, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 69, '2020-08-09', '2020-07-09', 'Diperpanjang 6 Bulan', '-', 'Rutin', '6339 mantap'),
 (59, 60, 70, 'Ariq Musyaffa Ramadhani Jr.', 1301170000, 'Div. SDM & Umum', 'Pelaksana', 'Bag. PKBL', 59, '2020-07-09', '2020-07-09', '-', '-', '-', '-'),
 (60, 61, 71, 'Peter', 130117112, 'Div. SDM & Umum', 'Asisten', 'Bag. Legal', 86, '2020-09-09', '2020-07-09', '-', '-', '-', '-'),
 (61, 62, 72, 'Rama', 1201164111, 'Div. SDM & Umum', 'Pelaksana', 'Bag. Legal', 69, '2020-08-09', '2020-07-09', 'diperpanjang 2 tahun', '-', '-', '-'),
@@ -272,7 +303,6 @@ INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik
 (65, 66, 76, 'Portgas D. Ace', 1201162021, 'Pirates', 'Captain Division', 'Captain', 81, '2020-09-09', '2020-07-09', 'mantap', '-', '-', '-'),
 (66, 67, 77, 'H.Tarjo', 1301174352, 'Div. SDM & Umum', 'Asisten', 'Bag. PKBL', 77, '2020-09-09', '2020-07-09', 'diperpanjang 15 Bulan', '-', 'Proyek/program', '-'),
 (67, 68, 78, 'Dracule Mihawk', 1301174353, 'Pirates', 'Shichibukai', 'Marine', 74, '2020-08-09', '2020-07-09', 'Diputus', 'Kegiatan Proyek/Program Selesai', '-', '-'),
-(68, 69, 79, 'Peter Spopovich Ivankov Cyka Cyka', 12345679, 'Divisi Keuangan & Akuntansi', 'Asisten', 'Akuntansi & Perpajakan', 61, '2020-09-17', '2020-07-16', 'diperpanjang 2 tahun', '-', 'Rutin', '-'),
 (69, 70, 80, 'kakarotto', 11223333, 'UB Elektronika Pertahanan', 'Pelaksana', 'Komersial', 73, '2020-10-16', '2020-07-16', 'Diputus', 'Hasil Evaluasi Penilaian', '-', '-'),
 (70, 71, 81, 'mamat', 11223322, 'Divisi Logistik', 'Asisten', 'Operasi Logistik', 73, '2020-11-17', '2020-07-16', 'Diperpanjang 3 Bulan', '-', 'Rutin', 'SG-774'),
 (71, 72, 82, 'Steve', 12331232, 'UB Teknologi Informasi, Komunikasi, dan Navigasi', 'Ketua', 'Komersial', 85, '2020-09-17', '2020-07-17', 'Diperpanjang 1 Tahun', '-', 'Rutin', '-'),
@@ -285,7 +315,8 @@ INSERT INTO `karyawan` (`id_karyawan`, `id_evaluasi`, `id_absensi`, `nama`, `nik
 (78, 81, 91, 'jojo', 12345981, 'UB Teknologi Informasi, Komunikasi, dan Navigasi', 'Pelaksana', 'Komersial', 0, '2020-08-03', '2020-08-03', '-', '-', '-', '-'),
 (79, 82, 92, 'nicholas', 19247126, 'UB Industri', 'Asisten', 'Rekayasa Produk', 0, '2020-10-03', '2020-08-03', '-', '-', '-', '-'),
 (80, 83, 93, 'lalalisa', 12394816, 'Sekretaris Perusahaan', 'Pejabat Struktural', 'Program Kemitraan & Bina Lingkungan', 58, '2020-10-06', '2020-08-06', 'Diperpanjang 1 Tahun', '-', 'Proyek/program', 'SG-774'),
-(81, 84, 94, 'robin', 10294716, 'Divisi Penjamin Mutu, Sistem & K3L', 'Pejabat Struktural', 'Keselamatan, Kesehatan Kerja, dan Lingkungan', 0, '2020-09-08', '2020-08-08', '-', '-', '-', '-');
+(81, 84, 94, 'robin', 10294716, 'Divisi Penjamin Mutu, Sistem & K3L', 'Pejabat Struktural', 'Keselamatan, Kesehatan Kerja, dan Lingkungan', 0, '2020-09-08', '2020-08-08', '-', '-', '-', '-'),
+(82, 86, 100, 'spopovich', 12071918, 'Satuan Pengawasan Internal', 'Staff', 'Monitoring & Kualitas Audit', 0, '2020-10-15', '2020-08-15', '-', '-', '-', '-');
 
 --
 -- Indexes for dumped tables
@@ -304,10 +335,20 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
+-- Indexes for table `admin_uk`
+--
+ALTER TABLE `admin_uk`
+  ADD PRIMARY KEY (`id_admin_uk`),
+  ADD KEY `id_divisi` (`id_divisi`),
+  ADD KEY `id_bagian` (`id_bagian`);
+
+--
 -- Indexes for table `atasan`
 --
 ALTER TABLE `atasan`
-  ADD PRIMARY KEY (`id_atasan`);
+  ADD PRIMARY KEY (`id_atasan`),
+  ADD KEY `id_divisi` (`id_divisi`),
+  ADD KEY `id_bagian` (`id_bagian`);
 
 --
 -- Indexes for table `bagian`
@@ -344,7 +385,7 @@ ALTER TABLE `karyawan`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -353,10 +394,16 @@ ALTER TABLE `admin`
   MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `admin_uk`
+--
+ALTER TABLE `admin_uk`
+  MODIFY `id_admin_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `atasan`
 --
 ALTER TABLE `atasan`
-  MODIFY `id_atasan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_atasan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `bagian`
@@ -374,17 +421,31 @@ ALTER TABLE `divisi`
 -- AUTO_INCREMENT for table `evaluasi`
 --
 ALTER TABLE `evaluasi`
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `admin_uk`
+--
+ALTER TABLE `admin_uk`
+  ADD CONSTRAINT `admin_uk_ibfk_1` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id_divisi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `admin_uk_ibfk_2` FOREIGN KEY (`id_bagian`) REFERENCES `bagian` (`id_bagian`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `atasan`
+--
+ALTER TABLE `atasan`
+  ADD CONSTRAINT `atasan_ibfk_1` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id_divisi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `atasan_ibfk_2` FOREIGN KEY (`id_bagian`) REFERENCES `bagian` (`id_bagian`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `bagian`

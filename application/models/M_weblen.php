@@ -148,6 +148,11 @@ class M_weblen extends CI_Model {
     {
         $this->db->insert('atasan',$data);
     }
+    
+    public function regisAdmUK($data)
+    {
+        $this->db->insert('admin_uk',$data);
+    }
 
     public function getAtasan()
     {
@@ -157,14 +162,28 @@ class M_weblen extends CI_Model {
         return $query->result_array();
     }
 
-    public function getDataAtasan($id) //get single data atasan w/ id
+    public function getDataAtasan($id) //get single data atasan by id
     {
-        $this->db->select('nik, nama');
+        $this->db->select('atasan.id_atasan, atasan.nik, atasan.nama, atasan.id_divisi, atasan.id_bagian, divisi.nama_divisi, bagian.nama_bagian, bagian.status');
         $this->db->where('id_atasan', $id);
         $this->db->from('atasan');
+        $this->db->join('divisi','atasan.id_divisi = divisi.id_divisi');
+        $this->db->join('bagian','atasan.id_bagian = bagian.id_bagian');
 
         $query = $this->db->get();
         return $query->row_array();
+    }
+
+    public function getAtasanDetail($id)  //get singel data atasan by id join divisi & bagian
+    {
+        $this->db->select('atasan.id_atasan, atasan.nik, atasan.nama, atasan.id_divisi, atasan.id_bagian, divisi.nama_divisi, bagian.nama_bagian, bagian.status');
+        $this->db->where('id_atasan', $id);
+        $this->db->from('atasan');
+        $this->db->join('divisi','atasan.id_divisi = divisi.id_divisi');
+        $this->db->join('bagian','atasan.id_bagian = bagian.id_bagian');
+
+        $query = $this->db->get();
+        return $query->result();
     }
     
     public function getDataAtasanNIK($nik) //get single data atasan w/ id

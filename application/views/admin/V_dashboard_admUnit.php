@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin</title>
+    <title>Dashboard Admin Unit</title>
     <link rel="stylesheet" href="<?= base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url()?>/assets/style/style1.css">
 </head>
@@ -17,13 +17,16 @@
         <!-- -----------------------BATAS SUCI----------------------- -->
 
         <!-- NAVBAR  -->
-        <?php $this->load->view('navbar_admin.php') ?>
+        <?php $this->load->view('navbar_admUnit.php') ?>
 
         <!-- start main content here..-->
         <div class="container main_bgr_dash">
             
             <div class="row">
                 <div class="col-md-12"> 
+                	<h6 >
+						Hello <?= $this->session->userdata('sessAdmUnit')['nama_admUnit'] ?>
+					</h6>
                     <?= $this->session->flashdata('kesimpSuccess');?>
                     <h4>Hasil Evaluasi Penilaian Karyawan</h4>
                 </div>
@@ -70,7 +73,8 @@
                                             </h6>
                                         </td>
                                         <td>
-                                            <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                            <a href="<?php echo site_url('C_detail_admUnit/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>"id="nilai"><button type="button" class="btn btn-md btn-primary">+ Nilai</button></a>
                                         </td>
                                     <?php } else if($value['nilai_eval'] == '-1' && $value['status'] == '-') { ?>
                                         <td style="text-align: center;" > 
@@ -79,7 +83,8 @@
                                             </h6>
                                         </td>
                                         <td>
-                                        <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                        <a href="<?php echo site_url('C_detail_admUnit/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                            <a href="<?php echo site_url('C_kesimpulan_penilaian/index/' . $value['id_karyawan']); ?>"id="nilai"><button type="button" class="btn btn-md btn-primary" disabled>+ Nilai</button></a>
                                         </td>
                                     <?php } else {?>
                                         <td style="text-align: center;">
@@ -88,7 +93,7 @@
                                             </h6>
                                         </td>
                                         <td>
-                                        <a href="<?php echo site_url('C_detail_admin/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
+                                        <a href="<?php echo site_url('C_detail_admUnit/index/' . $value['id_karyawan']); ?>" id="detail" style="margin-right: 20px;"><button type="button" class="btn btn-md btn-secondary">Detail</button></a>
                                         </td>
                                     <?php } ?>
                                 </tr>

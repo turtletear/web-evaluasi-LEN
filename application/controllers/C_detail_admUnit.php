@@ -1,12 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_kesimpulan_penilaian extends CI_Controller {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_weblen2');
-	}
+class C_detail_admUnit extends CI_Controller {
 
 	public function index($id)
 	{
@@ -14,10 +9,11 @@ class C_kesimpulan_penilaian extends CI_Controller {
 		$data['karyawan'] = $this->M_weblen2->getDataKar($id);
 		$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
 		$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
-		$this->load->view('admin/V_kesimpulan_penilaian',$data);
+
+		$this->load->view('admin/V_detail_admUnit', $data);
 	}
 
-	public function convertEval ($point)
+	public function convertEval ($point) // mengubah persen% evaluasi kedalam bentuk point2
 	{
 		if ($point == 6.7) {
             $x = '5 (Sangat Baik)' ;
@@ -33,13 +29,16 @@ class C_kesimpulan_penilaian extends CI_Controller {
         }
         elseif ($point == 1.3){
             $x = '1 (Sangat Kurang';
-        }
+		}
+		else{
+			$x = 'none';
+		}
         return $x;
 	}
 
-	public function newDataEval ($id) //taroh $id di parameter
-	{	
-		//$eval = array();
+	public function newDataEval ($id)
+	{
+		$eval = array();
 		$eval = $this->M_weblen2->getDataEval($id);
 		$dataEval = [
 			'id_evaluasi' => $eval['id_evaluasi'],
@@ -68,7 +67,7 @@ class C_kesimpulan_penilaian extends CI_Controller {
         return $dataEval;
 	}
 
-	public function convertAbs($point, $durasi) // mengubah % absensi kedalam bentuk point2
+	public function convertAbs($point, $durasi) // mengubah persen% absensi kedalam bentuk point2
 	{
 		$x = ($point * $durasi) / 100 ;
 
@@ -77,6 +76,7 @@ class C_kesimpulan_penilaian extends CI_Controller {
 
 	public function newDataAbs($id)
 	{
+		$abs = array();
 		$abs = $this->M_weblen2->getDataAbs($id);
 		$dataAbs = [
 			'id_absensi' => $abs['id_absensi'],
@@ -89,35 +89,6 @@ class C_kesimpulan_penilaian extends CI_Controller {
 			'nilai_produktivitas' => $abs['nilai_produktivitas']
 		];
 		return $dataAbs;
-	}
-
-	public function saveKesimpulan($id)
-	{
-		// $kpagu = $this->input->post('inp_kpagu');
-		// echo $kpagu;
-		// die;
-		$this->form_validation->set_rules('inp_kpagu', 'Kode pagu', 'required|trim');
-		
-		if ($this->form_validation->run() == false) {
-			$data = array();
-			$data['karyawan'] = $this->M_weblen2->getDataKar($id);
-			$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
-			$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
-			$this->load->view('admin/V_kesimpulan_penilaian',$data);
-		}
-		else {			
-			$kpagu = $this->input->post('inp_kpagu');
-			$this->M_weblen2->updateKesimpulan($id,$kpagu);			
-			$this->session->set_flashdata('kesimpSuccess', '<div class="alert alert-success" role="alert">
-			Data saved!</div>');
-			// redirect('C_dashboard_admUnit');
-			redirect(site_url('C_detail_admUnit/index/' . $id));
-		} //end if
-			
-			
-
-			
-		
 	}
 
 }

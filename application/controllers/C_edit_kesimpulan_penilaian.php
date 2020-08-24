@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_kesimpulan_penilaian extends CI_Controller {
+class C_edit_kesimpulan_penilaian extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,7 +14,7 @@ class C_kesimpulan_penilaian extends CI_Controller {
 		$data['karyawan'] = $this->M_weblen2->getDataKar($id);
 		$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
 		$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
-		$this->load->view('admin/V_kesimpulan_penilaian',$data);
+		$this->load->view('admin/V_edit_kesimpulan_penilaian',$data);
 	}
 
 	public function convertEval ($point)
@@ -91,33 +91,14 @@ class C_kesimpulan_penilaian extends CI_Controller {
 		return $dataAbs;
 	}
 
-	public function saveKesimpulan($id)
+	public function editKesimpulan($id)
 	{
-		// $kpagu = $this->input->post('inp_kpagu');
-		// echo $kpagu;
-		// die;
-		$this->form_validation->set_rules('inp_kpagu', 'Kode pagu', 'required|trim');
-		
-		if ($this->form_validation->run() == false) {
-			$data = array();
-			$data['karyawan'] = $this->M_weblen2->getDataKar($id);
-			$data['evaluasi'] = $this->newDataEval($data['karyawan']['id_evaluasi']);
-			$data['absensi'] = $this->newDataAbs($data['karyawan']['id_absensi']);
-			$this->load->view('admin/V_kesimpulan_penilaian',$data);
-		}
-		else {			
-			$kpagu = $this->input->post('inp_kpagu');
-			$this->M_weblen2->updateKesimpulan($id,$kpagu);			
-			$this->session->set_flashdata('kesimpSuccess', '<div class="alert alert-success" role="alert">
-			Data saved!</div>');
-			// redirect('C_dashboard_admUnit');
-			redirect(site_url('C_detail_admUnit/index/' . $id));
-		} //end if
-			
-			
-
-			
-		
+					
+		$kpagu = $this->input->post('inp_kpagu');
+		$this->M_weblen2->updateKesimpulan($id,$kpagu);			
+		$this->session->set_flashdata('kesimpSuccess', '<div class="alert alert-success" role="alert">
+		Data saved!</div>');
+		redirect(site_url('C_detail_admUnit/index/' . $id));		
 	}
 
 }
