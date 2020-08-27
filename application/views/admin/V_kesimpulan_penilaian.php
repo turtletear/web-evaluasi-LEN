@@ -13,7 +13,7 @@
         <!-- -----------------------BATAS SUCI----------------------- -->
 
         <!-- NAVBAR  -->
-        <?php $this->load->view('navbar_admin.php') ?>
+        <?php $this->load->view('navbar_admUnit.php') ?>
 
         <!-- start main content here..-->
         <div class="container" style="background-color: #E7E7E7;">

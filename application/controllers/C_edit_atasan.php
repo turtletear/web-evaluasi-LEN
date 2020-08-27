@@ -265,9 +265,6 @@ class C_edit_atasan extends CI_Controller {
             Data saved!</div>');
             redirect('C_history_atasan'); 
 
-
-
-            //echo $dataAbs['nilai_absen']," + ",$dataEvl['nilai_eval']," nilai eval = ",$res;
             
         }// end else
     }

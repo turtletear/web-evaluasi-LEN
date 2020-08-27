@@ -72,28 +72,6 @@
 								</div>
 							</div>
 
-							<!-- <div class="form-group row">
-								<label class="col-md-4 col-form-label">Divisi / Unit Bisnis</label>
-								<div class="col-md-8">
-									<select name="divisi" id="divisi" class="form-control" style="width: 100%;">
-										<option disabled selected value>-- Divisi --</option>
-									</select>
-
-									<?= form_error('divisi','<small class="text-danger pl-2">','</small>') ?>
-								</div>
-							</div> -->
-
-							<!-- <div class="form-group row">
-								<label for="bagian" class="col-md-4 col-form-label">Unit Kerja / Bagian</label>
-								<div class="col-md-8">
-									<select name="bagian" id="bagian" class="form-control" style="width: 100%;">
-									<option disabled selected value>-- Bagian --</option>
-									</select>
-
-									<?= form_error('bagian','<small class="text-danger pl-2">','</small>') ?>
-								</div>
-							</div> -->
-
 							<div class="form-group row">
 								<label for="jabatan" class="col-md-4 col-form-label">Jabatan</label>
 								<div class="col-md-8">
@@ -145,7 +123,7 @@
 								</div>
 
 								<div class="form-group row">
-									<label for="izin" class="col-md-6 col-form-label">izin</label>
+									<label for="izin" class="col-md-6 col-form-label">Izin</label>
 									<div class="col-md-3">
 										<input type="number" class="form-control" id="izin" name="izin" placeholder="" value="<?= set_value('izin')?>">
 										<?= form_error('izin','<small class="text-danger pl-2">','</small>') ?>
