@@ -69,7 +69,7 @@
 							else {?>
 								<tbody>
 									<tr>
-										<td class="text-center text-danger" colspan="4">
+										<td class="text-center text-danger" colspan="5">
 											<h5>
 												No employees have been graded	
 											</h5> 

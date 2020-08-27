@@ -33,7 +33,7 @@ class C_edit_atasan extends CI_Controller {
             $x = '2 (Kurang)';
         }
         elseif ($point == 1.3){
-            $x = '1 (Sangat Kurang';
+            $x = '1 (Sangat Kurang)';
         }
         else{
             $x = 'none';
