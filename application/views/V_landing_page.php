@@ -34,14 +34,14 @@
 						</div>
 
 						<div class="row div_center">
-														
+						
 							<button class="btn btn-secondary btn-lg" data-target="#myModal1" data-toggle="modal" style="margin-bottom: 2%" >atasan</button>
 							<div class="dropdown">
-							    <button class="btn btn-lg btn-info dropdown-toggle" type="button" data-toggle="dropdown">admin</button>
-							    <ul class="dropdown-menu">
-							      	<li><a href="#"  data-toggle="modal" data-target="#myModal3" >Admin Unit Bagian</a></li>
-							      	<li><a href="#"  data-toggle="modal" data-target="#myModal2" >Admin SDM</a></li>
-							    </ul>
+								<button class="btn btn-lg btn-info dropdown-toggle" type="button" data-toggle="dropdown">admin</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#myModal3" >Admin Unit Bagian</a>
+										<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#myModal2" >Admin SDM</a>
+									</div>
 							</div>		
 							<!-- <button class="btn btn-info btn-lg" data-target="#myModal2" data-toggle="modal" >admin</button>         -->
 						</div>				   

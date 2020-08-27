@@ -55,13 +55,6 @@ class M_weblen2 extends CI_Model {
         $this->db->from('karyawan');
         $this->db->join('evaluasi', 'karyawan.id_evaluasi = evaluasi.id_evaluasi');
         $this->db->join('absensi', 'karyawan.id_absensi = absensi.id_absensi');
-        // $this->db->join('bagian', 'karyawan.id_bagian = bagian.id_bagian');
-        // $this->db->join('admin_uk', 'karyawan.id_bagian = admin_uk.id_bagian');
-        // $where = $this->db->select('nama_bagian')
-        //         ->from('bagian')
-        //         ->join('admin_uk','admin_uk.id_bagian = bagian.id_bagian')
-        //         ->where('id_bagian',$id_bagian)
-        //         ->get();
         $this->db->where('id_bagian', $id);
         $query = $this->db->get();
         return $query->result_array();

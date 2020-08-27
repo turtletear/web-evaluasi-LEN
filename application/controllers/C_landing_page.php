@@ -104,7 +104,7 @@ class C_landing_page extends CI_Controller {
 		}	
 	}
 
-	public function login() 
+	public function login() //login admin unit
 	{
 		$this->form_validation->set_rules('nik_admUnit', 'NIK', 'required|trim'); 
 		$this->form_validation->set_rules('pass_admUnit', 'Password', 'required|trim');
