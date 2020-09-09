@@ -93,9 +93,6 @@ class C_kesimpulan_penilaian extends CI_Controller {
 
 	public function saveKesimpulan($id)
 	{
-		// $kpagu = $this->input->post('inp_kpagu');
-		// echo $kpagu;
-		// die;
 		$this->form_validation->set_rules('inp_kpagu', 'Kode pagu', 'required|trim');
 		
 		if ($this->form_validation->run() == false) {
@@ -107,7 +104,8 @@ class C_kesimpulan_penilaian extends CI_Controller {
 		}
 		else {			
 			$kpagu = $this->input->post('inp_kpagu');
-			$this->M_weblen2->updateKesimpulan($id,$kpagu);			
+			$now = date("Y-m-d");
+			$this->M_weblen2->updateKesimpulan($id, $kpagu, $now);			
 			$this->session->set_flashdata('kesimpSuccess', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
 			// redirect('C_dashboard_admUnit');

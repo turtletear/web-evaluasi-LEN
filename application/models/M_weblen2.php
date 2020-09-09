@@ -113,17 +113,17 @@ class M_weblen2 extends CI_Model {
         return $query->result_array();
     }    
 
-    public function updateKesimpulan($id,$data)
+    public function updateKesimpulan($id,$data, $now)
     {
         $this->db->where('id_karyawan',$id);
         $this->db->set('kode_pagu',$data);
+        $this->db->set('date_fill_uk',$now);
 
         $this->db->update('karyawan');
     }
 
     public function checkSignUp($username)
     {
-        # code...
         $this->db->select('*');
         $this->db->from('admin');
         $this->db->where('username', $username);
@@ -133,14 +133,12 @@ class M_weblen2 extends CI_Model {
 
     public function Sign_Up($data)
     {
-        # code...
         $this->db->insert('admin', $data);
         return;
     }
 
     public function Sign_In($data)
     {
-        # code...
         $this->db->select('*');
         $this->db->from('admin');
         $this->db->where($data);

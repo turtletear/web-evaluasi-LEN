@@ -203,16 +203,12 @@ class C_nilai_atasan extends CI_Controller {
             $lain = $this->input->post('inp_lainnya');
 
             $dataStat = $this->kesimpulan($stat, $jpagu, $putus, $lain);
-            
-            $this->M_weblen->updateStat($id_emp, $dataStat);
+        
+            $this->M_weblen->updateStat($id_emp, $dataStat, $now);
 
             $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
             redirect('C_dashboard_atasan'); 
-
-
-
-            //echo $dataAbs['nilai_absen']," + ",$dataEvl['nilai_eval']," nilai eval = ",$res;
             
         }// end else
     }

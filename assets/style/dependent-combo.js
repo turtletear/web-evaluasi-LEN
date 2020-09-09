@@ -5,7 +5,7 @@ function getDivisi(){
         dataType : 'json',
         success : function(result){
             $.each(result, function(i, data){
-                $('#divisi').append('<option value='+ data.id_divisi +'>'+ data.nama_divisi +'</option>');
+                $('#divisi').append(`<option value="`+ data.id_divisi +`">`+ data.nama_divisi +`</option>`);
             })
         }
 

@@ -78,8 +78,8 @@ class C_tambah_admin extends CI_Controller {
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|min_length[8]|max_length[8]|is_unique[karyawan.nik]',[
 			'is_unique'=> 'NIK is already registered',
-			'min_length' => 'NIK at least have 8 digit',
-			'max_length' => 'NIK at least have 8 digit'
+			'min_length' => 'NIK must have 8 digits',
+			'max_length' => 'NIK must have 8 digits'
 		]); 
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 		$this->form_validation->set_rules('start_periode', 'Periode mulai', 'required|trim');
