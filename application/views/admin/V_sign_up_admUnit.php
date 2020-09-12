@@ -26,7 +26,7 @@
                     
                     <div class="row justify-content-center">
                         <div class="col-md-6 mr-1 mt-5 ml-1 mb-3" style="background-color: white; border-radius: 5px;">
-                        <?= $this->session->flashdata('reg_admu_succ');?>	    
+                        <?= $this->session->flashdata('reg_admu');?>	    
                         <div class="mt-4 mb-2"> 
                                 <center>
                                     <h4>

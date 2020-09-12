@@ -194,7 +194,7 @@ class C_nilai_atasan extends CI_Controller {
             $res = $this->finalResult($dataAbs['nilai_absen'], $dataEvl['nilai_eval']); //total nilai penilaian keseluruhan
             $this->M_weblen->updateEvl($dataEvl); //save to table evaluasi
             
-            $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi']; //perlu perbaikan
+            $idEvl = $this->M_weblen->getIdEval($dataEvl['nik'])['id_evaluasi'];
             $this->M_weblen->updateKar($dataEvl['nik'],$idEvl,$res);
             
             $stat = $this->input->post('combo1');
@@ -203,15 +203,22 @@ class C_nilai_atasan extends CI_Controller {
             $lain = $this->input->post('inp_lainnya');
 
             $dataStat = $this->kesimpulan($stat, $jpagu, $putus, $lain);
-        
+            
+            //get data admin uk
             $this->M_weblen->updateStat($id_emp, $dataStat, $now);
-
             $this->session->set_flashdata('evalAt', '<div class="alert alert-success" role="alert">
 			Data saved!</div>');
             redirect('C_dashboard_atasan'); 
             
         }// end else
-    }
+    }//end_func
+
+    // public function getDataAdmUK($id_emp)
+    // {
+    //     $emp = $this->M_weblen->getDataKar($id_emp);
+    //     $res = $this->M_weblen->findAdmUK($emp['id_divisi'], $emp['id_bagian']);
+    //     return $res;
+    // }
 	
 
 }

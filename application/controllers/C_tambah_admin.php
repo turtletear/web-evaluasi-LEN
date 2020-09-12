@@ -30,7 +30,7 @@ class C_tambah_admin extends CI_Controller {
 		echo json_encode($obj);
 	}
 
-	public function fetchBagian2($id)
+	public function fetchBagian2($id) //ambil data atasan bagian tertentu
 	{
 		$obj = $this->M_weblen->getAtasanDetail($id);
 		echo json_encode($obj);
@@ -167,18 +167,25 @@ class C_tambah_admin extends CI_Controller {
 			
 			
 			$idAbsen = $Absen['id_absensi']; //get id absensi
+
+			//get data Admin UK
+			$admUK = $this->M_weblen->findAdmUK($dataAtasan['id_divisi'], $dataAtasan['id_bagian']);
+
 			//save data karyawan
 			$data_kar = [
 				'id_evaluasi' => $idEvl,
 				'id_absensi' => $idAbsen,
-				'nama' => $this->input->post('nama'),
-				'nik' => $this->input->post('nik'),
-				//-----hati-hati disini-----
 				'id_divisi' =>  $dataAtasan['id_divisi'],
 				'id_bagian' => $dataAtasan['id_bagian'],
-				'divisi' =>  $dataAtasan['nama_divisi'],//$this->divConv($this->input->post('divisi')),
+
+				'id_admin_uk' => $admUK['id_admin_uk'],
+
+				'nama' => $this->input->post('nama'),
+				'nik' => $this->input->post('nik'),
+
+				'divisi' =>  $dataAtasan['nama_divisi'],
 				'bagian' => $dataAtasan['nama_bagian'],
-				//-----hati-hati disini-----
+
 				'jabatan' => $this->input->post('jabatan'),
 				'start_periode' => $this->input->post('start_periode'),
 				'end_periode' => $this->input->post('end_periode'),

@@ -56,7 +56,7 @@
 
         <div class="container-fluid">
             <div style="float: right;">
-                <p>Dinilai Oleh : <?= $evaluasi['nama_atasan']; ?>
+                <p>Dinilai Oleh &nbsp; : <?= $evaluasi['nama_atasan']; ?>
                 <br>Pada Tanggal : <?= $evaluasi['date_fill']; ?>
             </div>            
         </div>

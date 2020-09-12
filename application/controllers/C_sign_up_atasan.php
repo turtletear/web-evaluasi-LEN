@@ -34,12 +34,30 @@ class C_sign_up_atasan extends CI_Controller {
 			$data['nama'] = $this->input->post('name');
 			$data['id_divisi'] = $this->input->post('divisi');
 			$data['id_bagian'] = $this->input->post('bagian');
-
 			$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-			$this->M_weblen->regisAtasan($data);
-			$this->session->set_flashdata('signSucc', '<div class="alert alert-success mt-2" role="alert">
-			Registration success!</div>');
-			redirect('C_sign_up_atasan');
+			
+			$res = $this->M_weblen->findAtasan($data['id_bagian']);
+			if ($res) {
+				$this->session->set_flashdata('signSucc', '<div class="alert alert-danger mt-2" role="alert">
+				Atasan with the selected bagian is already registered!</div>');
+				redirect('C_sign_up_atasan');				
+			}
+			else{
+				$this->M_weblen->regisAtasan($data);
+				$this->session->set_flashdata('signSucc', '<div class="alert alert-success mt-2" role="alert">
+				Registration success!</div>');
+				redirect('C_sign_up_atasan');
+			}
+			
         }		
+	}
+
+	public function fetchAdminUKjson($idBag, $idDiv) //get data admin uk w/ id_div & id_bag
+	{	
+		// $idDiv = $_POST['id_div'];
+		// $idBag = $_POST['id_bag'];
+		$obj = $this->M_weblen->findAdmUK_json($idDiv, $idBag);
+		echo json_encode($obj);
+		
 	}
 }

@@ -265,4 +265,35 @@ class M_weblen extends CI_Model {
         $this->db->where('id_bagian', $idBag);
         $this->db->update('bagian');
     }
+
+    public function findAdmUK($id_div, $id_bag) //find adminUK w/ id_divisi & id_bagian
+    {
+        $this->db->select('id_admin_uk, nik, nama');
+        $this->db->where('id_divisi', $id_div);
+        $this->db->where('id_bagian', $id_bag);
+        $this->db->from('admin_uk');
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    public function findAdmUK_json($id_div, $id_bag) //find adminUK w/ id_divisi & id_bagian to json
+    {
+        $this->db->select('id_admin_uk, nik, nama');
+        $this->db->where('id_divisi', $id_div);
+        $this->db->where('id_bagian', $id_bag);
+        $this->db->from('admin_uk');
+
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function findAtasan($id_bag) //find atasan w/ id_divisi & id_bagian
+    {
+        $this->db->select('id_atasan, nik, nama');
+        $this->db->where('id_bagian', $id_bag);
+        $this->db->from('atasan');
+
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

@@ -39,15 +39,6 @@
                                 <form action="<?php echo site_url('C_sign_up_atasan/add'); ?>" method="post" class="form-signin">
                                     
                                     <div class="form-group mb-3">
-                                        <input name="nik" placeholder="NIK" value="<?= set_value('nik')?>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        <label><?= form_error('nik','<small class="text-danger pl-2">','</small>') ?></label>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <input name="name" placeholder="Full name" value="<?= set_value('name')?>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        <label><?= form_error('name','<small class="text-danger pl-2">','</small>') ?></label>
-                                    </div>
-                                    
-                                    <div class="form-group mb-3">
                                         <select name="divisi" id="divisi" class="form-control" style="width: 100%;">
                                             <option disabled selected value>-- Divisi / Unit Bisnis --</option>
                                         </select>
@@ -59,6 +50,21 @@
                                             <option disabled selected value>-- Bagian / Unit Kerja --</option>
                                         </select>
                                         <?= form_error('bagian','<small class="text-danger pl-2">','</small>') ?>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <input name="admUK" id="admUK" disabled placeholder="Admin Unit" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+
+                                    <hr>
+                                
+                                    <div class="form-group mb-3">
+                                        <input name="nik" placeholder="NIK" value="<?= set_value('nik')?>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        <label><?= form_error('nik','<small class="text-danger pl-2">','</small>') ?></label>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input name="name" placeholder="Full name" value="<?= set_value('name')?>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        <label><?= form_error('name','<small class="text-danger pl-2">','</small>') ?></label>
                                     </div>
 
                                     <div class="form-group mb-3">
@@ -93,7 +99,8 @@
 	<script type="text/javascript">
 		var site_url = "<?= site_url()?>"
 		getDivisi()
-		getBagian()
+        getBagian2()
+        getAdmUK()
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

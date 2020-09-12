@@ -35,10 +35,21 @@ class C_sign_up_admUnit extends CI_Controller {
 			$data['id_bagian'] = $this->input->post('bagian');
 			$data['password'] = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 			
-			$this->M_weblen->regisAdmUK($data);
-			$this->session->set_flashdata('reg_admu_succ', '<div class="alert alert-success mt-2" role="alert">
-			Registration success!</div>');
-			redirect('C_sign_up_admUnit');
+			$res = $this->M_weblen->findAdmUK($data['id_divisi'], $data['id_bagian']);
+
+			if ($res) {
+				$this->session->set_flashdata('reg_admu', '<div class="alert alert-danger mt-2" role="alert">
+				Admin with the selected bagian is already registered!</div>');
+				redirect('C_sign_up_admUnit');
+			}
+			else{
+				$this->M_weblen->regisAdmUK($data);
+				$this->session->set_flashdata('reg_admu', '<div class="alert alert-success mt-2" role="alert">
+				Registration success!</div>');
+				redirect('C_sign_up_admUnit');
+			}
+
+
         }		
 	}//end func
 }

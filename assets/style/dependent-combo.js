@@ -30,6 +30,55 @@ function getBagian() {
     });
 }
 
+
+function getAdmUK() {  //get data adminUK for atasan registration
+    $('#bagian').change(function() {
+        let idbag= $(this).val()
+        let iddiv= $('#divisi').val()
+        // console.log("id divisi : "+ iddiv +", id bagian : "+ idbag)
+        $.ajax({
+            type : 'get',
+            url : site_url+'C_sign_up_atasan/fetchAdminUKjson/'+idbag+'/'+iddiv,
+            dataType : 'json',
+            success : function(result) {
+                if (result) {
+                    $('#admUK').val(result.nama+"-"+result.nik)
+                }
+                else{
+                    $('#admUK').val("-")
+                }
+    
+            },
+            error : function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+    
+        });//end ajax
+
+    })
+}
+
+function getBagian2() {  // for regis adminUK
+    $('#divisi').change(function() {
+        var idDiv = $(this).val();
+        $.ajax({
+            type : 'get',
+            url : site_url+'C_tambah_admin/fetchBagian/'+ idDiv,
+            dataType : 'json',
+            success : function(result){
+                $('#bagian').html('');
+                $('#bagian').append(`<option selected disabled value>-- Bagian / Unit Kerja --</option>`);
+                $.each(result, function(i, data){
+                    $('#bagian').append(`<option class="opt_bag" value="`+ data.id_bagian + `">`+ data.nama_bagian +`</option>`);
+                })
+            }
+    
+        }); //end ajax
+    });
+}
+
 function getAllBagian() { //for page setting_uk
     //get data bagian
     $('#divisi').change(function() {
@@ -47,13 +96,10 @@ function getAllBagian() { //for page setting_uk
                             <input type="checkbox" class="form-check-input" id="checkbox" checked>
                             <label class="form-check-label">`+ data.nama_bagian +`</label> <br>
                         `).on('change', function() {
-                            console.log('ini adalah id_divisi : ' + idDiv)
                             if ($(this).prop("checked")== true) {
-                                console.log(data.nama_bagian+ " with id: "+ data.id_bagian + " is now active")
                                 updateStatusBagian(data.id_bagian, idDiv, 1)
                             }
                             else{
-                                console.log(data.nama_bagian + " is now deactive")
                                 updateStatusBagian(data.id_bagian, idDiv, 0)
                             }
                         }) //end on change
